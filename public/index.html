@@ -472,9 +472,12 @@ button.cal-cell:hover { border-color: var(--brand-2); }
 /* Display settings: bigger text scales the whole interface, buttons included */
 html[data-size="large"] body { zoom: 1.15; }
 html[data-size="xl"] body { zoom: 1.3; }
-.disp-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 8px; height: 32px; min-width: 38px; padding: 0 8px; font: 700 15px/1 var(--font-display); display: inline-grid; place-items: center; }
-.disp-btn:hover { border-color: var(--brand-2); }
-.who .disp-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; padding: 0 8px; font: 700 15px/1 var(--font-display); }
+.ico { width: 18px; height: 18px; flex: none; display: inline-block; vertical-align: -4px; }
+.disp-btn, .who .disp-btn { border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 8px; width: 34px; height: 32px; padding: 0; display: inline-grid; place-items: center; text-decoration: none; }
+.disp-btn:hover, .who .disp-btn:hover { border-color: var(--brand-2); color: var(--ink); }
+.disp-btn .ico { width: 19px; height: 19px; }
+.seg button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
+.seg button .ico { width: 17px; height: 17px; }
 .opt { display: grid; gap: 8px; }
 .opt h3 { font: 700 12px var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .seg.full { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); width: 100%; }
@@ -969,6 +972,18 @@ window.addEventListener('appinstalled', () => { installEvt = null; S.prefs.insta
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => { /* installs still work as a bookmark */ }));
 }
+const ICONS = {
+  sliders: '<path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>',
+  auto: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor" stroke="none"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/>',
+  moon: '<path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/>',
+  card: '<rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 15.5h7"/>',
+  list: '<path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.5" cy="6.5" r=".6" fill="currentColor"/><circle cx="4.5" cy="12" r=".6" fill="currentColor"/><circle cx="4.5" cy="17.5" r=".6" fill="currentColor"/>',
+  soundOn: '<path d="M11 5 6.5 9H3.5v6h3L11 19z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18.5 6a8.5 8.5 0 0 1 0 12"/>',
+  soundOff: '<path d="M11 5 6.5 9H3.5v6h3L11 19z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/>',
+  timer: '<circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M9.5 2.5h5"/>',
+};
+const ico = name => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ''}</svg>`;
 const SHARE_ICO = '<svg class="share-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
 function installHow() {
   if (isStandalone()) return '<p>✓ You’re using the installed app.</p>';
@@ -1069,7 +1084,7 @@ function header() {
   const tabOn = { overview: 'overview', library: 'library', athletes: 'athletes', 'athlete-detail': 'athletes', builder: 'athletes' }[S.route];
   const tabs = [['overview', 'Overview'], ['library', 'Exercise library'], ['athletes', 'Athletes']];
   const u = me(), coachView = isCoach();
-  const disp = '<button type="button" class="disp-btn" data-act="display" aria-label="Display settings" title="Display settings">Aa</button>';
+  const disp = `<button type="button" class="disp-btn" data-act="display" aria-label="Display settings" title="Display settings">${ico('sliders')}</button>`;
   if (!u) return `<header class="top"><div class="top-in"><div class="brand"><span class="logo-plate"><img src="img/logo.png" alt="${esc(st.practiceName || 'Jaco Ebertsohn')}: ${esc(st.tagline || 'Direct your run')}"></span><span class="brand-sub">Strength & conditioning</span></div><div class="top-right">${disp}</div></div><div class="bars" aria-hidden="true"></div></header>`;
   const who = `<div class="who">${disp}<span class="avatar ${u.role === 'athlete' ? 'athlete' : ''}" aria-hidden="true">${esc(initials(u.name))}</span><span class="who-name">${esc(u.name)}</span><button type="button" data-act="logout">Log out</button></div>`;
   let out = `<header class="top"><div class="top-in">
@@ -1705,7 +1720,7 @@ function sessionHead(p, s, st, total, done, steps) {
   const named = blocksOf(s).some(b => b.name);
   return `<button type="button" class="back" data-act="a-back">← ${esc(p.title)}</button>
     <div class="page-head"><div><h1>${esc(s.name)}</h1><p class="sub">${esc(p.title)} · ${total} exercises${steps ? '' : `${named ? '. Complete each superset before moving to the next one' : ''}. Tap “Mark as done” as you go, then tell ${esc(coach())} how it felt at the bottom`}.</p></div></div>
-    <div class="sess-tools"><div class="seg small" role="group" aria-label="Session layout"><button type="button" aria-pressed="${steps}" data-act="pref" data-k="layout" data-v="steps">One at a time</button><button type="button" aria-pressed="${!steps}" data-act="pref" data-k="layout" data-v="list">Full list</button></div>
+    <div class="sess-tools"><div class="seg small" role="group" aria-label="Session layout"><button type="button" aria-pressed="${steps}" data-act="pref" data-k="layout" data-v="steps">${ico('card')}One at a time</button><button type="button" aria-pressed="${!steps}" data-act="pref" data-k="layout" data-v="list">${ico('list')}Full list</button></div>
       ${S.wakeOn ? '<span class="wake">☀ Your screen stays on during the session</span>' : ''}</div>
     <div><div class="progress" role="progressbar" aria-label="Exercises done" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><i style="width:${total ? (done / total * 100).toFixed(1) : 0}%"></i></div>
       <p class="muted" style="font-size:14px;margin-top:6px">${done} of ${total} done</p></div>`;
@@ -1745,7 +1760,7 @@ function vASession() {
           <div class="exc-head"><span class="lane-no big">${st.done[j] ? '✓' : j + 1}</span><div><h2 class="exc-name">${esc(e.name)}</h2>${e.equipment && e.equipment !== 'None' ? `<p class="exc-works">You need: ${esc(e.equipment)}</p>` : ''}</div></div>
           <div class="exc-grid"><div class="media">${media(e)}</div>
             <div class="info" style="gap:16px">${exInfo(e, it, diffOf(S.asAthlete, it.exerciseId))}
-            <div class="actions"><button type="button" class="btn done-btn" aria-pressed="${!!st.done[j]}" data-act="a-done" data-j="${j}">${st.done[j] ? '✓ Done' : 'Mark as done'}</button>${st.done[j] ? '' : `<button type="button" class="btn ghost" data-act="rest-start">Rest ${S.prefs.rest} s</button>`}</div></div></div></li>`;
+            <div class="actions"><button type="button" class="btn done-btn" aria-pressed="${!!st.done[j]}" data-act="a-done" data-j="${j}">${st.done[j] ? '✓ Done' : 'Mark as done'}</button>${st.done[j] ? '' : `<button type="button" class="btn ghost" data-act="rest-start">${ico('timer')}Rest ${S.prefs.rest} s</button>`}</div></div></div></li>`;
       }).join('')}</ol>`).join('')}
     ${fbPanel(st)}
     ${restPanel(st, true)}
@@ -1790,7 +1805,7 @@ function vWorkout(st, p, s, f, total, done) {
         <button type="button" class="btn primary huge ${isDone ? 'is-ok' : ''}" data-act="${isDone ? 'wk-next' : 'wk-set'}">${esc(label)}</button>
         <div class="wk-sub">
           ${(tp || hold) && !isDone ? (counting ? `<button type="button" class="btn" data-act="tp-stop">${hold ? 'Stop the hold timer' : 'Stop the tempo count'}</button>` : `<button type="button" class="btn" data-act="tp-start">${hold ? `▶ Time the hold (${esc(hold >= 60 ? mmss(hold) : hold + ' s')})` : `▶ Count the tempo (${esc(tp.text)})`}</button>`) : ''}
-          ${!st.rest && !isDone ? `<button type="button" class="btn ghost" data-act="rest-start">Rest ${S.prefs.rest} s</button>` : ''}
+          ${!st.rest && !isDone ? `<button type="button" class="btn ghost" data-act="rest-start">${ico('timer')}Rest ${S.prefs.rest} s</button>` : ''}
           ${isDone ? '<button type="button" class="btn ghost" data-act="wk-undo">Undo done</button>' : n > 1 ? '<button type="button" class="btn ghost" data-act="wk-done">Mark whole exercise done</button>' : ''}
         </div>
       </div>
@@ -1924,11 +1939,11 @@ function vModal() {
     const seg = (k, v, label) => `<button type="button" aria-pressed="${p[k] === v}" data-act="pref" data-k="${k}" data-v="${v}">${label}</button>`;
     return modalShell('<h2 id="m-title">Display</h2>',
       `<p class="hint">These settings are saved on this device only.</p>
-      <div class="opt"><h3>Appearance</h3><div class="seg full" role="group" aria-label="Appearance">${seg('theme', 'auto', 'Match phone')}${seg('theme', 'light', 'Light')}${seg('theme', 'dark', 'Dark')}</div></div>
+      <div class="opt"><h3>Appearance <span class="hint" style="text-transform:none;letter-spacing:0;font-weight:500">Auto follows your phone’s setting</span></h3><div class="seg full" role="group" aria-label="Appearance">${seg('theme', 'auto', ico('auto') + 'Auto')}${seg('theme', 'light', ico('sun') + 'Light')}${seg('theme', 'dark', ico('moon') + 'Dark')}</div></div>
       <div class="opt"><h3>Text and button size</h3><div class="seg full" role="group" aria-label="Text and button size">${seg('size', 'normal', 'Standard')}${seg('size', 'large', '<span class="sz-l">Large</span>')}${seg('size', 'xl', '<span class="sz-xl">Largest</span>')}</div></div>
-      <div class="opt"><h3>Training sessions</h3><div class="seg full" role="group" aria-label="Session layout">${seg('layout', 'steps', 'One exercise at a time')}${seg('layout', 'list', 'Full list')}</div></div>
+      <div class="opt"><h3>Training sessions</h3><div class="seg full" role="group" aria-label="Session layout">${seg('layout', 'steps', ico('card') + 'One at a time')}${seg('layout', 'list', ico('list') + 'Full list')}</div></div>
       <div class="opt"><h3>Rest between sets</h3><div class="chips">${REST_CHOICES.map(v => `<button type="button" class="fchip ${p.rest === v ? 'on' : ''}" aria-pressed="${p.rest === v}" data-act="pref" data-k="rest" data-v="${v}">${v < 60 ? v + ' s' : mmss(v)}</button>`).join('')}</div></div>
-      <div class="opt"><h3>Timer sounds and vibration</h3><div class="seg full" role="group" aria-label="Timer sounds and vibration"><button type="button" aria-pressed="${!!p.sound}" data-act="pref" data-k="sound" data-v="on">On</button><button type="button" aria-pressed="${!p.sound}" data-act="pref" data-k="sound" data-v="off">Off</button></div></div>
+      <div class="opt"><h3>Timer sounds and vibration</h3><div class="seg full" role="group" aria-label="Timer sounds and vibration"><button type="button" aria-pressed="${!!p.sound}" data-act="pref" data-k="sound" data-v="on">${ico('soundOn')}On</button><button type="button" aria-pressed="${!p.sound}" data-act="pref" data-k="sound" data-v="off">${ico('soundOff')}Off</button></div></div>
       <div class="opt"><h3>Install on your phone</h3>${installHow()}</div>`,
       '<button type="button" class="btn primary" data-act="close">Done</button>');
   }
