@@ -5,8 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jaco Ebertsohn · Direct Your Run</title>
 <link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="apple-touch-icon" href="img/icon.png">
-<meta name="theme-color" content="#004046">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jaco S&amp;C">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>
+/* Apply this device's display settings before the page paints, so there's no flash of the wrong theme. */
+try { const p = JSON.parse(localStorage.getItem('je-display') || '{}'), r = document.documentElement;
+  if (p.theme === 'light' || p.theme === 'dark') r.dataset.theme = p.theme;
+  if (p.size === 'large' || p.size === 'xl') r.dataset.size = p.size; } catch (e) { /* storage unavailable */ }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -458,6 +469,84 @@ button.cal-cell:hover { border-color: var(--brand-2); }
 .date-row { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; }
 .date-row .field { width: 210px; }
 
+/* Display settings: bigger text scales the whole interface, buttons included */
+html[data-size="large"] body { zoom: 1.15; }
+html[data-size="xl"] body { zoom: 1.3; }
+.disp-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 8px; height: 32px; min-width: 38px; padding: 0 8px; font: 700 15px/1 var(--font-display); display: inline-grid; place-items: center; }
+.disp-btn:hover { border-color: var(--brand-2); }
+.who .disp-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; padding: 0 8px; font: 700 15px/1 var(--font-display); }
+.opt { display: grid; gap: 8px; }
+.opt h3 { font: 700 12px var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.seg.full { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); width: 100%; }
+.seg.full button { padding: 10px 6px; }
+.seg .sz-l { font-size: 18px; }
+.seg .sz-xl { font-size: 21px; }
+.seg.small button { padding: 6px 12px; font-size: 14px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.install-card { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px 14px; align-items: center; background: var(--brand-soft); border: 1px solid var(--brand-2); border-radius: 14px; padding: 14px 16px; }
+.install-card > img { width: 52px; height: 52px; border-radius: 12px; }
+.install-card > div > strong { display: block; }
+.install-card .actions { grid-column: 1 / -1; }
+.share-ico { display: inline-block; width: 17px; height: 17px; vertical-align: -3px; }
+.resume-card { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; background: var(--surface); border: 2px solid var(--brand); border-radius: 14px; padding: 14px 16px; }
+.resume-card strong { display: block; font: 800 18px/1.2 var(--font-display); }
+
+/* Workout mode: one exercise at a time */
+.sess-tools { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
+.wake { font-size: 13px; color: var(--muted); }
+.wk-steps { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.wk-grp { display: flex; gap: 4px; padding: 3px; border-radius: 10px; flex-wrap: wrap; }
+.wk-grp.ss { background: var(--sunk); }
+.wk-dot { min-width: 34px; height: 34px; padding: 0 4px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-weight: 700; font-size: 14px; color: var(--muted); display: inline-grid; place-items: center; font-variant-numeric: tabular-nums; }
+.wk-dot.part { border-color: var(--ok); color: var(--ok); }
+.wk-dot.done { background: var(--ok); border-color: var(--ok); color: #fff; }
+.wk-dot.on { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand); color: var(--ink); }
+.wk-dot.done.on { color: #fff; }
+.wk-dot .face { width: 22px; height: 22px; }
+.wk-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: grid; gap: 16px; touch-action: pan-y; }
+.wk-card.is-done { border-color: var(--ok); }
+.wk-ctx { font: 700 12px/1.4 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--brand-2); }
+.wk-ctx span { text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--muted); font-size: 13px; }
+.wk-sets { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-weight: 600; }
+.pips { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.pip { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--brand-2); }
+.pip.on { background: var(--ok); border-color: var(--ok); }
+.wk-main { display: grid; gap: 10px; }
+.btn.huge { width: 100%; padding: 17px 20px; font-size: 20px; border-radius: 12px; white-space: normal; }
+.btn.is-ok { background: var(--ok); border-color: var(--ok); color: #fff; }
+.wk-sub { display: flex; gap: 8px; flex-wrap: wrap; }
+.wk-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wk-nav .btn { padding: 13px 10px; font-size: 16px; }
+details.why summary { cursor: pointer; font: 700 12px var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+details.why p { margin-top: 6px; }
+.rest { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 16px; align-items: center; background: var(--brand); color: var(--on-brand); border-radius: 16px; padding: 14px 16px; }
+.rest-ring { width: 92px; height: 92px; transform: rotate(-90deg); display: block; }
+.rest-ring circle { fill: none; stroke-width: 9; }
+.rest-ring .trk { stroke: color-mix(in srgb, currentColor 20%, transparent); }
+.rest-ring .val { stroke: currentColor; stroke-linecap: round; }
+.rest-lab { font: 700 12px var(--font-body); letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+.rest-left { font: 800 44px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.rest-next { font-size: 14px; opacity: .92; margin-top: 4px; }
+.rest-btns { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+.rest-btns button, .rest-len button { border: 1px solid color-mix(in srgb, currentColor 35%, transparent); background: color-mix(in srgb, currentColor 10%, transparent); color: inherit; border-radius: 8px; padding: 8px 12px; font-weight: 600; }
+.rest-btns .skip { margin-left: auto; background: var(--on-brand); color: var(--brand); border-color: transparent; }
+.rest-len { grid-column: 1 / -1; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+.rest-len button { padding: 4px 9px; font-size: 13px; }
+.rest-len button[aria-pressed="true"] { background: var(--on-brand); color: var(--brand); border-color: transparent; }
+.rest.dock .rest-len { display: none; }
+.rest.dock .rest-ring { width: 64px; height: 64px; }
+.rest.dock .rest-left { font-size: 34px; }
+.rest.dock { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; max-width: 560px; margin: 0 auto; box-shadow: 0 12px 40px rgba(0, 0, 0, .3); }
+.tempo { border: 2px solid var(--brand-2); border-radius: 14px; padding: 14px; display: grid; gap: 8px; justify-items: center; text-align: center; background: var(--brand-soft); }
+.tp-seq { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.tp-seq span { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.tp-seq span.on { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
+.tp-phase { font: 800 28px/1 var(--font-display); color: var(--brand); }
+.tp-count { font: 800 72px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.tp-rep { font-weight: 600; color: var(--muted); }
+.tp-bar { width: 100%; height: 8px; background: var(--sunk); border-radius: 999px; overflow: hidden; }
+.tp-bar i { display: block; height: 100%; background: var(--brand); width: 0; }
+
 @media (max-width: 980px) {
   .split { grid-template-columns: 1fr; }
   .cal-wrap { grid-template-columns: 1fr; }
@@ -497,6 +586,11 @@ button.cal-cell:hover { border-color: var(--brand-2); }
   .diff-scale button { width: 26px; height: 26px; }
   .exc { padding: 16px; }
   .exc-name { font-size: 22px; }
+  .wk-card { padding: 14px; }
+  .wk-dot { min-width: 30px; height: 30px; font-size: 13px; }
+  .rest-left { font-size: 38px; }
+  .rest-ring { width: 76px; height: 76px; }
+  .who-name { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -586,6 +680,44 @@ function diffScale(n, act, attrs, label) {
 }
 const avgDiff = list => { const v = list.map(Number).filter(x => x >= 1 && x <= 10); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; };
 const isTempoNum = t => /\d\s*\/\s*\d/.test(String(t || ''));
+
+/* ---------- display settings (saved on this device) ---------- */
+const PREF_KEY = 'je-display';
+const PREF_DEFAULTS = { theme: 'auto', size: 'normal', layout: 'steps', rest: 60, sound: true, installHidden: false };
+const REST_CHOICES = [30, 45, 60, 90, 120];
+function loadPrefs() {
+  try { return { ...PREF_DEFAULTS, ...JSON.parse(localStorage.getItem(PREF_KEY) || '{}') }; } catch (e) { return { ...PREF_DEFAULTS }; }
+}
+S.prefs = loadPrefs();
+const darkMq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+function applyPrefs() {
+  const r = document.documentElement, p = S.prefs;
+  if (p.theme === 'light' || p.theme === 'dark') r.dataset.theme = p.theme; else delete r.dataset.theme;
+  if (p.size === 'large' || p.size === 'xl') r.dataset.size = p.size; else delete r.dataset.size;
+  const dark = p.theme === 'dark' || (p.theme !== 'light' && !!(darkMq && darkMq.matches));
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#10201F' : '#FFFFFF');
+}
+function savePrefs() { try { localStorage.setItem(PREF_KEY, JSON.stringify(S.prefs)); } catch (e) { /* private mode */ } applyPrefs(); }
+if (darkMq && darkMq.addEventListener) darkMq.addEventListener('change', applyPrefs);
+applyPrefs();
+
+/* ---------- install to home screen ---------- */
+let installEvt = null;
+const isStandalone = () => !!(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const isPhone = () => !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; scheduleRender(); });
+window.addEventListener('appinstalled', () => { installEvt = null; S.prefs.installHidden = true; savePrefs(); toast('Installed. Open it from your home screen.'); });
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => { /* installs still work as a bookmark */ }));
+}
+const SHARE_ICO = '<svg class="share-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+function installHow() {
+  if (isStandalone()) return '<p>✓ You’re using the installed app.</p>';
+  if (installEvt) return '<div class="actions"><button type="button" class="btn primary" data-act="install">Install the app</button></div>';
+  if (isIOS()) return `<p>In Safari, tap Share ${SHARE_ICO}, then <strong>Add to Home Screen</strong>.</p>`;
+  return '<p>Open your browser’s menu and choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.</p>';
+}
 
 function setPath(obj, path, val) {
   const keys = path.split('.');
@@ -679,8 +811,9 @@ function header() {
   const tabOn = { overview: 'overview', library: 'library', athletes: 'athletes', 'athlete-detail': 'athletes', builder: 'athletes' }[S.route];
   const tabs = [['overview', 'Overview'], ['library', 'Exercise library'], ['athletes', 'Athletes']];
   const u = me(), coachView = isCoach();
-  if (!u) return `<header class="top"><div class="top-in"><div class="brand"><span class="logo-plate"><img src="img/logo.png" alt="${esc(st.practiceName || 'Jaco Ebertsohn')}: ${esc(st.tagline || 'Direct your run')}"></span><span class="brand-sub">Strength & conditioning</span></div></div><div class="bars" aria-hidden="true"></div></header>`;
-  const who = `<div class="who"><span class="avatar ${u.role === 'athlete' ? 'athlete' : ''}" aria-hidden="true">${esc(initials(u.name))}</span><span>${esc(u.name)}</span><button type="button" data-act="logout">Log out</button></div>`;
+  const disp = '<button type="button" class="disp-btn" data-act="display" aria-label="Display settings" title="Display settings">Aa</button>';
+  if (!u) return `<header class="top"><div class="top-in"><div class="brand"><span class="logo-plate"><img src="img/logo.png" alt="${esc(st.practiceName || 'Jaco Ebertsohn')}: ${esc(st.tagline || 'Direct your run')}"></span><span class="brand-sub">Strength & conditioning</span></div><div class="top-right">${disp}</div></div><div class="bars" aria-hidden="true"></div></header>`;
+  const who = `<div class="who">${disp}<span class="avatar ${u.role === 'athlete' ? 'athlete' : ''}" aria-hidden="true">${esc(initials(u.name))}</span><span class="who-name">${esc(u.name)}</span><button type="button" data-act="logout">Log out</button></div>`;
   let out = `<header class="top"><div class="top-in">
     <div class="brand"><span class="logo-plate"><img src="img/logo.png" alt="${esc(st.practiceName || 'Jaco Ebertsohn')}: ${esc(st.tagline || 'Direct your run')}"></span>
       <span class="brand-sub">${isAth ? 'Your training program' : 'Strength & conditioning'}</span></div>
@@ -1084,6 +1217,7 @@ function vAHome() {
   if (!progs.length) return `<section class="page"><h1 class="hello">Hi ${esc(first(a.name))}</h1><p class="empty">${esc(coach())} hasn’t set up a program for you yet.</p></section>`;
   if (!p) {
     return `<section class="page"><div><h1 class="hello">Hi ${esc(first(a.name))}</h1><p class="sub">Your programs from ${esc(coach())}. Choose one to start a session.</p></div>
+      ${installCard()}${resumeCard()}
       <div class="card-grid">${progs.map(x => {
         const last = fb.find(f => f.programId === x.id);
         return `<article class="prog-card ${x.status === 'current' ? 'current' : ''}">${statusChip(x) ? `<div class="prog-meta">${statusChip(x)}</div>` : ''}
@@ -1097,6 +1231,7 @@ function vAHome() {
   const pf = fb.filter(f => f.programId === p.id);
   return `<section class="page">
     ${progs.length > 1 ? '<button type="button" class="back" data-act="a-progs">← All my programs</button>' : `<h1 class="hello">Hi ${esc(first(a.name))}</h1>`}
+    ${installCard()}${resumeCard()}
     <div class="prog-head"><div><div class="prog-meta" style="margin-bottom:6px">${statusChip(p)}</div><h2>${esc(p.title)}</h2>
       <p class="muted">${p.sessions.length} day${p.sessions.length === 1 ? '' : 's'} · ${progCount(p)} exercises${p.startDate ? ' · Started ' + esc(fmtDay(p.startDate)) : ''}</p></div></div>
     ${lines(p.notes).length ? `<aside class="coach-note"><strong>From ${esc(coach())}: how to use this program</strong><ul>${lines(p.notes).map(l => `<li>${esc(l)}</li>`).join('')}</ul></aside>` : ''}
@@ -1114,31 +1249,211 @@ function vAHome() {
   </section>`;
 }
 
-function vASession() {
-  const a = S.data.athletes.get(S.asAthlete), st = S.aSession;
-  const p = st && S.data.programs.get(st.programId);
-  const s = p && p.sessions.find(x => x.id === st.sessionId);
-  if (!a || !s) { S.route = 'a-home'; return vAHome(); }
-  const bl = blocksOf(s), all = itemsOf(s), total = all.length, done = all.filter((_, j) => st.done[j]).length;
-  const named = bl.some(b => b.name);
-  let j = -1;
-  return `<section class="page">
-    <button type="button" class="back" data-act="a-back">← ${esc(p.title)}</button>
-    <div class="page-head"><div><h1>${esc(s.name)}</h1><p class="sub">${esc(p.title)} · ${total} exercises${named ? '. Complete each superset before moving to the next one' : ''}. Tap “Mark as done” as you go, then tell ${esc(coach())} how it felt at the bottom.</p></div></div>
+/* ---------- athlete: session (workout mode or full list) ---------- */
+const firstInt = v => { const m = /\d+/.exec(String(v || '')); return m ? Number(m[0]) : 0; };
+const setsOf = it => Math.min(12, Math.max(1, firstInt(it && it.sets) || 1));
+const isTimed = r => /\d\s*(s|sec|secs|seconds?|min|mins|minutes?)\b|\d\s*["”]/i.test(String(r || ''));
+const mmss = n => `${Math.floor(n / 60)}:${pad2(n % 60)}`;
+// Timed holds such as "40 s", "20–30 s" or "1 min": time the longest value given.
+const holdSecs = r => { if (!isTimed(r)) return 0; const v = Math.max(...(String(r).match(/\d+/g) || [0]).map(Number)); return Math.min(600, /min/i.test(String(r)) ? v * 60 : v); };
+const RING = 2 * Math.PI * 44;
+// Tempo such as 4/2/2 or 3-1-X-1: lower, hold, up (and hold). X means explode (counted as 1 s).
+function parseTempo(t) {
+  const toks = String(t || '').trim().split(/\s*[\/\-–:·.,]\s*|\s+/).filter(Boolean);
+  if (toks.length < 3 || toks.length > 4 || !toks.every(x => /^(\d{1,2}|x)$/i.test(x))) return null;
+  const names = ['Lower', 'Hold', 'Up', 'Hold'];
+  const phases = toks.map((x, i) => /^x$/i.test(x) ? { label: 'Explode', secs: 1 } : { label: names[i], secs: Number(x) }).filter(ph => ph.secs > 0 && ph.secs <= 20);
+  const cycle = phases.reduce((n, ph) => n + ph.secs, 0);
+  return phases.length && cycle ? { phases, cycle, text: toks.join('/') } : null;
+}
+// Every exercise in a session, in order, with its superset (block) details.
+function flatOf(s) {
+  const out = [];
+  blocksOf(s).forEach((b, bi) => b.items.forEach((it, k) => out.push({ it, bi, k, size: b.items.length, name: b.name || '', ss: !!b.name && b.items.length > 1 })));
+  return out;
+}
+const groupOf = (f, bi) => f.map((x, i) => x.bi === bi ? i : -1).filter(i => i >= 0);
+// Where to go after a set: the next exercise in a superset (no rest), back to the start of the
+// superset for the next round (rest first), another set of the same exercise (rest first), or on.
+function nextAfter(f, st, j) {
+  const cur = f[j];
+  const left = i => !st.done[i] && (st.sets[i] || 0) < setsOf(f[i].it);
+  const forward = from => { for (let i = from + 1; i < f.length; i++) if (!st.done[i]) return i; return f.length; };
+  if (cur.ss) {
+    const grp = groupOf(f, cur.bi);
+    const later = grp.find(i => i > j && left(i));
+    if (later !== undefined) return { to: later, rest: false };
+    const again = grp.find(left);
+    if (again !== undefined) return { to: again, rest: true, why: 'round' };
+    const to = forward(grp[grp.length - 1]);
+    return { to, rest: to < f.length, why: 'next' };
+  }
+  if (left(j)) return { to: j, rest: true, why: 'set' };
+  const to = forward(j);
+  return { to, rest: to < f.length, why: 'next' };
+}
+function roundInfo(f, st, bi) {
+  const grp = groupOf(f, bi);
+  const rounds = Math.max(...grp.map(i => setsOf(f[i].it)));
+  const round = Math.min(rounds, Math.min(...grp.map(i => st.done[i] ? setsOf(f[i].it) : (st.sets[i] || 0))) + 1);
+  return { rounds, round };
+}
+function restLabel(f, st, r) {
+  if (!r || r.to >= f.length) return '';
+  const nm = ex(f[r.to].it.exerciseId)?.name || 'next exercise';
+  if (r.why === 'set') return `Then set ${(st.sets[r.to] || 0) + 1} of ${setsOf(f[r.to].it)}`;
+  if (r.why === 'round') { const ri = roundInfo(f, st, f[r.to].bi); return `Then round ${ri.round} of ${ri.rounds}, starting with ${nm}`; }
+  return `Then: ${nm}`;
+}
+const freshSession = (pid, sid) => ({ programId: pid, sessionId: sid, done: {}, sets: {}, step: 0, rest: null, rating: 0, pain: false, note: '', date: todayYmd(), startedAt: Date.now() });
+const normSession = v => ({ ...freshSession(v.programId, v.sessionId), ...v, done: v.done || {}, sets: v.sets || {}, rest: null });
+function curSess() {
+  const st = S.aSession, p = st && S.data.programs.get(st.programId), s = p && (p.sessions || []).find(x => x.id === st.sessionId);
+  return s ? { st, p, s, f: flatOf(s) } : null;
+}
+
+// An unfinished session is kept on this device, so a locked phone or closed app doesn't lose it.
+const sessKey = () => (S.meUser && S.asAthlete) ? `je-sess-${S.meUser.id}-${S.asAthlete}` : null;
+function saveSession() {
+  const k = sessKey(), st = S.aSession;
+  if (!k || !st) return;
+  const started = Object.values(st.done).some(Boolean) || Object.values(st.sets || {}).some(Boolean) || st.rating || String(st.note || '').trim();
+  if (!started) return;
+  try { localStorage.setItem(k, JSON.stringify({ ...st, rest: null, savedAt: Date.now() })); } catch (e) { /* storage full or private mode */ }
+}
+function savedSession() {
+  const k = sessKey(); if (!k) return null;
+  let v = null;
+  try { v = JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; }
+  if (!v || !v.savedAt || Date.now() - v.savedAt > 18 * 3600000) return null;
+  const p = S.data.programs.get(v.programId), s = p && (p.sessions || []).find(x => x.id === v.sessionId);
+  return s ? { v, p, s } : null;
+}
+function clearSession() { const k = sessKey(); if (k) try { localStorage.removeItem(k); } catch (e) { /* ignore */ } }
+function clearAllSessions() { try { Object.keys(localStorage).filter(k => k.startsWith('je-sess-')).forEach(k => localStorage.removeItem(k)); } catch (e) { /* ignore */ } }
+function resumeCard() {
+  const r = savedSession(); if (!r) return '';
+  const n = itemsOf(r.s).length, done = Object.keys(r.v.done || {}).filter(k => r.v.done[k] && Number(k) < n).length;
+  const t = new Date(r.v.startedAt || r.v.savedAt);
+  return `<div class="resume-card"><div><strong>Continue ${esc(r.s.name)}</strong><span class="muted">${esc(progShort(r.p.title))} · ${done} of ${n} done · started ${esc(t.toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' }))}${ymd(t) !== todayYmd() ? ', ' + esc(fmtYmd(ymd(t))) : ''}</span></div>
+    <div class="actions"><button type="button" class="btn primary" data-act="a-resume">Continue</button><button type="button" class="btn ghost" data-act="a-discard">Discard</button></div></div>`;
+}
+function installCard() {
+  if (me()?.role !== 'athlete' || isStandalone() || S.prefs.installHidden || !isPhone()) return '';
+  return `<div class="install-card"><img src="img/app-192.png" alt=""><div><strong>Put ${esc(coach())}’s app on your home screen</strong><span class="muted">It opens full screen, like a normal app.</span></div>
+    <div class="actions" style="display:grid;gap:8px;justify-items:start">${installHow()}<button type="button" class="btn ghost small" data-act="install-hide">Not now</button></div></div>`;
+}
+
+/* timers: rest between sets and the tempo count */
+let actx = null, ticker = null;
+function ensureAudio() {
+  if (!S.prefs.sound) return;
+  try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); } catch (e) { actx = null; }
+}
+function beep(freq = 660, dur = 0.12, vol = 0.3) {
+  if (!S.prefs.sound || !actx) return;
+  try {
+    const o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime;
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + dur + 0.03);
+  } catch (e) { /* audio unavailable */ }
+}
+const buzz = pattern => { if (S.prefs.sound && navigator.vibrate) try { navigator.vibrate(pattern); } catch (e) { /* not supported */ } };
+function startRest(label, secs = S.prefs.rest) { S.aSession.rest = { endAt: Date.now() + secs * 1000, total: secs, label }; ensureTicker(); }
+function ensureTicker() { if (!ticker) ticker = setInterval(tick, 100); }
+function tempoState(now) {
+  const t = S.tempo, el = (now - t.startAt) / 1000;
+  if (el < 0) return { ready: Math.ceil(-el) };
+  const rep = Math.floor(el / t.cycle) + 1;
+  if (t.reps && rep > t.reps) return { finished: true };
+  let w = el % t.cycle, i = 0;
+  while (i < t.phases.length - 1 && w >= t.phases[i].secs) { w -= t.phases[i].secs; i++; }
+  const ph = t.phases[i];
+  return { rep, i, label: ph.label, count: Math.max(1, Math.ceil(ph.secs - w)), frac: Math.min(1, w / ph.secs) };
+}
+const repText = (t, s) => t.hold ? '' : s.rep ? `Rep ${s.rep}${t.reps ? ' of ' + t.reps : ''}` : (t.reps ? `${t.reps} reps` : '');
+const countText = (t, n) => t.hold && n >= 60 ? mmss(n) : n;
+function tick() {
+  const st = S.aSession, now = Date.now();
+  if (S.route !== 'a-session' || !st || (!st.rest && !S.tempo)) { clearInterval(ticker); ticker = null; return; }
+  if (st.rest) {
+    const ms = Math.max(0, st.rest.endAt - now), left = Math.ceil(ms / 1000);
+    const el = document.getElementById('rest-left'); if (el && el.textContent !== mmss(left)) el.textContent = mmss(left);
+    const ring = document.getElementById('rest-ring'); if (ring) ring.setAttribute('stroke-dashoffset', (RING * (1 - ms / 1000 / st.rest.total)).toFixed(2));
+    if (left > 0 && left <= 3 && st.rest.beeped !== left) { st.rest.beeped = left; beep(660, 0.09); }
+    if (!ms) { st.rest = null; beep(880, 0.4); buzz([250, 120, 250]); toast('Rest over. Go!'); }
+  }
+  if (S.tempo) {
+    const t = S.tempo;
+    if (t.j !== st.step || S.prefs.layout === 'list') { S.tempo = null; return; }
+    const s = tempoState(now);
+    if (s.finished) { S.tempo = null; beep(990, 0.45); buzz([200, 100, 200]); toast(t.hold ? 'Hold done.' : `That’s ${t.reps} reps.`); return; }
+    const key = s.ready ? 'r' + s.ready : `${s.rep}-${s.i}-${s.count}`;
+    if (key !== t.key) {
+      const newPhase = !s.ready && !String(t.key || '').startsWith(`${s.rep}-${s.i}-`);
+      t.key = key;
+      if (s.ready) beep(520, 0.07);
+      else if (newPhase) beep(s.i === 0 ? 990 : 780, 0.12);
+      else if (!t.hold) beep(440, 0.04, 0.15);
+      else if (s.count <= 3) beep(660, 0.09);
+      const set = (id, v) => { const el = document.getElementById(id); if (el && el.textContent !== String(v)) el.textContent = v; };
+      set('tp-phase', s.ready ? 'Get ready' : s.label); set('tp-count', s.ready || countText(t, s.count)); set('tp-rep', repText(t, s));
+      document.querySelectorAll('.tp-seq span').forEach(x => x.classList.toggle('on', !s.ready && Number(x.dataset.i) === s.i));
+    }
+    const bar = document.getElementById('tp-bar'); if (bar) bar.style.width = s.ready ? '0%' : (s.frac * 100).toFixed(1) + '%';
+  }
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden && ticker) tick(); syncWake(); });
+
+// Keep the screen on during a session, where the browser allows it.
+let wake = null, wakeBusy = false, wakeFailed = false;
+async function syncWake() {
+  const want = S.route === 'a-session' && !!S.aSession && document.visibilityState === 'visible';
+  if (want && !wake && !wakeBusy && !wakeFailed && navigator.wakeLock) {
+    wakeBusy = true;
+    try {
+      wake = await navigator.wakeLock.request('screen');
+      wake.addEventListener('release', () => { wake = null; if (S.wakeOn) { S.wakeOn = false; scheduleRender(); } });
+      S.wakeOn = true; scheduleRender();
+    } catch (e) { wakeFailed = true; S.wakeOn = false; }
+    wakeBusy = false;
+  } else if (!want && wake) {
+    const w = wake; wake = null; S.wakeOn = false;
+    try { await w.release(); } catch (e) { /* already released */ }
+  }
+}
+
+function restPanel(st, dock) {
+  const r = st && st.rest; if (!r) return '';
+  const ms = Math.max(0, r.endAt - Date.now()), left = Math.ceil(ms / 1000);
+  return `<div class="rest ${dock ? 'dock' : ''}" role="timer" aria-label="Rest timer">
+    <svg class="rest-ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="val" id="rest-ring" cx="50" cy="50" r="44" stroke-dasharray="${RING.toFixed(2)}" stroke-dashoffset="${(RING * (1 - ms / 1000 / r.total)).toFixed(2)}"/></svg>
+    <div><div class="rest-lab">Rest</div><div class="rest-left" id="rest-left">${mmss(left)}</div>${r.label ? `<div class="rest-next">${esc(r.label)}</div>` : ''}</div>
+    <div class="rest-btns"><button type="button" data-act="rest-add" data-s="-15">−15 s</button><button type="button" data-act="rest-add" data-s="15">+15 s</button><button type="button" class="skip" data-act="rest-skip">Skip rest</button></div>
+    <div class="rest-len"><span>Rest length</span>${REST_CHOICES.map(v => `<button type="button" aria-pressed="${S.prefs.rest === v}" data-act="rest-len" data-v="${v}">${v < 60 ? v + ' s' : mmss(v)}</button>`).join('')}</div>
+  </div>`;
+}
+function tempoPanel() {
+  const t = S.tempo, s = tempoState(Date.now());
+  return `<div class="tempo">
+    ${t.hold ? '' : `<div class="tp-seq">${t.phases.map((ph, i) => `<span data-i="${i}" class="${!s.ready && s.i === i ? 'on' : ''}">${esc(ph.label)} ${ph.secs}</span>`).join('')}</div>`}
+    <div class="tp-phase" id="tp-phase">${s.ready ? 'Get ready' : esc(s.label || '')}</div>
+    <div class="tp-count" id="tp-count">${s.ready || (s.count ? countText(t, s.count) : '')}</div>
+    <div class="tp-bar"><i id="tp-bar" style="width:${s.frac ? (s.frac * 100).toFixed(0) : 0}%"></i></div>
+    <div class="tp-rep" id="tp-rep">${repText(t, s)}</div></div>`;
+}
+function sessionHead(p, s, st, total, done, steps) {
+  const named = blocksOf(s).some(b => b.name);
+  return `<button type="button" class="back" data-act="a-back">← ${esc(p.title)}</button>
+    <div class="page-head"><div><h1>${esc(s.name)}</h1><p class="sub">${esc(p.title)} · ${total} exercises${steps ? '' : `${named ? '. Complete each superset before moving to the next one' : ''}. Tap “Mark as done” as you go, then tell ${esc(coach())} how it felt at the bottom`}.</p></div></div>
+    <div class="sess-tools"><div class="seg small" role="group" aria-label="Session layout"><button type="button" aria-pressed="${steps}" data-act="pref" data-k="layout" data-v="steps">One at a time</button><button type="button" aria-pressed="${!steps}" data-act="pref" data-k="layout" data-v="list">Full list</button></div>
+      ${S.wakeOn ? '<span class="wake">☀ Your screen stays on during the session</span>' : ''}</div>
     <div><div class="progress" role="progressbar" aria-label="Exercises done" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><i style="width:${total ? (done / total * 100).toFixed(1) : 0}%"></i></div>
-      <p class="muted" style="font-size:14px;margin-top:6px">${done} of ${total} done</p></div>
-    ${bl.filter(b => b.items.length).map(b => `${b.name ? `<div class="superset-head"><h2>${esc(b.name)}</h2><span class="muted">${b.items.length} exercises</span></div>` : ''}
-      <ol class="ex-list">${b.items.map(it => {
-        j++;
-        const e = ex(it.exerciseId);
-        if (!e) return `<li class="exc"><div class="exc-head"><span class="lane-no big">${j + 1}</span><h2 class="exc-name">Exercise removed</h2></div></li>`;
-        return `<li class="exc ${st.done[j] ? 'is-done' : ''}">
-          <div class="exc-head"><span class="lane-no big">${st.done[j] ? '✓' : j + 1}</span><div><h2 class="exc-name">${esc(e.name)}</h2>${e.equipment && e.equipment !== 'None' ? `<p class="exc-works">You need: ${esc(e.equipment)}</p>` : ''}</div></div>
-          <div class="exc-grid"><div class="media">${media(e)}</div>
-            <div class="info" style="gap:16px">${exInfo(e, it, diffOf(S.asAthlete, it.exerciseId))}
-            <button type="button" class="btn done-btn" style="justify-self:start" aria-pressed="${!!st.done[j]}" data-act="a-done" data-j="${j}">${st.done[j] ? '✓ Done' : 'Mark as done'}</button></div></div></li>`;
-      }).join('')}</ol>`).join('')}
-    <section class="fb-panel" aria-labelledby="fb-h">
+      <p class="muted" style="font-size:14px;margin-top:6px">${done} of ${total} done</p></div>`;
+}
+function fbPanel(st) {
+  return `<section class="fb-panel" aria-labelledby="fb-h">
       <h2 id="fb-h">How did this session feel?</h2>
       <div class="faces" role="radiogroup" aria-label="How the session felt, 1 to 5">
         ${[1, 2, 3, 4, 5].map(n => `<button type="button" class="face-btn" role="radio" aria-checked="${st.rating === n}" data-act="a-rate" data-n="${n}">${face(n)}<span><span class="fnum">${n} · </span>${FACE_LABELS[n]}</span></button>`).join('')}
@@ -1150,7 +1465,82 @@ function vASession() {
       <textarea id="a-note" class="search" rows="4" data-bind="aSession.note" placeholder="${st.pain ? 'Where was the pain, and during which exercise?' : 'Which exercises felt hard or easy? How did your legs feel?'}">${esc(st.note)}</textarea>
       <div><button type="button" class="btn primary big" data-act="a-submit" ${!st.rating || S.saving ? 'disabled' : ''}>${S.saving ? 'Sending…' : 'Send feedback to ' + esc(coach())}</button>
       ${!st.rating ? '<p class="hint" style="margin-top:8px">Choose a face first.</p>' : ''}</div>
-    </section>
+    </section>`;
+}
+
+function vASession() {
+  const a = S.data.athletes.get(S.asAthlete), c = curSess();
+  if (!a || !c) { S.route = 'a-home'; return vAHome(); }
+  const { st, p, s, f } = c;
+  st.sets = st.sets || {};
+  const total = f.length, done = f.filter((_, i) => st.done[i]).length;
+  if (S.prefs.layout !== 'list') return vWorkout(st, p, s, f, total, done);
+  const bl = blocksOf(s);
+  let j = -1;
+  return `<section class="page">${sessionHead(p, s, st, total, done, false)}
+    ${bl.filter(b => b.items.length).map(b => `${b.name ? `<div class="superset-head"><h2>${esc(b.name)}</h2><span class="muted">${b.items.length} exercises</span></div>` : ''}
+      <ol class="ex-list">${b.items.map(it => {
+        j++;
+        const e = ex(it.exerciseId);
+        if (!e) return `<li class="exc"><div class="exc-head"><span class="lane-no big">${j + 1}</span><h2 class="exc-name">Exercise removed</h2></div></li>`;
+        return `<li class="exc ${st.done[j] ? 'is-done' : ''}">
+          <div class="exc-head"><span class="lane-no big">${st.done[j] ? '✓' : j + 1}</span><div><h2 class="exc-name">${esc(e.name)}</h2>${e.equipment && e.equipment !== 'None' ? `<p class="exc-works">You need: ${esc(e.equipment)}</p>` : ''}</div></div>
+          <div class="exc-grid"><div class="media">${media(e)}</div>
+            <div class="info" style="gap:16px">${exInfo(e, it, diffOf(S.asAthlete, it.exerciseId))}
+            <div class="actions"><button type="button" class="btn done-btn" aria-pressed="${!!st.done[j]}" data-act="a-done" data-j="${j}">${st.done[j] ? '✓ Done' : 'Mark as done'}</button>${st.done[j] ? '' : `<button type="button" class="btn ghost" data-act="rest-start">Rest ${S.prefs.rest} s</button>`}</div></div></div></li>`;
+      }).join('')}</ol>`).join('')}
+    ${fbPanel(st)}
+    ${restPanel(st, true)}
+  </section>`;
+}
+
+function vWorkout(st, p, s, f, total, done) {
+  st.step = Math.min(Math.max(0, Number(st.step) || 0), total);
+  const step = st.step, head = sessionHead(p, s, st, total, done, true);
+  const dots = `<nav class="wk-steps" id="wk-steps" aria-label="Exercises in this session">${blocksOf(s).map((b, bi) => {
+      const idx = groupOf(f, bi); if (!idx.length) return '';
+      return `<div class="wk-grp ${f[idx[0]].ss ? 'ss' : ''}" ${b.name ? `role="group" aria-label="${esc(b.name)}"` : ''}>${idx.map(i => {
+        const cls = `${st.done[i] ? 'done' : st.sets[i] ? 'part' : ''} ${i === step ? 'on' : ''}`;
+        return `<button type="button" class="wk-dot ${cls}" data-act="wk-go" data-i="${i}" aria-label="Exercise ${i + 1}: ${esc(ex(f[i].it.exerciseId)?.name || 'removed')}${st.done[i] ? ', done' : ''}" ${i === step ? 'aria-current="step"' : ''}>${st.done[i] ? '✓' : i + 1}</button>`;
+      }).join('')}</div>`;
+    }).join('')}<button type="button" class="wk-dot ${step === total ? 'on' : ''}" data-act="wk-go" data-i="${total}" aria-label="How the session felt" ${step === total ? 'aria-current="step"' : ''}>${face(st.rating || 4)}</button></nav>`;
+  if (step >= total) {
+    return `<section class="page">${head}${dots}${restPanel(st)}
+      <p>${done === total ? `All ${total} exercises done. Well done.` : `${done} of ${total} exercises marked done.`} <button type="button" class="back" style="display:inline" data-act="wk-go" data-i="${Math.max(0, total - 1)}">← Back to the exercises</button></p>
+      ${fbPanel(st)}</section>`;
+  }
+  const cur = f[step], it = cur.it, e = ex(it.exerciseId), n = setsOf(it), k = Math.min(n, st.sets[step] || 0), isDone = !!st.done[step];
+  let ctx = '';
+  if (cur.ss) {
+    const ri = roundInfo(f, st, cur.bi);
+    ctx = `<p class="wk-ctx">${esc(cur.name)} · exercise ${cur.k + 1} of ${cur.size}${ri.rounds > 1 ? ` · round ${ri.round} of ${ri.rounds}` : ''}<br><span>Do the ${cur.size} exercises back to back, then rest.</span></p>`;
+  } else if (cur.name) ctx = `<p class="wk-ctx">${esc(cur.name)}</p>`;
+  const hold = holdSecs(it.reps), tp = !hold && parseTempo(it.tempo), counting = S.tempo && S.tempo.j === step;
+  const unit = cur.ss ? 'Round' : 'Set';
+  const label = isDone ? (step + 1 < total ? 'Next exercise →' : `Tell ${coach()} how it felt →`) : n > 1 ? `${unit} ${k + 1} of ${n} done` : 'Done';
+  const notes = it.notes && it.notes.length ? it.notes : (e && e.steps) || [];
+  return `<section class="page">${head}${dots}${restPanel(st)}
+    <article class="wk-card ${isDone ? 'is-done' : ''}" id="wk-card" aria-labelledby="wk-name">
+      ${ctx}
+      <div class="exc-head"><span class="lane-no big" aria-hidden="true">${isDone ? '✓' : step + 1}</span><div><h2 class="exc-name" id="wk-name">${esc(e ? e.name : 'Exercise removed')}</h2>${e && e.equipment && e.equipment !== 'None' ? `<p class="exc-works">You need: ${esc(e.equipment)}</p>` : ''}</div></div>
+      ${e ? `<div class="media">${media(e)}</div>` : ''}
+      ${volume(it)}
+      ${e ? diffMeter(diffOf(S.asAthlete, it.exerciseId)) : ''}
+      ${n > 1 ? `<div class="wk-sets"><span class="pips" aria-hidden="true">${Array.from({ length: n }, (_, i) => `<i class="pip ${i < k ? 'on' : ''}"></i>`).join('')}</span><span>${k} of ${n} ${unit.toLowerCase()}s done</span></div>` : ''}
+      ${counting ? tempoPanel() : ''}
+      <div class="wk-main">
+        <button type="button" class="btn primary huge ${isDone ? 'is-ok' : ''}" data-act="${isDone ? 'wk-next' : 'wk-set'}">${esc(label)}</button>
+        <div class="wk-sub">
+          ${(tp || hold) && !isDone ? (counting ? `<button type="button" class="btn" data-act="tp-stop">${hold ? 'Stop the hold timer' : 'Stop the tempo count'}</button>` : `<button type="button" class="btn" data-act="tp-start">${hold ? `▶ Time the hold (${esc(hold >= 60 ? mmss(hold) : hold + ' s')})` : `▶ Count the tempo (${esc(tp.text)})`}</button>`) : ''}
+          ${!st.rest && !isDone ? `<button type="button" class="btn ghost" data-act="rest-start">Rest ${S.prefs.rest} s</button>` : ''}
+          ${isDone ? '<button type="button" class="btn ghost" data-act="wk-undo">Undo done</button>' : n > 1 ? '<button type="button" class="btn ghost" data-act="wk-done">Mark whole exercise done</button>' : ''}
+        </div>
+      </div>
+      ${notes.length ? `<div class="info"><div><h3>What to focus on</h3><ul class="focus">${notes.map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div></div>` : ''}
+      ${e && e.targets ? `<div class="info"><div><h3>Works</h3><p>${esc(e.targets)}</p></div></div>` : ''}
+      ${e && e.why ? `<details class="why"><summary>Why it matters</summary><p>${esc(e.why)}</p></details>` : ''}
+      <div class="wk-nav"><button type="button" class="btn" data-act="wk-prev" ${step === 0 ? 'disabled' : ''}>← Previous</button><button type="button" class="btn" data-act="wk-next">${step + 1 < total ? 'Next →' : 'Finish →'}</button></div>
+    </article>
   </section>`;
 }
 
@@ -1271,6 +1661,19 @@ function vModal() {
       </div>`,
       `<button type="button" class="btn ghost" data-act="close">Close</button><button type="button" class="btn primary" data-act="login-add">Add login</button>`);
   }
+  if (m.type === 'display') {
+    const p = S.prefs;
+    const seg = (k, v, label) => `<button type="button" aria-pressed="${p[k] === v}" data-act="pref" data-k="${k}" data-v="${v}">${label}</button>`;
+    return modalShell('<h2 id="m-title">Display</h2>',
+      `<p class="hint">These settings are saved on this device only.</p>
+      <div class="opt"><h3>Appearance</h3><div class="seg full" role="group" aria-label="Appearance">${seg('theme', 'auto', 'Match phone')}${seg('theme', 'light', 'Light')}${seg('theme', 'dark', 'Dark')}</div></div>
+      <div class="opt"><h3>Text and button size</h3><div class="seg full" role="group" aria-label="Text and button size">${seg('size', 'normal', 'Standard')}${seg('size', 'large', '<span class="sz-l">Large</span>')}${seg('size', 'xl', '<span class="sz-xl">Largest</span>')}</div></div>
+      <div class="opt"><h3>Training sessions</h3><div class="seg full" role="group" aria-label="Session layout">${seg('layout', 'steps', 'One exercise at a time')}${seg('layout', 'list', 'Full list')}</div></div>
+      <div class="opt"><h3>Rest between sets</h3><div class="chips">${REST_CHOICES.map(v => `<button type="button" class="fchip ${p.rest === v ? 'on' : ''}" aria-pressed="${p.rest === v}" data-act="pref" data-k="rest" data-v="${v}">${v < 60 ? v + ' s' : mmss(v)}</button>`).join('')}</div></div>
+      <div class="opt"><h3>Timer sounds and vibration</h3><div class="seg full" role="group" aria-label="Timer sounds and vibration"><button type="button" aria-pressed="${!!p.sound}" data-act="pref" data-k="sound" data-v="on">On</button><button type="button" aria-pressed="${!p.sound}" data-act="pref" data-k="sound" data-v="off">Off</button></div></div>
+      <div class="opt"><h3>Install on your phone</h3>${installHow()}</div>`,
+      '<button type="button" class="btn primary" data-act="close">Done</button>');
+  }
   if (m.type === 'confirm') {
     return modalShell(`<h2 id="m-title">${esc(m.title)}</h2>`, `<p>${esc(m.text)}</p>`,
       `<button type="button" class="btn ghost" data-act="close">Cancel</button><button type="button" class="btn primary" data-act="confirm-yes">${esc(m.yes)}</button>`);
@@ -1297,6 +1700,15 @@ function render() {
   } else if (S.modal && !document.querySelector('.modal')?.contains(document.activeElement)) {
     document.querySelector('.modal .x')?.focus({ preventScroll: true });
   }
+  if (S.route === 'a-session') saveSession();
+  if (S.wkScroll) {
+    S.wkScroll = false;
+    const anchor = document.getElementById('wk-steps'), top = document.querySelector('.top');
+    if (anchor) window.scrollTo({ top: Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - (top ? top.getBoundingClientRect().height : 0) - 10) });
+  }
+  if (S.tpScroll) { S.tpScroll = false; document.querySelector('.tempo')?.scrollIntoView({ block: 'center' }); }
+  if (S.aSession && S.aSession.rest || S.tempo) ensureTicker();
+  syncWake();
 }
 
 /* ---------- drag and drop (builder) ---------- */
@@ -1388,7 +1800,7 @@ const A = {
       render(); setTimeout(() => document.getElementById('login-pw')?.focus(), 0);
     }
   },
-  logout: async () => { try { await api('POST', '/api/logout', {}, { quiet401: true }); } catch (e) { /* signed out locally anyway */ } signedOut(); },
+  logout: async () => { try { await api('POST', '/api/logout', {}, { quiet401: true }); } catch (e) { /* signed out locally anyway */ } clearAllSessions(); S.tempo = null; signedOut(); },
   logins: () => { S.modal = { type: 'logins', pwFor: null, pw: '', add: { role: 'athlete', athleteId: athletes().find(a => ![...S.data.users.values()].some(u => u.athleteId === a.id))?.id || athletes()[0]?.id || '', name: '', username: '', pw: '' } }; render(); },
   'pw-open': el => { S.modal.pwFor = el.dataset.id; S.modal.pw = ''; render(); setTimeout(() => document.getElementById('pw-new')?.focus(), 0); },
   'pw-cancel': () => { S.modal.pwFor = null; S.modal.pw = ''; render(); },
@@ -1551,8 +1963,86 @@ const A = {
 
   'a-prog': el => { S.aProgramId = el.dataset.id; S.route = 'a-home'; render(); window.scrollTo(0, 0); },
   'a-progs': () => { S.aProgramId = null; S.route = 'a-home'; render(); window.scrollTo(0, 0); },
-  'a-back': () => { S.route = 'a-home'; S.aSession = null; render(); window.scrollTo(0, 0); },
-  'a-start': el => { S.aProgramId = el.dataset.pid; S.aSession = { programId: el.dataset.pid, sessionId: el.dataset.sid, done: {}, rating: 0, pain: false, note: '', date: todayYmd() }; S.route = 'a-session'; render(); window.scrollTo(0, 0); },
+  'a-back': () => { S.route = 'a-home'; S.aSession = null; S.tempo = null; render(); window.scrollTo(0, 0); },
+  'a-start': el => {
+    const pid = el.dataset.pid, sid = el.dataset.sid, r = savedSession();
+    S.aProgramId = pid; S.tempo = null; S.route = 'a-session';
+    const resumed = r && r.v.programId === pid && r.v.sessionId === sid;
+    S.aSession = resumed ? normSession(r.v) : freshSession(pid, sid);
+    window.scrollTo(0, 0);
+    if (resumed) toast('Picked up where you left off'); else render();
+  },
+  'a-resume': () => {
+    const r = savedSession();
+    if (!r) { render(); return; }
+    S.aProgramId = r.p.id; S.aSession = normSession(r.v); S.tempo = null; S.route = 'a-session'; S.wkScroll = true; render();
+  },
+  'a-discard': () => { clearSession(); toast('Unfinished session discarded'); },
+  display: () => { S.modal = { type: 'display' }; render(); },
+  pref: el => {
+    const k = el.dataset.k; let v = el.dataset.v;
+    if (k === 'rest') v = Number(v);
+    if (k === 'sound') v = v === 'on';
+    S.prefs[k] = v; savePrefs();
+    if (k === 'layout') { S.tempo = null; if (S.aSession && S.aSession.rest) ensureTicker(); }
+    render();
+  },
+  install: async () => {
+    const e = installEvt; if (!e) return;
+    installEvt = null;
+    try { e.prompt(); await e.userChoice; } catch (err) { /* dismissed */ }
+    render();
+  },
+  'install-hide': () => { S.prefs.installHidden = true; savePrefs(); render(); },
+  'wk-set': () => {
+    ensureAudio();
+    const c = curSess(); if (!c) return;
+    const { st, f } = c, j = st.step, cur = f[j]; if (!cur) return;
+    const n = setsOf(cur.it);
+    st.sets[j] = Math.min(n, (st.sets[j] || 0) + 1);
+    if (st.sets[j] >= n) st.done[j] = true;
+    const r = nextAfter(f, st, j);
+    S.tempo = null;
+    if (r.rest) startRest(restLabel(f, st, r));
+    if (r.to !== j) st.step = r.to;
+    if (r.to !== j || r.rest) S.wkScroll = true;
+    render();
+  },
+  'wk-done': () => {
+    const c = curSess(); if (!c) return;
+    const { st, f } = c, j = st.step;
+    st.done[j] = true; st.sets[j] = setsOf(f[j].it);
+    const r = nextAfter(f, st, j);
+    S.tempo = null; st.step = r.to; S.wkScroll = true; render();
+  },
+  'wk-undo': () => { const st = S.aSession; if (!st) return; st.done[st.step] = false; st.sets[st.step] = 0; render(); },
+  'wk-go': el => { const c = curSess(); if (!c) return; c.st.step = Math.min(Math.max(0, Number(el.dataset.i) || 0), c.f.length); S.tempo = null; S.wkScroll = true; render(); },
+  'wk-next': () => { const c = curSess(); if (!c) return; c.st.step = Math.min(c.f.length, c.st.step + 1); S.tempo = null; S.wkScroll = true; render(); },
+  'wk-prev': () => { const c = curSess(); if (!c) return; c.st.step = Math.max(0, c.st.step - 1); S.tempo = null; S.wkScroll = true; render(); },
+  'rest-start': () => { ensureAudio(); if (S.aSession) { startRest(''); if (S.prefs.layout !== 'list') S.wkScroll = true; render(); } },
+  'rest-add': el => {
+    const r = S.aSession && S.aSession.rest; if (!r) return;
+    const d = Number(el.dataset.s) || 0;
+    r.endAt = Math.max(Date.now(), r.endAt + d * 1000); r.total = Math.max(5, r.total + d); r.beeped = null; render();
+  },
+  'rest-skip': () => { if (S.aSession) S.aSession.rest = null; render(); },
+  'rest-len': el => {
+    const v = Number(el.dataset.v); S.prefs.rest = v; savePrefs();
+    const r = S.aSession && S.aSession.rest;
+    if (r) { const start = r.endAt - r.total * 1000; r.total = v; r.endAt = start + v * 1000; r.beeped = null; }
+    render();
+  },
+  'tp-start': () => {
+    ensureAudio();
+    const c = curSess(); if (!c) return;
+    const it = c.f[c.st.step] && c.f[c.st.step].it; if (!it) return;
+    const hold = holdSecs(it.reps), tp = !hold && parseTempo(it.tempo);
+    if (hold) S.tempo = { j: c.st.step, startAt: Date.now() + 3000, phases: [{ label: 'Hold', secs: hold }], cycle: hold, reps: 1, hold: true, key: '' };
+    else if (tp) S.tempo = { j: c.st.step, startAt: Date.now() + 3000, phases: tp.phases, cycle: tp.cycle, reps: firstInt(it.reps), key: '' };
+    else return;
+    S.tpScroll = true; render(); ensureTicker();
+  },
+  'tp-stop': () => { S.tempo = null; render(); },
   'a-cal': () => {
     const d = parseYmd(S.lastDate) || new Date();
     S.cal = { y: d.getFullYear(), m: d.getMonth() }; S.calSel = S.lastDate || null; S.aProgramId = null; S.route = 'a-home'; render();
@@ -1567,7 +2057,11 @@ const A = {
     confirmThen('Delete this session entry?', `${progShort(f.programTitle)} · ${f.sessionName} on ${fmtYmd(fbDate(f), { day: 'numeric', month: 'long' })} will be removed from the calendar and the feedback history.`, 'Delete entry',
       () => write(() => S.db.collection('feedback').doc(f.id).delete(), 'Entry deleted'));
   },
-  'a-done': el => { const j = el.dataset.j; S.aSession.done[j] = !S.aSession.done[j]; render(); },
+  'a-done': el => {
+    const c = curSess(); if (!c) return;
+    const j = Number(el.dataset.j), st = c.st;
+    st.done[j] = !st.done[j]; st.sets[j] = st.done[j] ? setsOf(c.f[j].it) : 0; render();
+  },
   'a-rate': el => { S.aSession.rating = Number(el.dataset.n); render(); },
   'a-pain': el => { S.aSession.pain = el.dataset.v === 'yes'; render(); },
   'a-submit': async () => {
@@ -1581,7 +2075,7 @@ const A = {
     S.saving = true; render();
     const ok = await write(() => S.db.collection('feedback').doc(uid('fb')).set(doc));
     S.saving = false;
-    if (ok) { S.lastRating = st.rating; S.lastDate = date; S.aSession = null; S.route = 'a-done'; window.scrollTo(0, 0); }
+    if (ok) { clearSession(); S.lastRating = st.rating; S.lastDate = date; S.aSession = null; S.tempo = null; S.route = 'a-done'; window.scrollTo(0, 0); }
     render();
   },
 };
@@ -1610,6 +2104,22 @@ document.addEventListener('submit', ev => {
   if (A[k]) A[k]();
 });
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && S.modal) { S.modal = null; render(); } });
+document.addEventListener('keydown', ev => {
+  if (S.modal || S.route !== 'a-session' || S.prefs.layout === 'list' || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+  if (ev.target && ev.target.closest && ev.target.closest('input, textarea, select')) return;
+  if (ev.key === 'ArrowRight') A['wk-next'](); else if (ev.key === 'ArrowLeft') A['wk-prev']();
+});
+let swipe = null;
+document.addEventListener('touchstart', ev => {
+  const card = ev.target.closest && ev.target.closest('#wk-card');
+  swipe = card && ev.touches.length === 1 ? { x: ev.touches[0].clientX, y: ev.touches[0].clientY, t: Date.now() } : null;
+}, { passive: true });
+document.addEventListener('touchend', ev => {
+  if (!swipe) return;
+  const t = ev.changedTouches[0], dx = t.clientX - swipe.x, dy = t.clientY - swipe.y, dt = Date.now() - swipe.t;
+  swipe = null;
+  if (dt < 700 && Math.abs(dx) > 70 && Math.abs(dy) < 50) A[dx < 0 ? 'wk-next' : 'wk-prev']();
+}, { passive: true });
 
 async function uploadPhoto(file) {
   if (!file || !S.assets || !S.modal || S.modal.type !== 'ex-edit') return;

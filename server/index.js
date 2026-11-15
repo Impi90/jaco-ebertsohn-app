@@ -212,7 +212,7 @@ function securityHeaders(req, res) {
 }
 
 /* ---------- static files ---------- */
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.webp': 'image/webp', '.txt': 'text/plain; charset=utf-8' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.webp': 'image/webp', '.txt': 'text/plain; charset=utf-8', '.webmanifest': 'application/manifest+json' };
 const gzCache = new Map();
 function serveStatic(req, res, urlPath) {
   let rel;
@@ -225,11 +225,12 @@ function serveStatic(req, res, urlPath) {
   if (!st.isFile()) return notFound(res);
   const ext = path.extname(file).toLowerCase();
   const type = TYPES[ext] || 'application/octet-stream';
-  const headers = { 'Content-Type': type, 'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=86400' };
+  const fresh = ext === '.html' || ext === '.webmanifest' || rel === '/sw.js';
+  const headers = { 'Content-Type': type, 'Cache-Control': fresh ? 'no-cache' : 'public, max-age=86400' };
   const etag = `"${st.size.toString(36)}-${Math.floor(st.mtimeMs).toString(36)}"`;
   headers.ETag = etag;
   if (req.headers['if-none-match'] === etag) { res.writeHead(304, headers); return res.end(); }
-  const text = /^(text\/|application\/json|image\/svg)/.test(type);
+  const text = /^(text\/|application\/(json|manifest)|image\/svg)/.test(type);
   if (text && /\bgzip\b/.test(req.headers['accept-encoding'] || '')) {
     let gz = gzCache.get(file);
     if (!gz || gz.etag !== etag) { gz = { etag, buf: zlib.gzipSync(fs.readFileSync(file)) }; gzCache.set(file, gz); }
