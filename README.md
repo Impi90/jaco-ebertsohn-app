@@ -19,6 +19,11 @@ An exercise library, program builder, athlete session view and post-session feed
 - Writes from other websites are refused through an Origin check plus JSON-only bodies.
 - After repeated failed sign-ins, the server blocks further attempts for 15 minutes: after 10 failures for a username, or 30 from one network address.
 
+## Hosting (proof of concept)
+
+- Render web service `jaco-app` (free plan, Frankfurt), set up by `render.yaml`. The free plan sleeps after 15 minutes without visitors, so the first visit after that takes about a minute.
+- Data lives in schema `jaco` inside the existing free Render Postgres database `fdonc-crm-db-7dpw`, apart from the CRM's tables. **That database expires on 13 December 2026** unless upgraded. Before a real pilot, create a paid database for this app and change `DATABASE_URL`. The app seeds itself on first start, or copy the `jaco` schema across with `pg_dump --schema=jaco`.
+
 ## Run locally
 
 ```
@@ -35,5 +40,6 @@ Edit `src/app.html`, then run `npm run build` and commit both `src/app.html` and
 | Name | Purpose |
 | --- | --- |
 | `DATABASE_URL` | Postgres connection string (Render sets this from the database). |
+| `DB_SCHEMA` | Optional. Keeps every table in this Postgres schema (e.g. `jaco`), so the app can share a database with another app. The server refuses to start if it can't use that schema. |
 | `SEED_PASSWORD` | Password for the seeded logins on first run (default `admin`). Change both passwords in the app afterwards. |
 | `LOG_REQUESTS` | Set to `1` to log API requests. |

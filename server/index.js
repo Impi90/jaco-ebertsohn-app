@@ -470,10 +470,14 @@ async function seedIfEmpty() {
 }
 
 async function main() {
+  if (db.schema) await db.query(`CREATE SCHEMA IF NOT EXISTS ${db.schema}`);
+  // Refuse to start if tables would land outside the app's own schema.
+  const cur = (await db.query('SELECT current_schema() AS s')).rows[0].s;
+  if (db.schema && cur !== db.schema) throw new Error(`Expected schema ${db.schema}, connected to ${cur}`);
   await db.query(fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8'));
   await seedIfEmpty();
   DUMMY_HASH = await hashPassword(crypto.randomBytes(12).toString('hex'));
-  server.listen(PORT, '0.0.0.0', () => console.log(`Listening on ${PORT} (db: ${db.kind})`));
+  server.listen(PORT, '0.0.0.0', () => console.log(`Listening on ${PORT} (db: ${db.kind}${db.schema ? ', schema ' + db.schema : ''})`));
 }
 main().catch(e => { console.error('Start-up failed:', e); process.exit(1); });
 

@@ -1,11 +1,8 @@
-# Render Blueprint: the web service plus its Postgres database, both in Frankfurt.
-# Move to paid plans before a real pilot: the free database is deleted 30 days after creation unless upgraded.
-databases:
-  - name: jaco-db
-    region: frankfurt
-    plan: free
-    databaseName: jaco
-    user: jaco
+# Render Blueprint: the web service, in Frankfurt.
+# Proof of concept: the app shares Erik's existing free Postgres database (fdonc-crm-db-7dpw)
+# and keeps all of its tables in its own schema, "jaco" (DB_SCHEMA), apart from the CRM's tables.
+# That free database expires on 13 December 2026 unless it is upgraded to a paid plan.
+# Before a real pilot, give the app its own paid database and point DATABASE_URL at it.
 
 services:
   - type: web
@@ -20,7 +17,9 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+      - key: DB_SCHEMA
+        value: jaco
       - key: DATABASE_URL
         fromDatabase:
-          name: jaco-db
+          name: fdonc-crm-db-7dpw
           property: connectionString
