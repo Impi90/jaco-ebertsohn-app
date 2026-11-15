@@ -13,8 +13,6 @@ services:
     buildCommand: npm install --omit=dev
     startCommand: npm start
     healthCheckPath: /healthz
-    domains:
-      - app.jacoebertsohn.co.za
     autoDeploy: true
     envVars:
       - key: NODE_VERSION
