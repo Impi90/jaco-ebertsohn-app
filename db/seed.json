@@ -1,0 +1,3915 @@
+{
+ "settings": {
+  "practiceName": "Jaco Ebertsohn",
+  "coachName": "Jaco",
+  "tagline": "Direct your run",
+  "phone": "071 682 4725",
+  "email": "jacoebertsohn@gmail.com",
+  "website": "www.jacoebertsohn.co.za"
+ },
+ "exercises": [
+  {
+   "id": "sl-swiss-ball-wall-squat",
+   "name": "Single Leg Swiss Ball Wall Squat",
+   "region": "legs",
+   "equipment": "Swiss ball, wall",
+   "targets": "Quads, glutes, knee control",
+   "why": "Builds single-leg quad strength with the knee tracking over the toes, so it holds its line when you land on one leg.",
+   "steps": [
+    "Keep your knee behind and in line with your toe.",
+    "Place most of your weight in your heel.",
+    "Knee must be vertically above your heel."
+   ],
+   "photos": [
+    "img/ex/sl-swiss-ball-wall-squat-1.jpg",
+    "img/ex/sl-swiss-ball-wall-squat-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-jumps",
+   "name": "Single Leg Jumps",
+   "region": "plyo",
+   "equipment": "None",
+   "targets": "Glutes, quads, calves, landing control",
+   "why": "Trains single-leg power and soft, controlled landings, the same job each leg does on every stride.",
+   "steps": [
+    "Jump for distance, not height.",
+    "Soft landing (squat position)",
+    "Keep your balance for 2s after you land."
+   ],
+   "photos": [
+    "img/ex/sl-jumps-1.jpg",
+    "img/ex/sl-jumps-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "hip-rotations-weighted",
+   "name": "Hip Rotations – Weighted",
+   "region": "hips",
+   "equipment": "Ankle weight or Thera-Band",
+   "targets": "Deep hip rotators, glutes",
+   "why": "Strengthens the muscles that control hip rotation, helping keep the knee and pelvis stable when your foot is on the ground.",
+   "steps": [
+    "Focus on the slow control down.",
+    "Keep your hips from rotating.",
+    "Big as possible range of motion."
+   ],
+   "photos": [
+    "img/ex/hip-rotations-weighted-1.jpg",
+    "img/ex/hip-rotations-weighted-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/4",
+   "sets": "2",
+   "load": "Ankle weight / Thera-Band",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-squat-weighted",
+   "name": "Single Leg Squats – Weighted",
+   "region": "legs",
+   "equipment": "Dumbbells",
+   "targets": "Quads, glutes, knee stability",
+   "why": "Builds the single-leg strength and knee control that running asks for on every step.",
+   "steps": [
+    "Keep your knee behind and in line with your toe.",
+    "Focus on your tempo.",
+    "Bend your knee for range of motion, not your back."
+   ],
+   "photos": [
+    "img/ex/sl-squat-weighted-1.jpg",
+    "img/ex/sl-squat-weighted-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "4/2/2",
+   "sets": "3",
+   "load": "Max",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sa-chest-press-swiss",
+   "name": "Single Arm Chest Press on a Swiss Ball",
+   "region": "chest",
+   "equipment": "Dumbbell, Swiss ball",
+   "targets": "Chest, triceps, trunk stability",
+   "why": "Pairs an upper-body push with an anti-rotation challenge for the trunk, building a stable base for your arm swing.",
+   "steps": [
+    "Weight shift to the weighted side, then stay there for all the repetitions.",
+    "No pelvis movement.",
+    "Your head can go flat on the ball."
+   ],
+   "photos": [
+    "img/ex/sa-chest-press-swiss-1.jpg",
+    "img/ex/sa-chest-press-swiss-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "3",
+   "load": "8-15 kg",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "mountain-climbers-swiss",
+   "name": "Mountain Climbers on a Swiss Ball",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Abdominals, hip flexors, shoulders",
+   "why": "Teaches the trunk to stay still while the legs drive alternately, much like the running action.",
+   "steps": [
+    "Keep your core muscles tight.",
+    "No pelvis movement.",
+    "Alternate feet."
+   ],
+   "photos": [
+    "img/ex/mountain-climbers-swiss-1.jpg",
+    "img/ex/mountain-climbers-swiss-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "3",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-soleus-calf-raise",
+   "name": "Single Leg Soleus Calf Raises",
+   "region": "calves",
+   "equipment": "Step, dumbbell",
+   "targets": "Soleus, Achilles tendon",
+   "why": "The soleus takes the biggest load in the lower leg when you run. Strengthening it protects the calf and Achilles.",
+   "steps": [
+    "Keep your knee bent at all times.",
+    "Focus on the tempo of the exercise.",
+    "You may hold on for stability."
+   ],
+   "photos": [
+    "img/ex/sl-soleus-calf-raise-1.jpg",
+    "img/ex/sl-soleus-calf-raise-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "2/2/4",
+   "sets": "2",
+   "load": "Max",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sit-ups-swiss",
+   "name": "Sit Ups on a Swiss Ball",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Abdominals",
+   "why": "Strengthens the abdominals through a full range while the ball adds a balance challenge.",
+   "steps": [
+    "The ball may not move (roll) underneath you.",
+    "Keep your lower back straight."
+   ],
+   "photos": [
+    "img/ex/sit-ups-swiss-1.jpg",
+    "img/ex/sit-ups-swiss-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "eccentric-hamstring-leans",
+   "name": "Eccentric Hamstring Leans (Nordic/Russian Leans)",
+   "region": "legs",
+   "equipment": "Partner or anchor, mat",
+   "targets": "Hamstrings (eccentric strength)",
+   "why": "Builds the eccentric hamstring strength that protects against hamstring strains, especially at faster paces.",
+   "steps": [
+    "You may not bend forward in your back.",
+    "Move in your knee joint.",
+    "Focus on the tempo."
+   ],
+   "photos": [
+    "img/ex/eccentric-hamstring-leans-1.jpg",
+    "img/ex/eccentric-hamstring-leans-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "6/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "band-walks",
+   "name": "Band Walks",
+   "region": "hips",
+   "equipment": "Thera-Band",
+   "targets": "Glute medius, hip abductors",
+   "why": "Strengthens the side-hip muscles that stop the knee collapsing inward, a common factor in knee and ITB pain.",
+   "steps": [
+    "Don’t drag your feet on the ground.",
+    "Prevent hips from rotating.",
+    "Focus on controlling the movement."
+   ],
+   "photos": [
+    "img/ex/band-walks-1.jpg",
+    "img/ex/band-walks-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/4",
+   "sets": "2",
+   "load": "Thera-Band",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-sit-to-stand",
+   "name": "Single Leg Sit-to-Stand",
+   "region": "legs",
+   "equipment": "Bench",
+   "targets": "Quads, glutes, eccentric control",
+   "why": "Teaches controlled single-leg lowering, the strength that absorbs impact on downhills.",
+   "steps": [
+    "Keep your knee behind and in line with your toe.",
+    "Sit down as softly as possible.",
+    "Lower the bench height to increase difficulty."
+   ],
+   "photos": [
+    "img/ex/sl-sit-to-stand-1.jpg",
+    "img/ex/sl-sit-to-stand-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-bridge-bench-calf-raise",
+   "name": "Single Leg Bridge on a Bench – Calf Raise",
+   "region": "hips",
+   "equipment": "Bench",
+   "targets": "Glutes, hamstrings, calves",
+   "why": "Links hip extension and calf push-off in one sequence, mirroring the push-off phase of your stride.",
+   "steps": [
+    "Place only your toe on the bench.",
+    "Go through the full range of motion in your hip.",
+    "Bridge and Calf raise are two separate movements."
+   ],
+   "photos": [
+    "img/ex/sl-bridge-bench-calf-raise-1.jpg",
+    "img/ex/sl-bridge-bench-calf-raise-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/4",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "bench-step-ups-weighted",
+   "name": "Bench Step Ups – Weighted",
+   "region": "legs",
+   "equipment": "Bench, dumbbells or barbell",
+   "targets": "Quads, glutes",
+   "why": "Builds single-leg strength for climbs and a powerful push-off without the impact of running.",
+   "steps": [
+    "Don’t use the non-weight bearing leg for momentum.",
+    "Keep your knee behind and in line with your toe.",
+    "Keep your heel flat.",
+    "Focus on the tempo."
+   ],
+   "photos": [
+    "img/ex/bench-step-ups-weighted-1.jpg",
+    "img/ex/bench-step-ups-weighted-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "2/2/4",
+   "sets": "3",
+   "load": "Max",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "rotational-lunge-db-press",
+   "name": "Rotational Lunge with Dumbbell Press",
+   "region": "core",
+   "equipment": "Dumbbell",
+   "targets": "Legs, obliques, shoulders",
+   "why": "Trains the legs, trunk and shoulders to work together through rotation, as they do in running.",
+   "steps": [
+    "Stay down in the lunge position.",
+    "Focus on shifting your weight from your heel to your toe as you rotate.",
+    "Keep your shoulders and pelvis in line."
+   ],
+   "photos": [
+    "img/ex/rotational-lunge-db-press-1.jpg",
+    "img/ex/rotational-lunge-db-press-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "2/2/2",
+   "sets": "3",
+   "load": "5-10 kg",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "knees-swiss-running-arms",
+   "name": "Knees on Swiss Ball – Running Arms",
+   "region": "balance",
+   "equipment": "Swiss ball",
+   "targets": "Core stability, balance, arm swing",
+   "why": "Challenges balance and trunk control while you practise a relaxed, rhythmic arm swing.",
+   "steps": [
+    "Keep your bum off the ball.",
+    "Keep your balance.",
+    "Running movement in your arms."
+   ],
+   "photos": [
+    "img/ex/knees-swiss-running-arms-1.jpg"
+   ],
+   "reps": "60 s",
+   "tempo": "Dynamic",
+   "sets": "3",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "straight-leg-calf-raise",
+   "name": "Straight Leg Calf Raises",
+   "region": "calves",
+   "equipment": "Step",
+   "targets": "Gastrocnemius, Achilles tendon",
+   "why": "Strengthens the calf and Achilles through full range, a key defence against calf and Achilles injuries.",
+   "steps": [
+    "Keep your knee locked.",
+    "Control the movement down as far as possible.",
+    "You may hold on to keep your balance."
+   ],
+   "photos": [
+    "img/ex/straight-leg-calf-raise-1.jpg",
+    "img/ex/straight-leg-calf-raise-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "2/2/4",
+   "sets": "2",
+   "load": "Max",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-prone-jack-knife",
+   "name": "Single Leg Prone Jack Knifes",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Abdominals, hip flexors, shoulders",
+   "why": "Builds trunk stiffness and hip-flexor control in a plank, with the single leg adding an anti-rotation challenge.",
+   "steps": [
+    "Move the ball closer to your knees to decrease difficulty.",
+    "Keep your hips at shoulder height.",
+    "You may use the other leg as counter weight."
+   ],
+   "photos": [
+    "img/ex/sl-prone-jack-knife-1.jpg",
+    "img/ex/sl-prone-jack-knife-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "adductor-bridge",
+   "name": "Adductor Bridge",
+   "region": "hips",
+   "equipment": "Bench",
+   "targets": "Adductors, obliques",
+   "why": "Strengthens the inner thigh and side of the trunk, which steady the pelvis and help prevent groin strains.",
+   "steps": [
+    "Only your foot on the bench.",
+    "No rotation in your upper body.",
+    "Straight body."
+   ],
+   "photos": [
+    "img/ex/adductor-bridge-1.jpg"
+   ],
+   "reps": "40 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "side-bridge-abduction",
+   "name": "Side Bridge with Abduction",
+   "region": "hips",
+   "equipment": "Mat",
+   "targets": "Glute medius, obliques",
+   "why": "Combines a side plank with hip abduction to strengthen the hip stabilisers that keep your pelvis level.",
+   "steps": [
+    "Top foot lifted hip height and slightly outward rotated.",
+    "Hips elevated.",
+    "Bottom knee stays bent and on the ground."
+   ],
+   "photos": [
+    "img/ex/side-bridge-abduction-1.jpg"
+   ],
+   "reps": "40 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "pivots-pick-up-weight",
+   "name": "Pivots – Pick Up Weight",
+   "region": "balance",
+   "equipment": "Dumbbell or kettlebell",
+   "targets": "Glutes, hamstrings, balance",
+   "why": "A single-leg hinge that builds hip control, balance and hamstring strength for the stance phase.",
+   "steps": [
+    "Weight bearing knee should stay bent.",
+    "Keep your balance.",
+    "Pivot comes out of your pelvis, not your back."
+   ],
+   "photos": [
+    "img/ex/pivots-pick-up-weight-1.jpg",
+    "img/ex/pivots-pick-up-weight-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "6-10 kg",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-hurdle-jump",
+   "name": "Single Leg Hurdle Jump",
+   "region": "plyo",
+   "equipment": "Hurdle",
+   "targets": "Glutes, quads, calves, landing control",
+   "why": "Builds single-leg power and teaches you to absorb landing forces with control.",
+   "steps": [
+    "Soft landing. (Squat position)",
+    "Increase the hurdle height to increase difficulty.",
+    "Keep your balance for 2s after landing."
+   ],
+   "photos": [
+    "img/ex/sl-hurdle-jump-1.jpg",
+    "img/ex/sl-hurdle-jump-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "lunges-weighted",
+   "name": "Lunges – Weighted",
+   "region": "legs",
+   "equipment": "Dumbbells",
+   "targets": "Quads, glutes",
+   "why": "Strengthens each leg in a split stance with an upright posture, close to the running position.",
+   "steps": [
+    "Keep your front knee behind and in line with your toe.",
+    "Weight in your front heel.",
+    "Upright posture.",
+    "Check your tempo."
+   ],
+   "photos": [
+    "img/ex/lunges-weighted-1.jpg",
+    "img/ex/lunges-weighted-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "4/2/2",
+   "sets": "3",
+   "load": "Max",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "alt-db-rows",
+   "name": "Alternating Dumbbell Rows",
+   "region": "back",
+   "equipment": "Dumbbells",
+   "targets": "Upper back, lats, trunk stability",
+   "why": "Strengthens the upper back for good posture and a strong arm drive while the trunk resists rotation.",
+   "steps": [
+    "No pelvis rotation or weight shifting.",
+    "Feet hip width apart."
+   ],
+   "photos": [
+    "img/ex/alt-db-rows-1.jpg",
+    "img/ex/alt-db-rows-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "3",
+   "load": "8-12 kg",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "upper-body-rotations-swiss",
+   "name": "Upper Body Rotations on a Swiss Ball – Weighted",
+   "region": "core",
+   "equipment": "Swiss ball, dumbbell",
+   "targets": "Obliques, glutes, trunk control",
+   "why": "Trains rotational control of the trunk while the hips hold a bridge, building stability for the running stride.",
+   "steps": [
+    "Keep your core muscles tight.",
+    "Roll the ball below your shoulders.",
+    "Feet must stay in the same position at all times.",
+    "Straight arms."
+   ],
+   "photos": [
+    "img/ex/upper-body-rotations-swiss-1.jpg",
+    "img/ex/upper-body-rotations-swiss-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "3",
+   "load": "6-10 kg",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-hamstring-sliders",
+   "name": "Single Leg Hamstring Sliders",
+   "region": "legs",
+   "equipment": "Slider or a sock on a tiled floor",
+   "targets": "Hamstrings, glutes",
+   "why": "Builds hamstring strength through knee bend with the hips lifted, helping protect against hamstring strains.",
+   "steps": [
+    "This can be done with a sock on a tile floor.",
+    "Focus on the tempo.",
+    "Gluteus may not touch the ground.",
+    "Only flex your knee to 90°.",
+    "Full range of motion."
+   ],
+   "photos": [
+    "img/ex/sl-hamstring-sliders-1.jpg",
+    "img/ex/sl-hamstring-sliders-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "straight-leg-drops",
+   "name": "Straight Leg Drops",
+   "region": "core",
+   "equipment": "Mat",
+   "targets": "Lower abdominals, hip flexors",
+   "why": "Teaches the lower abdominals to keep the pelvis steady while the legs move.",
+   "steps": [
+    "Keep your lower back flat against the ground.",
+    "No pelvis movement."
+   ],
+   "photos": [
+    "img/ex/straight-leg-drops-1.jpg",
+    "img/ex/straight-leg-drops-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "hip-hike-knee-lift-calf-raise",
+   "name": "Hip Hike – Knee Lift – Calf Raise",
+   "region": "hips",
+   "equipment": "Ankle weight or kettlebell",
+   "targets": "Glute medius, hip flexors, calves",
+   "why": "Rehearses the full single-leg drive of running: a level pelvis, knee lift and push-off through the calf.",
+   "steps": [
+    "Three separate movements.",
+    "You may hold on for stability."
+   ],
+   "photos": [
+    "img/ex/hip-hike-knee-lift-calf-raise-1.jpg",
+    "img/ex/hip-hike-knee-lift-calf-raise-2.jpg",
+    "img/ex/hip-hike-knee-lift-calf-raise-3.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Ankle weight / kettlebell 4-8 kg",
+   "source": "Strength Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "static-lunge-tube-hold",
+   "name": "Static Lunge with Tube Hold",
+   "region": "legs",
+   "equipment": "Resistance tube (Jump Stretch)",
+   "targets": "Quads, glutes, core stability",
+   "why": "Builds isometric strength and posture in the lunge while the trunk resists the pull of the band.",
+   "steps": [
+    "Keep a good lunge posture.",
+    "Keep the tube away from your body.",
+    "Core muscles keep your body in place."
+   ],
+   "photos": [
+    "img/ex/static-lunge-tube-hold-1.jpg"
+   ],
+   "reps": "40 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "Jump Stretch band",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "pivot-shoulder-press",
+   "name": "Pivot with Dumbbell/Barbell Shoulder Press",
+   "region": "balance",
+   "equipment": "Dumbbell or barbell",
+   "targets": "Glutes, hamstrings, shoulders, balance",
+   "why": "Combines single-leg balance with an overhead press, training the whole chain to stay stable.",
+   "steps": [
+    "Keep straight line from shoulders to non-weight bearing leg.",
+    "Keep your balance."
+   ],
+   "photos": [
+    "img/ex/pivot-shoulder-press-1.jpg",
+    "img/ex/pivot-shoulder-press-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "10-15 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-hurdle-jumps-repeated",
+   "name": "Single Leg Hurdle Jumps – Repeated",
+   "region": "plyo",
+   "equipment": "Hurdles",
+   "targets": "Calves, Achilles, glutes, reactive strength",
+   "why": "Develops quick, springy ground contacts, the reactive strength that improves running economy.",
+   "steps": [
+    "Try to kick your bum with your jumping leg.",
+    "Use your arms.",
+    "Focus on jumping up.",
+    "Repeated jump, so try to spend as little time possible on the ground."
+   ],
+   "photos": [
+    "img/ex/sl-hurdle-jumps-repeated-1.jpg"
+   ],
+   "reps": "6 × 2",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "fast-response-squats",
+   "name": "Fast Response Squats – Weighted",
+   "region": "plyo",
+   "equipment": "Dumbbells or barbell",
+   "targets": "Quads, glutes, speed of force",
+   "why": "Turns strength into speed by moving a load quickly, building the power behind a faster stride.",
+   "steps": [
+    "Keep your knees behind your toes.",
+    "Keep your back straight.",
+    "Repeat as fast as possible."
+   ],
+   "photos": [
+    "img/ex/fast-response-squats-1.jpg",
+    "img/ex/fast-response-squats-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "1/1/1",
+   "sets": "4",
+   "load": "Max",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "lunge-sa-mb-wall-throw",
+   "name": "Lunge – Single Arm Medicine Ball Wall Throw",
+   "region": "core",
+   "equipment": "Medicine ball, wall",
+   "targets": "Trunk stability, shoulders, legs",
+   "why": "Trains the trunk to hold a stable lunge while the arm moves fast, like a strong arm swing.",
+   "steps": [
+    "Keep your lunge posture with weight in your front heel.",
+    "No hip rotation.",
+    "Don’t lose posture when you catch the ball."
+   ],
+   "photos": [
+    "img/ex/lunge-sa-mb-wall-throw-1.jpg"
+   ],
+   "reps": "10",
+   "tempo": "1/1/1",
+   "sets": "3",
+   "load": "3-4 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "superman-swiss",
+   "name": "Superman on a Swiss Ball",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Glutes, back extensors, trunk rotation",
+   "why": "Builds the back and glute strength behind an upright running posture, with a dynamic rotation.",
+   "steps": [
+    "No movement in your feet.",
+    "Focus on pushing up from your heels, and on going straight up.",
+    "Your body and the Swiss Ball have to rotate or roll."
+   ],
+   "photos": [
+    "img/ex/superman-swiss-1.jpg",
+    "img/ex/superman-swiss-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "3",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "bent-knee-calf-raise-fast",
+   "name": "Bent Knee Calf Raises – Fast Response – Weighted",
+   "region": "calves",
+   "equipment": "Step, dumbbell",
+   "targets": "Soleus, Achilles, reactive strength",
+   "why": "Adds speed to soleus strength so the lower leg can produce force quickly at ground contact.",
+   "steps": [
+    "Maximal range of motion.",
+    "Fast response, so no stopping."
+   ],
+   "photos": [
+    "img/ex/bent-knee-calf-raise-fast-1.jpg",
+    "img/ex/bent-knee-calf-raise-fast-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "Max",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "gecko-stance",
+   "name": "Gecko Stance",
+   "region": "core",
+   "equipment": "Mat",
+   "targets": "Deep abdominals, shoulders, hips",
+   "why": "A low hands-and-feet hold that builds deep core and shoulder stability with a neutral pelvis.",
+   "steps": [
+    "Keep pelvis neutral and hips the same height as your shoulders.",
+    "Your knee should only be a few centimetres off the ground."
+   ],
+   "photos": [
+    "img/ex/gecko-stance-1.jpg"
+   ],
+   "reps": "30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "table-tops",
+   "name": "Table Tops",
+   "region": "core",
+   "equipment": "Dumbbell or plate",
+   "targets": "Obliques, glutes, shoulders",
+   "why": "Builds rotation control in the upper body while the hips and legs stay still.",
+   "steps": [
+    "Legs stay steady; only move your upper body."
+   ],
+   "photos": [
+    "img/ex/table-tops-1.jpg",
+    "img/ex/table-tops-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "3-5 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "stand-up-sit-up",
+   "name": "Stand Up – Sit Up",
+   "region": "legs",
+   "equipment": "Dumbbell or plate",
+   "targets": "Quads, glutes, core",
+   "why": "Builds the strength and coordination to get from the floor to standing using the legs rather than the back.",
+   "steps": [
+    "Use momentum from the weight to get up.",
+    "Sit down as softly as possible.",
+    "Decrease the weight to increase difficulty or increase the weight to assist in getting momentum."
+   ],
+   "photos": [
+    "img/ex/stand-up-sit-up-1.jpg",
+    "img/ex/stand-up-sit-up-2.jpg",
+    "img/ex/stand-up-sit-up-3.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "5 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "side-bridge-db-needle",
+   "name": "Side Bridge with Dumbbell Needle",
+   "region": "core",
+   "equipment": "Dumbbell, mat",
+   "targets": "Obliques, glute medius, shoulders",
+   "why": "Adds rotation to a side plank, strengthening the trunk and hip stabilisers through a big range.",
+   "steps": [
+    "Heels behind your body.",
+    "Rotate with your entire upper body with a big Range of motion.",
+    "Knee stays on the ground."
+   ],
+   "photos": [
+    "img/ex/side-bridge-db-needle-1.jpg",
+    "img/ex/side-bridge-db-needle-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "4-8 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-jump-distance",
+   "name": "Single Leg Jump for Distance",
+   "region": "plyo",
+   "equipment": "None",
+   "targets": "Glutes, quads, calves, landing control",
+   "why": "Builds horizontal single-leg power, the propulsive force behind each stride, plus controlled landings.",
+   "steps": [
+    "Measure your body length on the floor.",
+    "Try to jump this length with one leg.",
+    "Stick and control your landing in a squat position."
+   ],
+   "photos": [
+    "img/ex/sl-jump-distance-1.jpg",
+    "img/ex/sl-jump-distance-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "fast-athletic-squats",
+   "name": "Fast Response Athletic Squats – Weighted",
+   "region": "plyo",
+   "equipment": "Dumbbells",
+   "targets": "Quads, glutes",
+   "why": "A fast split-stance squat that builds running-specific power in each leg.",
+   "steps": [
+    "Weight in your front heel with knee behind your toe.",
+    "Keep your pelvis neutral.",
+    "Bend your back knee down to increase range of motion."
+   ],
+   "photos": [
+    "img/ex/fast-athletic-squats-1.jpg",
+    "img/ex/fast-athletic-squats-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "1/1/1",
+   "sets": "4",
+   "load": "Max",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "praying-mantis-row",
+   "name": "Praying Mantis on a Swiss Ball – Dumbbell Row",
+   "region": "back",
+   "equipment": "Swiss ball, dumbbell",
+   "targets": "Upper back, lats, trunk stability",
+   "why": "Combines a row with an anti-rotation plank on the ball, strengthening the back and core together.",
+   "steps": [
+    "Keep your pelvis neutral.",
+    "No rotation in your upper body.",
+    "Only your forearm on the ball.",
+    "You may weight-shift towards the weighted side."
+   ],
+   "photos": [
+    "img/ex/praying-mantis-row-1.jpg",
+    "img/ex/praying-mantis-row-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "1/1/1",
+   "sets": "3",
+   "load": "8-12 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "rotational-jack-knifes",
+   "name": "Rotational Prone Jack Knifes",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Obliques, abdominals, shoulders",
+   "why": "Builds rotational core control and shoulder stability in a plank.",
+   "steps": [
+    "Alternate sides.",
+    "Keep pelvis neutral and same height as shoulders.",
+    "Only your feet on the Swiss Ball."
+   ],
+   "photos": [
+    "img/ex/rotational-jack-knifes-1.jpg",
+    "img/ex/rotational-jack-knifes-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "2/2/2",
+   "sets": "3",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "swiss-bridge-alt-leg-lifts",
+   "name": "Bridge on Swiss Ball – Alternating Leg Lifts",
+   "region": "hips",
+   "equipment": "Swiss ball, metronome",
+   "targets": "Glutes, hamstrings, pelvic control",
+   "why": "Trains the glutes to hold the pelvis steady while the legs alternate at running cadence.",
+   "steps": [
+    "Try to keep 180 cadence with your feet (use a metronome)",
+    "Hips stay off the floor.",
+    "You may use your arms for balance."
+   ],
+   "photos": [
+    "img/ex/swiss-bridge-alt-leg-lifts-1.jpg",
+    "img/ex/swiss-bridge-alt-leg-lifts-2.jpg"
+   ],
+   "reps": "40 s",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "quad-leans",
+   "name": "Quad Leans",
+   "region": "legs",
+   "equipment": "Mat",
+   "targets": "Quadriceps (eccentric), hip flexors",
+   "why": "Builds eccentric quad strength through a long range, helping protect the knees on downhills.",
+   "steps": [
+    "Keep your back and pelvis neutral.",
+    "Lean out of your knees, not your back or hips.",
+    "Control the movement (Tempo)",
+    "Add a weight to increase difficulty."
+   ],
+   "photos": [
+    "img/ex/quad-leans-1.jpg",
+    "img/ex/quad-leans-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "mb-situp-throw-swiss",
+   "name": "Medicine Ball Sit Up Throw on a Swiss Ball",
+   "region": "core",
+   "equipment": "Swiss ball, medicine ball",
+   "targets": "Abdominals, shoulders",
+   "why": "Develops explosive trunk strength while the ball challenges your control.",
+   "steps": [
+    "Try not to roll the ball underneath you.",
+    "Control the movement down.",
+    "Throw the ball overhead to increase difficulty."
+   ],
+   "photos": [
+    "img/ex/mb-situp-throw-swiss-1.jpg",
+    "img/ex/mb-situp-throw-swiss-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "3-5 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-bridge-swiss",
+   "name": "Single Leg Bridge on a Swiss Ball",
+   "region": "hips",
+   "equipment": "Swiss ball",
+   "targets": "Glutes, hamstrings",
+   "why": "Strengthens the glutes and hamstrings on one leg with the ball adding instability.",
+   "steps": [
+    "Focus on the Tempo.",
+    "You may use your arms for balance.",
+    "Full range of motion in your hips."
+   ],
+   "photos": [
+    "img/ex/sl-bridge-swiss-1.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/4/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "bench-shuffles",
+   "name": "Bench Shuffles",
+   "region": "plyo",
+   "equipment": "Bench or step",
+   "targets": "Calves, hip flexors, coordination",
+   "why": "Builds quick feet and coordination through fast, rhythmic foot contacts.",
+   "steps": [
+    "Dynamic motion, as fast as possible.",
+    "Try to keep a steady rhythm.",
+    "Increase the bench height to increase difficulty."
+   ],
+   "photos": [
+    "img/ex/bench-shuffles-1.jpg",
+    "img/ex/bench-shuffles-2.jpg",
+    "img/ex/bench-shuffles-3.jpg"
+   ],
+   "reps": "60 s",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "lunge-step-up-unstable",
+   "name": "Lunge Step Up on an Unstable Surface",
+   "region": "balance",
+   "equipment": "Bosu or wobble board",
+   "targets": "Quads, glutes, ankle stability",
+   "why": "Challenges balance and ankle stability while stepping up, preparing you for uneven ground.",
+   "steps": [
+    "Use any unstable surface like a Bosu or a wobble board.",
+    "Keep your balance for 2s before starting your next repetition."
+   ],
+   "photos": [
+    "img/ex/lunge-step-up-unstable-1.jpg",
+    "img/ex/lunge-step-up-unstable-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "fast-step-ups-weighted",
+   "name": "Fast Step Ups – Weighted",
+   "region": "plyo",
+   "equipment": "Bench, dumbbells",
+   "targets": "Quads, glutes",
+   "why": "Adds speed to the step-up so each leg learns to produce force quickly.",
+   "steps": [
+    "Keep your front knee behind and in line with your toe.",
+    "Weight in your front heel when stepping up.",
+    "Upright posture.",
+    "Fast response from one repetition to the next."
+   ],
+   "photos": [
+    "img/ex/fast-step-ups-weighted-1.jpg",
+    "img/ex/fast-step-ups-weighted-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "1/1/1",
+   "sets": "4",
+   "load": "Max",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "mb-db-thrusters",
+   "name": "Medicine Ball / Dumbbell Thrusters",
+   "region": "plyo",
+   "equipment": "Medicine ball or dumbbells",
+   "targets": "Legs, shoulders, trunk",
+   "why": "A fast squat-to-press that links leg drive to the upper body, building total-body power.",
+   "steps": [
+    "No pelvis rotation or weight shifting.",
+    "Feet hip width apart.",
+    "Fast response from one repetition to the next."
+   ],
+   "photos": [
+    "img/ex/mb-db-thrusters-1.jpg",
+    "img/ex/mb-db-thrusters-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "1/1/1",
+   "sets": "3",
+   "load": "4-15 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "hamstring-sliders-fast",
+   "name": "Hamstring Sliders – Fast Response",
+   "region": "legs",
+   "equipment": "Sliders or a tiled floor",
+   "targets": "Hamstrings, glutes",
+   "why": "Builds fast, repeated hamstring contractions, closer to how the hamstrings work at speed.",
+   "steps": [
+    "Alternating legs.",
+    "Keep your hips off the ground without additional support.",
+    "Non-friction surface like a tile floor.",
+    "Fast response from one repetition to the next."
+   ],
+   "photos": [
+    "img/ex/hamstring-sliders-fast-1.jpg",
+    "img/ex/hamstring-sliders-fast-2.jpg"
+   ],
+   "reps": "40 s",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-leg-drops",
+   "name": "Single Leg – Leg Drops",
+   "region": "core",
+   "equipment": "Mat",
+   "targets": "Lower abdominals, pelvic control",
+   "why": "Teaches the trunk to hold the pelvis steady while one leg moves, as in running.",
+   "steps": [
+    "Keep your pelvis neutral.",
+    "Control the movement and keep to the tempo.",
+    "Alternate legs.",
+    "Don’t let your feet touch the ground."
+   ],
+   "photos": [
+    "img/ex/sl-leg-drops-1.jpg",
+    "img/ex/sl-leg-drops-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "4/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "weighted-situp-press",
+   "name": "Weighted Sit Ups – Shoulder Press",
+   "region": "core",
+   "equipment": "Dumbbell or plate",
+   "targets": "Abdominals, shoulders",
+   "why": "Strengthens the abdominals and adds an overhead press for upper-body endurance.",
+   "steps": [
+    "Keep the weight close to your chest.",
+    "Use as little momentum as possible."
+   ],
+   "photos": [
+    "img/ex/weighted-situp-press-1.jpg",
+    "img/ex/weighted-situp-press-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "5-10 kg",
+   "source": "Power Transition Program",
+   "figure": ""
+  },
+  {
+   "id": "crocodile-squats",
+   "name": "Crocodile Squats",
+   "region": "legs",
+   "equipment": "Dumbbell or kettlebell",
+   "targets": "Quads, glutes, balance",
+   "why": "A moving squat-to-kneel pattern that builds leg strength and stability, especially on an unstable surface.",
+   "steps": [
+    "Hold weight away from your body.",
+    "Try to do this on an unstable surface.",
+    "Alternate your starting leg."
+   ],
+   "photos": [
+    "img/ex/crocodile-squats-1.jpg",
+    "img/ex/crocodile-squats-2.jpg",
+    "img/ex/crocodile-squats-3.jpg",
+    "img/ex/crocodile-squats-4.jpg",
+    "img/ex/crocodile-squats-5.jpg"
+   ],
+   "reps": "8",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "±10 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "box-jumps",
+   "name": "Box Jumps",
+   "region": "plyo",
+   "equipment": "Plyo box",
+   "targets": "Glutes, quads, calves",
+   "why": "Builds explosive power and teaches a stable, soft landing.",
+   "steps": [
+    "As high as possible box.",
+    "Stick your landing.",
+    "Slow return to next repetition."
+   ],
+   "photos": [
+    "img/ex/box-jumps-1.jpg",
+    "img/ex/box-jumps-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "1/4/1",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "db-lunge-jerk",
+   "name": "Dumbbell Lunge Jerk",
+   "region": "plyo",
+   "equipment": "Dumbbells",
+   "targets": "Legs, shoulders, total-body power",
+   "why": "Trains an explosive drive into a stable split landing, transferring power through the whole body.",
+   "steps": [
+    "Jump from squat to lunge position.",
+    "Land with both feet at the same time.",
+    "Keep your body stable after landing.",
+    "Tuck your knees before you land."
+   ],
+   "photos": [
+    "img/ex/db-lunge-jerk-1.jpg",
+    "img/ex/db-lunge-jerk-2.jpg"
+   ],
+   "reps": "6",
+   "tempo": "1/4/1",
+   "sets": "4",
+   "load": "90% 1RM",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "v-jumps-from-squat",
+   "name": "V-Jumps from Squat",
+   "region": "plyo",
+   "equipment": "Bench, dumbbell or kettlebell",
+   "targets": "Quads, glutes, calves",
+   "why": "Builds repeated jumping power from a squat position.",
+   "steps": [
+    "Hold the weight away from your body.",
+    "Repetitive action.",
+    "Increase height of the bench to increase difficulty."
+   ],
+   "photos": [
+    "img/ex/v-jumps-from-squat-1.jpg",
+    "img/ex/v-jumps-from-squat-2.jpg",
+    "img/ex/v-jumps-from-squat-3.jpg"
+   ],
+   "reps": "12",
+   "tempo": "1/1/1",
+   "sets": "4",
+   "load": "±10 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "side-bridge-swiss",
+   "name": "Side Bridge on a Swiss Ball",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Obliques, glute medius, shoulders",
+   "why": "A side plank with the ball adding instability, building the side-trunk strength that stops the hips dropping.",
+   "steps": [
+    "Keep your balance.",
+    "Move the ball further away to increase difficulty.",
+    "Keep your hips the same height as your shoulders."
+   ],
+   "photos": [
+    "img/ex/side-bridge-swiss-1.jpg"
+   ],
+   "reps": "45 s",
+   "tempo": "Static",
+   "sets": "4",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "fast-response-calf-raises",
+   "name": "Fast Response Calf Raises",
+   "region": "calves",
+   "equipment": "Dumbbell",
+   "targets": "Calves, Achilles (reactive strength)",
+   "why": "Builds quick calf force for a springy push-off.",
+   "steps": [
+    "Full range of motion.",
+    "Locked knee.",
+    "As fast tempo as possible."
+   ],
+   "photos": [
+    "img/ex/fast-response-calf-raises-1.jpg",
+    "img/ex/fast-response-calf-raises-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "±10 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "plank-lower-body-needle",
+   "name": "Plank – Lower Body Needle",
+   "region": "core",
+   "equipment": "Mat",
+   "targets": "Obliques, hips, shoulders",
+   "why": "Rotates the hips under a stable plank, building rotation control and hip mobility.",
+   "steps": [
+    "Keep pelvis neutral.",
+    "Turn your grounded foot as you rotate your hips."
+   ],
+   "photos": [
+    "img/ex/plank-lower-body-needle-1.jpg",
+    "img/ex/plank-lower-body-needle-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "y-balance",
+   "name": "Y-Balance",
+   "region": "balance",
+   "equipment": "Cones or tape",
+   "targets": "Balance, ankle and hip stability, glutes",
+   "why": "Builds single-leg balance and control in three directions and shows up left–right differences.",
+   "steps": [
+    "Keep your balance.",
+    "Far as possible range of motion.",
+    "You may not move your standing leg."
+   ],
+   "photos": [
+    "img/ex/y-balance-1.jpg",
+    "img/ex/y-balance-2.jpg",
+    "img/ex/y-balance-3.jpg"
+   ],
+   "reps": "8",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "skipping",
+   "name": "Skipping",
+   "region": "conditioning",
+   "equipment": "Skipping rope (optional)",
+   "targets": "Calves, Achilles, coordination",
+   "why": "Fast, light contacts that build calf stiffness, foot speed and rhythm.",
+   "steps": [
+    "Small skips as fast as possible.",
+    "An actual skipping rope is optional."
+   ],
+   "photos": [
+    "img/ex/skipping-1.jpg"
+   ],
+   "reps": "100",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "kb-swing-squats",
+   "name": "Kettlebell Swing Squats",
+   "region": "plyo",
+   "equipment": "Kettlebell",
+   "targets": "Glutes, hamstrings, trunk",
+   "why": "Develops explosive hip drive while the trunk resists the momentum of the bell.",
+   "steps": [
+    "Keep neutral pelvis.",
+    "Resist the momentum of a negative posture."
+   ],
+   "photos": [
+    "img/ex/kb-swing-squats-1.jpg",
+    "img/ex/kb-swing-squats-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "6-10 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "weighted-thrusters",
+   "name": "Weighted Thrusters",
+   "region": "plyo",
+   "equipment": "Barbell or dumbbells",
+   "targets": "Legs, shoulders, trunk",
+   "why": "Links a powerful squat to an overhead press, building total-body power.",
+   "steps": [
+    "Keep squat position for 4 seconds.",
+    "Use your legs to gain momentum for your arms.",
+    "One movement as fast as possible."
+   ],
+   "photos": [
+    "img/ex/weighted-thrusters-1.jpg",
+    "img/ex/weighted-thrusters-2.jpg"
+   ],
+   "reps": "6",
+   "tempo": "1/4/1",
+   "sets": "4",
+   "load": "90% 1RM",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "lunge-rotate-mb-throw",
+   "name": "Lunge and Rotate with Medicine Ball Wall Throw",
+   "region": "core",
+   "equipment": "Medicine ball, wall",
+   "targets": "Obliques, hips, shoulders",
+   "why": "Builds rotational power from a stable lunge, transferring force from the legs through the trunk.",
+   "steps": [
+    "Keep your stability in a lunge position.",
+    "Rotate both feet and keep both knees bent.",
+    "Throw with one arm, catch with both."
+   ],
+   "photos": [
+    "img/ex/lunge-rotate-mb-throw-1.jpg",
+    "img/ex/lunge-rotate-mb-throw-2.jpg",
+    "img/ex/lunge-rotate-mb-throw-3.jpg"
+   ],
+   "reps": "12",
+   "tempo": "1/1/1",
+   "sets": "4",
+   "load": "3-5 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-woodchop-unstable",
+   "name": "Single Leg Wood Chop on an Unstable Surface",
+   "region": "balance",
+   "equipment": "Dumbbell or medicine ball, Bosu",
+   "targets": "Obliques, ankle and hip stability",
+   "why": "Combines single-leg balance with a diagonal chop to train the trunk and stabilisers together.",
+   "steps": [
+    "Keep your balance.",
+    "Keep your standing knee slightly bent."
+   ],
+   "photos": [
+    "img/ex/sl-woodchop-unstable-1.jpg",
+    "img/ex/sl-woodchop-unstable-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "6-12 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-stand-up-sit-up",
+   "name": "Single Leg Stand Up – Sit Up",
+   "region": "legs",
+   "equipment": "Dumbbell or kettlebell",
+   "targets": "Quads, glutes, balance",
+   "why": "A demanding single-leg drill that builds strength and control from the floor to standing.",
+   "steps": [
+    "Use momentum to get up.",
+    "Less weight is less momentum and will increase difficulty."
+   ],
+   "photos": [
+    "img/ex/sl-stand-up-sit-up-1.jpg",
+    "img/ex/sl-stand-up-sit-up-2.jpg",
+    "img/ex/sl-stand-up-sit-up-3.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "4-8 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "alt-lunge-jumps",
+   "name": "Alternating Lunge Jumps",
+   "region": "plyo",
+   "equipment": "None",
+   "targets": "Quads, glutes, calves",
+   "why": "Develops switching power and landing control in a running-like split stance.",
+   "steps": [
+    "Fast response.",
+    "Land with both feet at the same time.",
+    "You may use your arms for momentum and stability.",
+    "Height is optional."
+   ],
+   "photos": [
+    "img/ex/alt-lunge-jumps-1.jpg",
+    "img/ex/alt-lunge-jumps-2.jpg",
+    "img/ex/alt-lunge-jumps-3.jpg"
+   ],
+   "reps": "8",
+   "tempo": "1/1/1",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "bench-step-up-jump",
+   "name": "Bench Step Up with a Jump – Weighted",
+   "region": "plyo",
+   "equipment": "Bench, dumbbells",
+   "targets": "Quads, glutes, calves",
+   "why": "Turns the step-up into an explosive drive, building single-leg power.",
+   "steps": [
+    "One movement from step up to jump.",
+    "Land softly.",
+    "Stick your landing in a squat position and hold for 4 seconds."
+   ],
+   "photos": [
+    "img/ex/bench-step-up-jump-1.jpg",
+    "img/ex/bench-step-up-jump-2.jpg"
+   ],
+   "reps": "6",
+   "tempo": "1/4/1",
+   "sets": "4",
+   "load": "90% 1RM",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "sl-stance-sa-db-press",
+   "name": "Single Leg Stance – Single Arm Dumbbell Press",
+   "region": "balance",
+   "equipment": "Dumbbell",
+   "targets": "Shoulders, trunk, hip stability",
+   "why": "Trains balance and anti-rotation control while you press overhead.",
+   "steps": [
+    "Keep neutral pelvis position.",
+    "Keep your balance.",
+    "Standing knee slightly bent."
+   ],
+   "photos": [
+    "img/ex/sl-stance-sa-db-press-1.jpg",
+    "img/ex/sl-stance-sa-db-press-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "1/1/1",
+   "sets": "4",
+   "load": "6-15 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "prone-triceps-rollup",
+   "name": "Prone Triceps Roll Up on a Swiss Ball",
+   "region": "arms",
+   "equipment": "Swiss ball",
+   "targets": "Triceps, core, shoulders",
+   "why": "Strengthens the triceps and shoulders while the core holds a plank.",
+   "steps": [
+    "Try to keep your hips above your shoulder height.",
+    "Decrease difficulty by moving the ball closer to your knees.",
+    "Control the movement down."
+   ],
+   "photos": [
+    "img/ex/prone-triceps-rollup-1.jpg",
+    "img/ex/prone-triceps-rollup-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "4/2/2",
+   "sets": "4",
+   "load": "Own body weight",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "situp-mb-throw",
+   "name": "Sit Up with Medicine Ball Throw",
+   "region": "core",
+   "equipment": "Medicine ball, wall or partner",
+   "targets": "Abdominals, shoulders",
+   "why": "Builds explosive trunk strength and coordination.",
+   "steps": [
+    "Don’t use the ball for momentum.",
+    "Throw as hard as possible.",
+    "Throw overhead."
+   ],
+   "photos": [
+    "img/ex/situp-mb-throw-1.jpg",
+    "img/ex/situp-mb-throw-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "3-5 kg",
+   "source": "Power Performance Program",
+   "figure": ""
+  },
+  {
+   "id": "knee-to-wall",
+   "name": "Knee to Wall Mobility",
+   "region": "mobility",
+   "equipment": "Wall",
+   "targets": "Ankle bend (dorsiflexion), calves",
+   "why": "Improves ankle bend, which lets the knee travel forward and takes strain off the calf and Achilles.",
+   "steps": [
+    "Foot goes 10-12cm from the wall.",
+    "Heel has to stay flat on the floor.",
+    "Full range of motion."
+   ],
+   "photos": [
+    "img/ex/knee-to-wall-1.jpg",
+    "img/ex/knee-to-wall-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "pivot-mb-pickup-throw",
+   "name": "Pivot – Medicine Ball Pick Up and Throw",
+   "region": "balance",
+   "equipment": "Medicine ball (3 kg)",
+   "targets": "Hamstrings, glutes, balance",
+   "why": "Combines a single-leg hinge with a throw, building balance, hamstring flexibility and hip control.",
+   "steps": [
+    "Keep your knee slightly bent.",
+    "Lift your back leg as high as possible.",
+    "Keep your balance."
+   ],
+   "photos": [
+    "img/ex/pivot-mb-pickup-throw-1.jpg",
+    "img/ex/pivot-mb-pickup-throw-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "3 kg ball",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "assisted-pistol-squats",
+   "name": "Assisted Single Leg Pistol Squats",
+   "region": "mobility",
+   "equipment": "Something to hold",
+   "targets": "Hip, knee and ankle range, quads",
+   "why": "Builds full-range single-leg strength and mobility through the hip, knee and ankle.",
+   "steps": [
+    "Touch the floor with your bum.",
+    "Non-weight bearing leg may not touch the ground.",
+    "Use your arms to assist you in getting full range of motion."
+   ],
+   "photos": [
+    "img/ex/assisted-pistol-squats-1.jpg",
+    "img/ex/assisted-pistol-squats-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "rotation-lunge",
+   "name": "Rotation in Lunge Position",
+   "region": "mobility",
+   "equipment": "None",
+   "targets": "Hips, trunk rotation",
+   "why": "Opens the hips and upper back while you hold a deep lunge.",
+   "steps": [
+    "Wide lunge position to increase range of motion.",
+    "Heel-to-toe transfer during rotation.",
+    "Keep your knee behind your toe.",
+    "Stay down in your lunge during the rotation."
+   ],
+   "photos": [
+    "img/ex/rotation-lunge-1.jpg",
+    "img/ex/rotation-lunge-2.jpg",
+    "img/ex/rotation-lunge-3.jpg",
+    "img/ex/rotation-lunge-4.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "plank-thread-needle",
+   "name": "Plank – Thread the Needle",
+   "region": "core",
+   "equipment": "Dumbbell",
+   "targets": "Upper-back rotation, shoulders, core",
+   "why": "Builds upper-back rotation and shoulder stability from a plank, freeing up your arm swing.",
+   "steps": [
+    "Hips at shoulder height.",
+    "Feet may rotate, but not move.",
+    "Reach as far as possible during rotations."
+   ],
+   "photos": [
+    "img/ex/plank-thread-needle-1.jpg",
+    "img/ex/plank-thread-needle-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "3-6 kg",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-gastrocnemius",
+   "name": "Static Stretch: Gastrocnemius",
+   "region": "mobility",
+   "equipment": "Wall",
+   "targets": "Calf (gastrocnemius)",
+   "why": "Keeps the upper calf supple, easing load on the Achilles and knee.",
+   "steps": [
+    "Stretch should be uncomfortable, never painful.",
+    "Keep your knee locked."
+   ],
+   "photos": [
+    "img/ex/stretch-gastrocnemius-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-straight-leg-raise",
+   "name": "Static Stretch: Straight Leg Raise",
+   "region": "mobility",
+   "equipment": "Strap or towel",
+   "targets": "Hamstrings",
+   "why": "Maintains hamstring length for a free, relaxed stride.",
+   "steps": [
+    "Stretch should be uncomfortable, never painful.",
+    "Keep your knee locked.",
+    "Keep your opposite leg flat on the floor."
+   ],
+   "photos": [
+    "img/ex/stretch-straight-leg-raise-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-iliopsoas",
+   "name": "Static Stretch: Iliopsoas",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Hip flexors (iliopsoas)",
+   "why": "Lets the hip extend fully behind you, which helps stride length and reduces lower-back strain.",
+   "steps": [
+    "Stretch should be uncomfortable, never painful.",
+    "Keep your back upright and push your hips forward."
+   ],
+   "photos": [
+    "img/ex/stretch-iliopsoas-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-piriformis",
+   "name": "Static Stretch: Piriformis",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Piriformis, deep hip rotators",
+   "why": "Eases tension deep in the buttock that can irritate the hip and sciatic nerve.",
+   "steps": [
+    "Stretch should be uncomfortable, never painful.",
+    "Stretch out of your pelvis, not your back."
+   ],
+   "photos": [
+    "img/ex/stretch-piriformis-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "deep-lunges-steps",
+   "name": "Deep Lunges on Steps",
+   "region": "mobility",
+   "equipment": "Steps",
+   "targets": "Hip flexors, quads, glutes",
+   "why": "Builds strength at the end range of the lunge, improving hip and knee mobility.",
+   "steps": [
+    "Knee has to go below feet height.",
+    "Keep an upright posture.",
+    "Front knee must stay behind your toes.",
+    "Increase step height to increase range of motion."
+   ],
+   "photos": [
+    "img/ex/deep-lunges-steps-1.jpg",
+    "img/ex/deep-lunges-steps-2.jpg"
+   ],
+   "reps": "10",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "hip-slides-2-planes",
+   "name": "Hip Slides – 2 Planes (Frontal and Sagittal)",
+   "region": "mobility",
+   "equipment": "Slider or tiled floor",
+   "targets": "Adductors, hamstrings, hip flexors",
+   "why": "Dynamic hip mobility in two directions while the standing leg does the work.",
+   "steps": [
+    "Use any slippery surface like a tile floor.",
+    "You may hold on for support.",
+    "Keep all your weight on the non-moving leg.",
+    "Full range of motion."
+   ],
+   "photos": [
+    "img/ex/hip-slides-2-planes-1.jpg",
+    "img/ex/hip-slides-2-planes-2.jpg",
+    "img/ex/hip-slides-2-planes-3.jpg",
+    "img/ex/hip-slides-2-planes-4.jpg"
+   ],
+   "reps": "10",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": "",
+   "photoLabels": [
+    "Frontal",
+    "Frontal",
+    "Sagittal",
+    "Sagittal"
+   ]
+  },
+  {
+   "id": "weight-shifts-hurdles",
+   "name": "Weight Shifts over Hurdles",
+   "region": "mobility",
+   "equipment": "Hurdles",
+   "targets": "Hips, balance",
+   "why": "Improves hip mobility and balance by shifting your weight through a long stride.",
+   "steps": [
+    "Longer step to increase range of motion.",
+    "Maintain your balance before shifting back.",
+    "Keep your balance."
+   ],
+   "photos": [
+    "img/ex/weight-shifts-hurdles-1.jpg",
+    "img/ex/weight-shifts-hurdles-2.jpg",
+    "img/ex/weight-shifts-hurdles-3.jpg"
+   ],
+   "reps": "12",
+   "tempo": "Dynamic",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "chest-openers",
+   "name": "Chest Openers",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Chest, upper-back rotation",
+   "why": "Opens the chest and upper back, countering a rounded posture.",
+   "steps": [
+    "Knees may not lift from one another.",
+    "Try to get both shoulders flat on the floor at the end range.",
+    "Controlled tempo."
+   ],
+   "photos": [
+    "img/ex/chest-openers-1.jpg",
+    "img/ex/chest-openers-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-soleus",
+   "name": "Static Stretch: Soleus",
+   "region": "mobility",
+   "equipment": "Wall",
+   "targets": "Lower calf (soleus)",
+   "why": "Keeps the deep calf supple, where runners carry a lot of load.",
+   "steps": [
+    "Keep your knee bent and heel flat.",
+    "Stretch should be uncomfortable, never painful.",
+    "Stretch should be in the rear leg."
+   ],
+   "photos": [
+    "img/ex/stretch-soleus-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-hamstring-belly",
+   "name": "Static Stretch: Hamstring Belly",
+   "region": "mobility",
+   "equipment": "None",
+   "targets": "Hamstrings",
+   "why": "Maintains hamstring length through the middle of the muscle.",
+   "steps": [
+    "Bent from your hips, not your back.",
+    "Knee slightly bent, but behind your toes.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-hamstring-belly-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-quadriceps",
+   "name": "Static Stretch: Quadriceps",
+   "region": "mobility",
+   "equipment": "Something to hold",
+   "targets": "Quadriceps",
+   "why": "Keeps the front of the thigh supple, easing load on the knee.",
+   "steps": [
+    "Keep an upright posture.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-quadriceps-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-gluteus-maximus",
+   "name": "Static Stretch: Gluteus Maximus",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Glutes",
+   "why": "Eases tightness in the glutes after hard sessions.",
+   "steps": [
+    "You may cross your leg to increase the stretch.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-gluteus-maximus-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "faber-squats",
+   "name": "FABER Squats",
+   "region": "mobility",
+   "equipment": "Something to hold",
+   "targets": "Hip rotators, adductors",
+   "why": "Builds hip external-rotation mobility under load.",
+   "steps": [
+    "You may hold on for assistance.",
+    "Keep your knee behind your toe.",
+    "Full range of motion.",
+    "Feel the stretch in the non-weight bearing leg."
+   ],
+   "photos": [
+    "img/ex/faber-squats-1.jpg",
+    "img/ex/faber-squats-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "deep-t-pushups",
+   "name": "Deep T-Push Ups",
+   "region": "chest",
+   "equipment": "None",
+   "targets": "Chest, shoulders, upper-back rotation",
+   "why": "Combines a push-up with a rotation to build pushing strength and upper-back mobility.",
+   "steps": [
+    "Full range of motion with push up and rotation.",
+    "Alternate arms."
+   ],
+   "photos": [
+    "img/ex/deep-t-pushups-1.jpg",
+    "img/ex/deep-t-pushups-2.jpg"
+   ],
+   "reps": "8",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "deep-barbell-squats",
+   "name": "Deep Barbell Squats",
+   "region": "mobility",
+   "equipment": "Barbell, bench",
+   "targets": "Hips, knees, ankles, quads, glutes",
+   "why": "Builds strength and mobility at the bottom of the squat.",
+   "steps": [
+    "Deep range of motion.",
+    "Lower bench to increase difficulty.",
+    "Movement is more important than the load.",
+    "Bilateral legs."
+   ],
+   "photos": [
+    "img/ex/deep-barbell-squats-1.jpg",
+    "img/ex/deep-barbell-squats-2.jpg"
+   ],
+   "reps": "15",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "10-20 kg",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "hip-rotations",
+   "name": "Hip Rotations",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Hip internal and external rotation",
+   "why": "Improves rotation range at the hip.",
+   "steps": [
+    "You may not press on the floor.",
+    "Full range of motion by pushing your knees down at the end range."
+   ],
+   "photos": [
+    "img/ex/hip-rotations-1.jpg",
+    "img/ex/hip-rotations-2.jpg",
+    "img/ex/hip-rotations-3.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "swiss-ball-pikes",
+   "name": "Swiss Ball Pikes",
+   "region": "core",
+   "equipment": "Swiss ball",
+   "targets": "Abdominals, shoulders, hamstring flexibility",
+   "why": "Builds strong abdominals and shoulders while stretching the hamstrings.",
+   "steps": [
+    "Keep your knees straight.",
+    "Core activated to keep your back straight.",
+    "Full range of motion."
+   ],
+   "photos": [
+    "img/ex/swiss-ball-pikes-1.jpg",
+    "img/ex/swiss-ball-pikes-2.jpg"
+   ],
+   "reps": "12",
+   "tempo": "2/2/2",
+   "sets": "2",
+   "load": "Own body weight",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-plantar-fascia",
+   "name": "Static Stretch: Plantar Fascia",
+   "region": "mobility",
+   "equipment": "Wall",
+   "targets": "Plantar fascia (sole of the foot)",
+   "why": "Keeps the sole of the foot supple, which helps prevent plantar fascia pain.",
+   "steps": [
+    "Bare foot.",
+    "Toes flat against a wall.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-plantar-fascia-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-neural-sling",
+   "name": "Static Stretch: Neural Sling",
+   "region": "mobility",
+   "equipment": "None",
+   "targets": "Sciatic nerve, hamstrings, calves",
+   "why": "Gently mobilises the nerves running down the back of the leg.",
+   "steps": [
+    "Keep your knee locked.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-neural-sling-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-quadratus-lumborum",
+   "name": "Static Stretch: Quadratus Lumborum",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Lower back (quadratus lumborum)",
+   "why": "Eases tension along the side of the lower back.",
+   "steps": [
+    "Keep your shoulders flat on the floor.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-quadratus-lumborum-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stretch-adductors",
+   "name": "Static Stretch: Adductors",
+   "region": "mobility",
+   "equipment": "Mat",
+   "targets": "Inner thigh (adductors)",
+   "why": "Keeps the inner thigh supple, which helps prevent groin strains.",
+   "steps": [
+    "Rotate your hip to stretch the tightest part of the adductors.",
+    "Stretch should be uncomfortable, never painful."
+   ],
+   "photos": [
+    "img/ex/stretch-adductors-1.jpg"
+   ],
+   "reps": "20–30 s",
+   "tempo": "Static",
+   "sets": "2",
+   "load": "",
+   "source": "Flexibility and Mobility Program",
+   "figure": ""
+  },
+  {
+   "id": "stork-bosu",
+   "name": "Stork Standing on Bosu Ball",
+   "region": "balance",
+   "equipment": "Bosu ball",
+   "targets": "Ankle and hip stability, glutes",
+   "why": "Builds single-leg balance and ankle stability, which helps on uneven ground.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "lower-body-rotations-ball",
+   "name": "Lower Body Rotations on Ball",
+   "region": "core",
+   "equipment": "Swiss ball, 5 kg medicine ball",
+   "targets": "Obliques, adductors",
+   "why": "Rotation control for the trunk, with the medicine ball between the knees switching on the inner thighs.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "sl-bridges",
+   "name": "Single Leg Bridges",
+   "region": "hips",
+   "equipment": "Mat, weight on your lap",
+   "targets": "Glutes, hamstrings",
+   "why": "Builds single-leg glute strength to keep the pelvis level.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "sl-leg-press",
+   "name": "Single Leg – Leg Press on Machine",
+   "region": "legs",
+   "equipment": "Leg press machine",
+   "targets": "Quads, glutes",
+   "why": "Heavy single-leg strength without the balance demand.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "pull-ups",
+   "name": "Pull Ups",
+   "region": "back",
+   "equipment": "Pull-up bar",
+   "targets": "Lats, upper back, biceps",
+   "why": "Upper-body pulling strength for posture and arm drive.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "stand-swiss-ball",
+   "name": "Stand on Swiss Ball",
+   "region": "balance",
+   "equipment": "Swiss ball",
+   "targets": "Whole-body balance, ankles, core",
+   "why": "An advanced balance challenge for the ankles, knees, hips and trunk.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "trx-sa-row",
+   "name": "TRX Single Arm Row",
+   "region": "back",
+   "equipment": "TRX",
+   "targets": "Upper back, lats, core",
+   "why": "Single-arm pulling with an anti-rotation challenge for the trunk.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "leg-slides",
+   "name": "Leg Slides",
+   "region": "mobility",
+   "equipment": "Slider",
+   "targets": "Hips, hip flexors",
+   "why": "Controlled sliding lunges that build hip strength and range.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "bb-walking-lunges",
+   "name": "Barbell Walking Lunges",
+   "region": "legs",
+   "equipment": "Barbell",
+   "targets": "Quads, glutes",
+   "why": "Builds leg strength through a long, running-like stride.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "pivot-bb-row",
+   "name": "Pivots – Barbell Row",
+   "region": "back",
+   "equipment": "Barbell",
+   "targets": "Hamstrings, glutes, upper back, balance",
+   "why": "Combines a single-leg hinge with a row, training balance and the whole back of the body.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "db-athletic-squat-jump",
+   "name": "Dumbbell Athletic Squat Jump",
+   "region": "plyo",
+   "equipment": "Dumbbells",
+   "targets": "Quads, glutes, calves",
+   "why": "Explosive split-stance jumps that build running-specific power.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "sl-seated-calf-raise",
+   "name": "Single Leg – Seated Calf Raises",
+   "region": "calves",
+   "equipment": "Seated calf machine",
+   "targets": "Soleus",
+   "why": "Isolates the soleus, the main load-bearing muscle of the lower leg in running.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  },
+  {
+   "id": "run",
+   "name": "Run",
+   "region": "conditioning",
+   "equipment": "None",
+   "targets": "Running fitness and form",
+   "why": "Short runs between exercises keep the session running-specific.",
+   "steps": [],
+   "photos": [],
+   "reps": "",
+   "tempo": "",
+   "sets": "",
+   "load": "",
+   "source": "Run Program (2020)",
+   "figure": ""
+  }
+ ],
+ "athletes": [
+  {
+   "id": "ath-erik",
+   "name": "Erik Williamson",
+   "sport": "Running",
+   "goal": "Strength & conditioning with Jaco since 2020.",
+   "createdAt": "2026-11-15T12:30:00+02:00"
+  }
+ ],
+ "programs": [
+  {
+   "id": "prg-erik-strength",
+   "title": "Strength Performance Program",
+   "status": "active",
+   "order": 1,
+   "notes": "This is an evolved program. Only do this when you have done strength training before or have completed “My First Strength Program”.\nStart each session with a proper warm-up and keep the exercises in the same order.\nEach day is divided into three supersets of three exercises. Complete each superset before moving to the next one.\nYou may rest between exercises, but not between repetitions.\nChoose a load you can finish all the repetitions with, but that is heavy enough that you couldn’t do more.\nDo a proper cool-down afterwards to keep post-exercise stiffness to a minimum.",
+   "sessions": [
+    {
+     "id": "d1",
+     "name": "Day 1",
+     "blocks": [
+      {
+       "id": "b11",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "sl-swiss-ball-wall-squat",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "sl-jumps",
+         "reps": "12",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "hip-rotations-weighted",
+         "reps": "15",
+         "tempo": "2/2/4",
+         "sets": "2",
+         "load": "Ankle weight / Thera-Band"
+        }
+       ]
+      },
+      {
+       "id": "b12",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "sl-squat-weighted",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "sa-chest-press-swiss",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "8-15 kg"
+        },
+        {
+         "exerciseId": "mountain-climbers-swiss",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b13",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "sl-soleus-calf-raise",
+         "reps": "8",
+         "tempo": "2/2/4",
+         "sets": "2",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "sit-ups-swiss",
+         "reps": "15",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "eccentric-hamstring-leans",
+         "reps": "8",
+         "tempo": "6/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "name": "Day 2",
+     "blocks": [
+      {
+       "id": "b21",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "band-walks",
+         "reps": "15",
+         "tempo": "2/2/4",
+         "sets": "2",
+         "load": "Thera-Band"
+        },
+        {
+         "exerciseId": "sl-sit-to-stand",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "sl-bridge-bench-calf-raise",
+         "reps": "12",
+         "tempo": "2/2/4",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b22",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "bench-step-ups-weighted",
+         "reps": "8",
+         "tempo": "2/2/4",
+         "sets": "3",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "rotational-lunge-db-press",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "5-10 kg"
+        },
+        {
+         "exerciseId": "knees-swiss-running-arms",
+         "reps": "60 s",
+         "tempo": "Dynamic",
+         "sets": "3",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b23",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "straight-leg-calf-raise",
+         "reps": "8",
+         "tempo": "2/2/4",
+         "sets": "2",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "sl-prone-jack-knife",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "adductor-bridge",
+         "reps": "40 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "name": "Day 3",
+     "blocks": [
+      {
+       "id": "b31",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "side-bridge-abduction",
+         "reps": "40 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "pivots-pick-up-weight",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "6-10 kg"
+        },
+        {
+         "exerciseId": "sl-hurdle-jump",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b32",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "lunges-weighted",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "alt-db-rows",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "8-12 kg"
+        },
+        {
+         "exerciseId": "upper-body-rotations-swiss",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "6-10 kg"
+        }
+       ]
+      },
+      {
+       "id": "b33",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "sl-hamstring-sliders",
+         "reps": "12",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "straight-leg-drops",
+         "reps": "15",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "hip-hike-knee-lift-calf-raise",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Ankle weight / kettlebell 4-8 kg"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "athleteId": "ath-erik",
+   "startDate": "",
+   "createdAt": "2026-11-15T12:30:00+02:00",
+   "updatedAt": "2026-11-15T12:30:00+02:00"
+  },
+  {
+   "id": "prg-erik-power-transition",
+   "title": "Power Transition Program",
+   "status": "active",
+   "order": 2,
+   "notes": "This is an evolved program. Only start it once you have completed the Strength Performance Program, since power training builds on a strength base.\nStart each session with a proper warm-up and keep the exercises in the same order.\nEach day is divided into three supersets of three exercises. Complete each superset before moving to the next one.\nYou may rest between exercises, but not between repetitions.\nChoose a load you can finish all the repetitions with, but that is heavy enough that you couldn’t do more.\nDo a proper cool-down afterwards to keep post-exercise stiffness to a minimum.",
+   "sessions": [
+    {
+     "id": "d1",
+     "name": "Day 1",
+     "blocks": [
+      {
+       "id": "b11",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "static-lunge-tube-hold",
+         "reps": "40 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": "Jump Stretch band"
+        },
+        {
+         "exerciseId": "pivot-shoulder-press",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "10-15 kg"
+        },
+        {
+         "exerciseId": "sl-hurdle-jumps-repeated",
+         "reps": "6 × 2",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b12",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "fast-response-squats",
+         "reps": "8",
+         "tempo": "1/1/1",
+         "sets": "4",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "lunge-sa-mb-wall-throw",
+         "reps": "10",
+         "tempo": "1/1/1",
+         "sets": "3",
+         "load": "3-4 kg"
+        },
+        {
+         "exerciseId": "superman-swiss",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "3",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b13",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "bent-knee-calf-raise-fast",
+         "reps": "8",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "gecko-stance",
+         "reps": "30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "table-tops",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "3-5 kg"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "name": "Day 2",
+     "blocks": [
+      {
+       "id": "b21",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "stand-up-sit-up",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "5 kg"
+        },
+        {
+         "exerciseId": "side-bridge-db-needle",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "4-8 kg"
+        },
+        {
+         "exerciseId": "sl-jump-distance",
+         "reps": "8",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight",
+         "notes": [
+          "Focus on distance (own body length)",
+          "Land as soft as possible by going into a squat to absorb impact.",
+          "Control the landing.",
+          "You may use your arms, but no other momentum."
+         ]
+        }
+       ]
+      },
+      {
+       "id": "b22",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "fast-athletic-squats",
+         "reps": "8",
+         "tempo": "1/1/1",
+         "sets": "4",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "praying-mantis-row",
+         "reps": "12",
+         "tempo": "1/1/1",
+         "sets": "3",
+         "load": "8-12 kg"
+        },
+        {
+         "exerciseId": "rotational-jack-knifes",
+         "reps": "8",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b23",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "swiss-bridge-alt-leg-lifts",
+         "reps": "40 s",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "quad-leans",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "mb-situp-throw-swiss",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "3-5 kg"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "name": "Day 3",
+     "blocks": [
+      {
+       "id": "b31",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "sl-bridge-swiss",
+         "reps": "12",
+         "tempo": "2/4/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "bench-shuffles",
+         "reps": "60 s",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "lunge-step-up-unstable",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b32",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "fast-step-ups-weighted",
+         "reps": "8",
+         "tempo": "1/1/1",
+         "sets": "4",
+         "load": "Max"
+        },
+        {
+         "exerciseId": "mb-db-thrusters",
+         "reps": "10",
+         "tempo": "1/1/1",
+         "sets": "3",
+         "load": "4-15 kg"
+        },
+        {
+         "exerciseId": "mountain-climbers-swiss",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "Own body weight",
+         "notes": [
+          "Keep your core muscles tight.",
+          "Alternate your legs.",
+          "Keep the ball steady at all times.",
+          "You may weight shift, but no pelvis rotation."
+         ]
+        }
+       ]
+      },
+      {
+       "id": "b33",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "hamstring-sliders-fast",
+         "reps": "40 s",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "sl-leg-drops",
+         "reps": "12",
+         "tempo": "4/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "weighted-situp-press",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "5-10 kg"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "athleteId": "ath-erik",
+   "startDate": "",
+   "createdAt": "2026-11-15T12:30:00+02:00",
+   "updatedAt": "2026-11-15T12:30:00+02:00"
+  },
+  {
+   "id": "prg-erik-power-performance",
+   "title": "Power Performance Program",
+   "status": "active",
+   "order": 3,
+   "notes": "This is an evolved program. Only start it once you have completed the Strength Performance Program, since power training builds on a strength base.\nStart each session with a proper warm-up and keep the exercises in the same order.\nEach day is divided into three supersets of two or three exercises. Complete each superset before moving to the next one.\nYou may rest between exercises and repetitions. Focus on the quality of each repetition.\nChoose a load you can finish the repetitions with in good form and control.\nDo a proper cool-down afterwards to keep post-exercise stiffness to a minimum.",
+   "sessions": [
+    {
+     "id": "d1",
+     "name": "Day 1",
+     "blocks": [
+      {
+       "id": "b11",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "crocodile-squats",
+         "reps": "8",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "±10 kg"
+        },
+        {
+         "exerciseId": "sl-hurdle-jumps-repeated",
+         "reps": "20",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight",
+         "notes": [
+          "Fast reaction in jump.",
+          "Try to kick your bum with the jumping leg.",
+          "Focus on fast reaction with impact on the ground."
+         ]
+        },
+        {
+         "exerciseId": "box-jumps",
+         "reps": "10",
+         "tempo": "1/4/1",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b12",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "db-lunge-jerk",
+         "reps": "6",
+         "tempo": "1/4/1",
+         "sets": "4",
+         "load": "90% 1RM"
+        },
+        {
+         "exerciseId": "v-jumps-from-squat",
+         "reps": "12",
+         "tempo": "1/1/1",
+         "sets": "4",
+         "load": "±10 kg"
+        },
+        {
+         "exerciseId": "side-bridge-swiss",
+         "reps": "45 s",
+         "tempo": "Static",
+         "sets": "4",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b13",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "fast-response-calf-raises",
+         "reps": "15",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "±10 kg"
+        },
+        {
+         "exerciseId": "plank-lower-body-needle",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "name": "Day 2",
+     "blocks": [
+      {
+       "id": "b21",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "y-balance",
+         "reps": "8",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "skipping",
+         "reps": "100",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "kb-swing-squats",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "6-10 kg"
+        }
+       ]
+      },
+      {
+       "id": "b22",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "weighted-thrusters",
+         "reps": "6",
+         "tempo": "1/4/1",
+         "sets": "4",
+         "load": "90% 1RM"
+        },
+        {
+         "exerciseId": "lunge-rotate-mb-throw",
+         "reps": "12",
+         "tempo": "1/1/1",
+         "sets": "4",
+         "load": "3-5 kg"
+        },
+        {
+         "exerciseId": "sl-prone-jack-knife",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "4",
+         "load": "Own body weight",
+         "notes": [
+          "Keep neutral pelvis.",
+          "Hips should be the same height as your shoulders.",
+          "You may move the opposite leg or keep it steady."
+         ]
+        }
+       ]
+      },
+      {
+       "id": "b23",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "superman-swiss",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight",
+         "notes": [
+          "Keep your feet flat on the ground.",
+          "Rotate the ball and punch up.",
+          "Momentum is the key.",
+          "Control the movement back to the start position."
+         ]
+        },
+        {
+         "exerciseId": "swiss-bridge-alt-leg-lifts",
+         "reps": "45 s",
+         "tempo": "180 cadence",
+         "sets": "2",
+         "load": "Own body weight",
+         "notes": [
+          "Keep your weight in your heels.",
+          "Mimic your running cadence.",
+          "Keep neutral pelvis.",
+          "Use a metronome as guidance for tempo."
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "name": "Day 3",
+     "blocks": [
+      {
+       "id": "b31",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "sl-woodchop-unstable",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "6-12 kg"
+        },
+        {
+         "exerciseId": "sl-stand-up-sit-up",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "4-8 kg"
+        },
+        {
+         "exerciseId": "alt-lunge-jumps",
+         "reps": "8",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b32",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "bench-step-up-jump",
+         "reps": "6",
+         "tempo": "1/4/1",
+         "sets": "4",
+         "load": "90% 1RM"
+        },
+        {
+         "exerciseId": "sl-stance-sa-db-press",
+         "reps": "12",
+         "tempo": "1/1/1",
+         "sets": "4",
+         "load": "6-15 kg"
+        },
+        {
+         "exerciseId": "prone-triceps-rollup",
+         "reps": "12",
+         "tempo": "4/2/2",
+         "sets": "4",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b33",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "situp-mb-throw",
+         "reps": "15",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "3-5 kg"
+        },
+        {
+         "exerciseId": "sl-jump-distance",
+         "reps": "10",
+         "tempo": "1/1/1",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "athleteId": "ath-erik",
+   "startDate": "",
+   "createdAt": "2026-11-15T12:30:00+02:00",
+   "updatedAt": "2026-11-15T12:30:00+02:00"
+  },
+  {
+   "id": "prg-erik-flexibility",
+   "title": "Flexibility and Mobility Program",
+   "status": "active",
+   "order": 4,
+   "notes": "Don’t use this program as a warm-up before an important session.\nKeep the exercises in the same order. Each day is divided into three supersets of exercises or stretches. Complete each superset before moving to the next one.\nYou may rest whenever you want.\nMost exercises need control and focus, with full range of motion in all joints.\nStretches should feel uncomfortable, never painful.\nDo a proper cool-down afterwards to keep post-exercise stiffness to a minimum.",
+   "sessions": [
+    {
+     "id": "d1",
+     "name": "Day 1",
+     "blocks": [
+      {
+       "id": "b11",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "knee-to-wall",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "pivot-mb-pickup-throw",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "3 kg ball"
+        }
+       ]
+      },
+      {
+       "id": "b12",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "assisted-pistol-squats",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "rotation-lunge",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "plank-thread-needle",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "3-6 kg"
+        }
+       ]
+      },
+      {
+       "id": "b13",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "stretch-gastrocnemius",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-straight-leg-raise",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-iliopsoas",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-piriformis",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "name": "Day 2",
+     "blocks": [
+      {
+       "id": "b21",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "sl-stand-up-sit-up",
+         "reps": "15",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "4-8 kg",
+         "notes": [
+          "Use the weight for momentum.",
+          "Less weight will increase difficulty.",
+          "Keep your balance.",
+          "Don’t use your non-weight bearing leg."
+         ]
+        },
+        {
+         "exerciseId": "deep-lunges-steps",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b22",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "hip-slides-2-planes",
+         "reps": "10",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "weight-shifts-hurdles",
+         "reps": "12",
+         "tempo": "Dynamic",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "chest-openers",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b23",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "stretch-soleus",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-hamstring-belly",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-quadriceps",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-gluteus-maximus",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "name": "Day 3",
+     "blocks": [
+      {
+       "id": "b31",
+       "name": "Superset 1",
+       "items": [
+        {
+         "exerciseId": "faber-squats",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "deep-t-pushups",
+         "reps": "8",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b32",
+       "name": "Superset 2",
+       "items": [
+        {
+         "exerciseId": "deep-barbell-squats",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "10-20 kg"
+        },
+        {
+         "exerciseId": "hip-rotations",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        },
+        {
+         "exerciseId": "swiss-ball-pikes",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Own body weight"
+        }
+       ]
+      },
+      {
+       "id": "b33",
+       "name": "Superset 3",
+       "items": [
+        {
+         "exerciseId": "stretch-plantar-fascia",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-neural-sling",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-quadratus-lumborum",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "stretch-adductors",
+         "reps": "20–30 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "athleteId": "ath-erik",
+   "startDate": "",
+   "createdAt": "2026-11-15T12:30:00+02:00",
+   "updatedAt": "2026-11-15T12:30:00+02:00"
+  },
+  {
+   "id": "prg-erik-run-2020",
+   "title": "Run Program (2020)",
+   "status": "earlier",
+   "order": 0,
+   "notes": "Normal warm-up: 1) Cardio for 5 minutes 2) Foam roll 3) Stretch.\nThis is where your program with Jaco started in 2020.",
+   "sessions": [
+    {
+     "id": "d1",
+     "name": "Day 1",
+     "blocks": [
+      {
+       "id": "b1",
+       "name": "",
+       "items": [
+        {
+         "exerciseId": "stork-bosu",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "",
+         "notes": [
+          "Go down and touch the Bosu."
+         ]
+        },
+        {
+         "exerciseId": "plank-thread-needle",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "Dumbbell",
+         "notes": [
+          "Prone position, thread the needle with the dumbbell."
+         ]
+        },
+        {
+         "exerciseId": "lower-body-rotations-ball",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "5 kg medicine ball",
+         "notes": [
+          "Squeeze the 5 kg medicine ball between your knees."
+         ]
+        },
+        {
+         "exerciseId": "skipping",
+         "reps": "1 min",
+         "tempo": "Dynamic",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Skip for 1 minute, three times."
+         ]
+        },
+        {
+         "exerciseId": "sl-bridges",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": "Weight on your lap",
+         "notes": [
+          "Add weights on your lap."
+         ]
+        },
+        {
+         "exerciseId": "sl-leg-press",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": ""
+        },
+        {
+         "exerciseId": "weighted-thrusters",
+         "reps": "12",
+         "tempo": "1/1/1",
+         "sets": "3",
+         "load": "Barbell",
+         "notes": [
+          "Barbell thrusters."
+         ]
+        },
+        {
+         "exerciseId": "sl-prone-jack-knife",
+         "reps": "10 each leg",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Keep the weight-bearing leg in the air."
+         ]
+        },
+        {
+         "exerciseId": "run",
+         "reps": "400 m",
+         "tempo": "Fast",
+         "sets": "3",
+         "load": ""
+        },
+        {
+         "exerciseId": "skipping",
+         "reps": "1 min",
+         "tempo": "Dynamic",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Skip for 1 minute, three times."
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "name": "Day 2",
+     "blocks": [
+      {
+       "id": "b2",
+       "name": "",
+       "items": [
+        {
+         "exerciseId": "sl-stand-up-sit-up",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "y-balance",
+         "reps": "10",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "box-jumps",
+         "reps": "15",
+         "tempo": "2/0/2",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "run",
+         "reps": "5 min",
+         "tempo": "Easy pace",
+         "sets": "1",
+         "load": "",
+         "notes": [
+          "Easy pace."
+         ]
+        },
+        {
+         "exerciseId": "bench-step-ups-weighted",
+         "reps": "8",
+         "tempo": "2/2/4",
+         "sets": "3",
+         "load": "Barbell",
+         "notes": [
+          "Hold the barbell on your back."
+         ]
+        },
+        {
+         "exerciseId": "pull-ups",
+         "reps": "8",
+         "tempo": "2/2/4",
+         "sets": "3",
+         "load": ""
+        },
+        {
+         "exerciseId": "side-bridge-swiss",
+         "reps": "45 s",
+         "tempo": "Static",
+         "sets": "3",
+         "load": ""
+        },
+        {
+         "exerciseId": "quad-leans",
+         "reps": "12",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": ""
+        },
+        {
+         "exerciseId": "eccentric-hamstring-leans",
+         "reps": "12",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Russian leans."
+         ]
+        },
+        {
+         "exerciseId": "sl-seated-calf-raise",
+         "reps": "15",
+         "tempo": "2/2/4",
+         "sets": "3",
+         "load": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "name": "Day 3",
+     "blocks": [
+      {
+       "id": "b3",
+       "name": "",
+       "items": [
+        {
+         "exerciseId": "stand-swiss-ball",
+         "reps": "60 s",
+         "tempo": "Static",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "trx-sa-row",
+         "reps": "12",
+         "tempo": "2/2/2",
+         "sets": "2",
+         "load": "",
+         "notes": [
+          "Knees at 90°, underneath the TRX."
+         ]
+        },
+        {
+         "exerciseId": "leg-slides",
+         "reps": "10",
+         "tempo": "2/2/4",
+         "sets": "2",
+         "load": ""
+        },
+        {
+         "exerciseId": "skipping",
+         "reps": "1 min",
+         "tempo": "Dynamic",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Skip for 1 minute, three times."
+         ]
+        },
+        {
+         "exerciseId": "bb-walking-lunges",
+         "reps": "8 each leg",
+         "tempo": "4/4/2",
+         "sets": "3",
+         "load": "Barbell"
+        },
+        {
+         "exerciseId": "pivot-bb-row",
+         "reps": "8",
+         "tempo": "4/2/2",
+         "sets": "3",
+         "load": "Barbell"
+        },
+        {
+         "exerciseId": "db-athletic-squat-jump",
+         "reps": "8",
+         "tempo": "1/1/1",
+         "sets": "3",
+         "load": "Dumbbells"
+        },
+        {
+         "exerciseId": "sa-chest-press-swiss",
+         "reps": "15",
+         "tempo": "2/2/2",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Alternate with an opposite leg lift."
+         ]
+        },
+        {
+         "exerciseId": "run",
+         "reps": "400 m",
+         "tempo": "Fast",
+         "sets": "3",
+         "load": ""
+        },
+        {
+         "exerciseId": "skipping",
+         "reps": "1 min",
+         "tempo": "Dynamic",
+         "sets": "3",
+         "load": "",
+         "notes": [
+          "Skip for 1 minute, three times."
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "athleteId": "ath-erik",
+   "startDate": "",
+   "createdAt": "2026-11-15T12:30:00+02:00",
+   "updatedAt": "2026-11-15T12:30:00+02:00"
+  }
+ ],
+ "feedback": [],
+ "users": [
+  {
+   "id": "u-jaco",
+   "name": "Jaco Ebertsohn",
+   "username": "jaco",
+   "role": "coach",
+   "createdAt": "2026-11-15T13:00:00+02:00"
+  },
+  {
+   "id": "u-erik",
+   "name": "Erik Williamson",
+   "username": "erik",
+   "role": "athlete",
+   "athleteId": "ath-erik",
+   "createdAt": "2026-11-15T13:00:00+02:00"
+  }
+ ]
+}
