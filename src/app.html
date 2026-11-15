@@ -494,6 +494,21 @@ html[data-size="xl"] body { zoom: 1.3; }
 .resume-card { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; background: var(--surface); border: 2px solid var(--brand); border-radius: 14px; padding: 14px 16px; }
 .resume-card strong { display: block; font: 800 18px/1.2 var(--font-display); }
 
+/* Guided session: count-in, timed sets, bell, automatic rests */
+.g-start { display: grid; gap: 6px; }
+.g-start .hint .ico { width: 15px; height: 15px; vertical-align: -2px; }
+.btn .ico { width: 18px; height: 18px; }
+.btn.huge .ico { width: 22px; height: 22px; }
+.guide { border: 2px solid var(--brand); border-radius: 14px; padding: 14px; display: grid; gap: 8px; justify-items: center; text-align: center; background: var(--brand-soft); }
+.guide.paused { border-style: dashed; }
+.g-paused { font: 700 12px var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--bad); }
+.g-lab { font: 800 28px/1 var(--font-display); color: var(--brand); }
+.g-num { font: 800 84px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.g-sub { color: var(--muted); font-size: 14px; max-width: 36ch; }
+.g-ctl { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+.guide .tempo { border: 0; background: none; padding: 0; width: 100%; }
+.guide .tp-bar { width: 100%; }
+
 /* Workout mode: one exercise at a time */
 .sess-tools { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
 .wake { font-size: 13px; color: var(--muted); }
@@ -686,7 +701,7 @@ const isTempoNum = t => /\d\s*\/\s*\d/.test(String(t || ''));
 
 /* ---------- display settings (saved on this device) ---------- */
 const PREF_KEY = 'je-display';
-const PREF_DEFAULTS = { theme: 'auto', size: 'normal', layout: 'steps', rest: 60, sound: true, installHidden: false };
+const PREF_DEFAULTS = { theme: 'auto', size: 'normal', layout: 'steps', rest: 60, sound: true, voice: true, installHidden: false };
 const REST_CHOICES = [30, 45, 60, 90, 120];
 function loadPrefs() {
   try { return { ...PREF_DEFAULTS, ...JSON.parse(localStorage.getItem(PREF_KEY) || '{}') }; } catch (e) { return { ...PREF_DEFAULTS }; }
@@ -724,6 +739,13 @@ const ICONS = {
   soundOn: '<path d="M11 5 6.5 9H3.5v6h3L11 19z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18.5 6a8.5 8.5 0 0 1 0 12"/>',
   soundOff: '<path d="M11 5 6.5 9H3.5v6h3L11 19z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/>',
   timer: '<circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.5M9.5 2.5h5"/>',
+  play: '<path d="M7.5 4.8v14.4L19 12z" fill="currentColor"/>',
+  pause: '<rect x="6.5" y="5" width="3.5" height="14" rx="1" fill="currentColor" stroke="none"/><rect x="14" y="5" width="3.5" height="14" rx="1" fill="currentColor" stroke="none"/>',
+  check: '<path d="M5 12.5 9.5 17 19 7.5"/>',
+  skip: '<path d="M5.5 5.5 14 12l-8.5 6.5z" fill="currentColor"/><path d="M18 5.5v13"/>',
+  stop: '<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none"/>',
+  voice: '<path d="M4.5 5h15v10.5h-8.5L6.5 19v-3.5h-2z"/><path d="M8.5 9.5h7M8.5 12h4.5"/>',
+  bell: '<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
 };
 const ico = name => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ''}</svg>`;
 const SHARE_ICO = '<svg class="share-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
@@ -1375,6 +1397,134 @@ function beep(freq = 660, dur = 0.12, vol = 0.3) {
   } catch (e) { /* audio unavailable */ }
 }
 const buzz = pattern => { if (S.prefs.sound && navigator.vibrate) try { navigator.vibrate(pattern); } catch (e) { /* not supported */ } };
+// A boxing-ring bell: a few metallic partials that ring out, plus a short strike click.
+function bellStrike(t) {
+  const out = actx.createGain(); out.gain.value = 0.28; out.connect(actx.destination);
+  const f0 = 1150;
+  [[1, 1, 2.2], [1.006, 0.7, 2.0], [2.32, 0.5, 1.2], [4.25, 0.28, 0.7], [6.63, 0.16, 0.4]].forEach(([r, a, d]) => {
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = 'sine'; o.frequency.value = f0 * r;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(a, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+    o.connect(g); g.connect(out); o.start(t); o.stop(t + d + 0.05);
+  });
+  const len = Math.floor(actx.sampleRate * 0.03), buf = actx.createBuffer(1, len, actx.sampleRate), ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / len);
+  const n = actx.createBufferSource(), hp = actx.createBiquadFilter(), ng = actx.createGain();
+  hp.type = 'highpass'; hp.frequency.value = 2500; ng.gain.value = 0.5; n.buffer = buf;
+  n.connect(hp); hp.connect(ng); ng.connect(out); n.start(t);
+}
+function bell(times = 2) {
+  if (!S.prefs.sound || !actx) return;
+  try { const t0 = actx.currentTime + 0.02; for (let k = 0; k < times; k++) bellStrike(t0 + k * 0.42); } catch (e) { /* audio unavailable */ }
+}
+function speak(text) {
+  if (!S.prefs.voice || !text || !('speechSynthesis' in window)) return;
+  try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.rate = 1; window.speechSynthesis.speak(u); } catch (e) { /* speech unavailable */ }
+}
+const hush = () => { try { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ } };
+
+// How long one set takes when the session is guided.
+const eachSide = r => /each|per side|per leg|a side/i.test(String(r || ''));
+function workPlan(it) {
+  const reps = String(it.reps || ''), each = eachSide(reps), hold = holdSecs(reps);
+  if (hold) return { kind: 'hold', secs: hold };
+  if (/\d\s*(m|km)\b/i.test(reps)) return { kind: 'open' };
+  const n = firstInt(reps), tp = parseTempo(it.tempo);
+  if (n && tp) return { kind: 'tempo', tp, reps: n * (each ? 2 : 1), switchAt: each ? n : 0 };
+  if (n) {
+    const per = /fast/i.test(it.tempo) ? 1 : /static/i.test(it.tempo) ? 3 : 2;
+    const secs = Math.min(120, Math.max(10, Math.round(n * per * (each ? 2 : 1))));
+    return { kind: 'est', secs, switchAt: each ? Math.round(secs / 2) : 0 };
+  }
+  return { kind: 'open' };
+}
+const spokenSecs = n => n >= 60 && n % 60 === 0 ? `${n / 60} minute${n > 60 ? 's' : ''}` : `${n} seconds`;
+function announce(prefix) {
+  const c = curSess(), cur = c && c.f[c.st.step];
+  if (!cur) return '';
+  const e = ex(cur.it.exerciseId), plan = workPlan(cur.it), r = String(cur.it.reps || '').trim();
+  const what = plan.kind === 'hold' ? `Hold for ${spokenSecs(plan.secs)}` : r ? r.replace(/×/g, 'times').replace(/(\d)\s*m$/, '$1 metres') + (/\d$/.test(r) ? ' reps' : '') : '';
+  return `${prefix}: ${String(e ? e.name : 'next exercise').replace(/\s*[–—]\s*/g, ', ')}. ${what}.`;
+}
+function guideCountdown(delay = 0) {
+  const c = curSess();
+  if (!c || c.st.step >= c.f.length) { S.guide = null; return; }
+  const now = Date.now();
+  S.tempo = null; c.st.rest = null;
+  S.guide = { first: !!(S.guide && S.guide.first), phase: 'count', beginAt: now + delay, endAt: now + delay + 3000, spoke: false, last: null, plan: null, paused: 0 };
+  S.wkScroll = true; ensureTicker();
+}
+function guideStart() {
+  ensureAudio();
+  const c = curSess(); if (!c) return;
+  const { st, f } = c;
+  if (st.step >= f.length) { const i = f.findIndex((_, k) => !st.done[k]); st.step = i < 0 ? 0 : i; }
+  S.guide = { first: !Object.values(st.done).some(Boolean) };
+  guideCountdown(0);
+  S.guide.spoke = true;
+  speak(announce(S.guide.first ? 'First' : 'Next'));   // speaking inside the tap lets phones play later cues
+  S.guide.first = false;
+}
+function guideWork() {
+  const c = curSess(), g = S.guide; if (!c || !g) return;
+  const it = c.f[c.st.step].it, plan = workPlan(it), now = Date.now();
+  Object.assign(g, { phase: 'work', plan, startedAt: now, endAt: plan.kind === 'est' ? now + plan.secs * 1000 : 0, last: null, switched: false });
+  if (plan.kind === 'tempo') S.tempo = { j: c.st.step, startAt: now, phases: plan.tp.phases, cycle: plan.tp.cycle, reps: plan.reps, switchAt: plan.switchAt, key: '', guided: true };
+  else if (plan.kind === 'hold') S.tempo = { j: c.st.step, startAt: now, phases: [{ label: 'Hold', secs: plan.secs }], cycle: plan.secs, reps: 1, hold: true, key: '', guided: true };
+  beep(1046, 0.45, 0.4); buzz(200);
+}
+function guideSetDone() {
+  const c = curSess(); if (!c || !S.guide) return;
+  const { st, f } = c, j = st.step, n = setsOf(f[j].it);
+  S.tempo = null;
+  st.sets[j] = Math.min(n, (st.sets[j] || 0) + 1);
+  if (st.sets[j] >= n) st.done[j] = true;
+  const r = nextAfter(f, st, j);
+  S.wkScroll = true;
+  if (r.to >= f.length) {
+    bell(3); buzz([300, 120, 300, 120, 300]);
+    st.step = f.length; S.guide = null;
+    setTimeout(() => speak(`Session complete. Well done. Tell ${coach()} how it felt.`), 1500);
+    return;
+  }
+  bell(2); buzz([300, 120, 300]);
+  st.step = r.to;
+  if (r.rest) {
+    startRest(restLabel(f, st, r));
+    Object.assign(S.guide, { phase: 'rest', paused: 0 });
+    const secs = S.prefs.rest;
+    setTimeout(() => { if (S.guide && S.guide.phase === 'rest') speak(`Rest. ${spokenSecs(secs)}.`); }, 1300);
+  } else guideCountdown(1300);
+}
+function goStep(c, i) {
+  c.st.step = Math.min(Math.max(0, i), c.f.length);
+  S.tempo = null; S.wkScroll = true;
+  if (S.guide) { if (c.st.step < c.f.length) guideCountdown(0); else { S.guide = null; c.st.rest = null; hush(); } }
+  render();
+}
+function guidePanel(st, f) {
+  const g = S.guide, now = Date.now(), cur = f[st.step], e = cur && ex(cur.it.exerciseId);
+  let body = '';
+  if (g.phase === 'count') {
+    const pre = now < g.beginAt;
+    body = `<div class="g-lab" id="g-lab">${pre ? 'Set done' : 'Get ready'}</div><div class="g-num" id="g-num">${pre ? '✓' : Math.max(1, Math.ceil((g.endAt - now) / 1000))}</div>`;
+  } else if (g.phase === 'work' && S.tempo) body = tempoPanel();
+  else if (g.phase === 'work' && g.plan && g.plan.kind === 'est') {
+    const ms = Math.max(0, g.endAt - now);
+    body = `<div class="g-lab">Go</div><div class="g-num" id="g-num">${mmss(Math.ceil(ms / 1000))}</div><div class="tp-bar"><i id="g-bar" style="width:${((1 - ms / (g.plan.secs * 1000)) * 100).toFixed(1)}%"></i></div>
+      <p class="g-sub">About ${g.plan.secs} s for ${esc(cur.it.reps)}${/\d$/.test(String(cur.it.reps)) ? ' reps' : ''}. Tap Done if you finish sooner.</p>`;
+  } else if (g.phase === 'work') {
+    body = `<div class="g-lab">Go</div><div class="g-num" id="g-num">${mmss(Math.floor((now - g.startedAt) / 1000))}</div><p class="g-sub">Tap Done when you’ve finished${cur.it.reps ? ' the ' + esc(cur.it.reps) : ''}.</p>`;
+  } else if (g.phase === 'rest') {
+    body = `<div class="g-lab">Rest</div><p class="g-sub">Up next: ${esc(e ? e.name : '')}${volShort(cur.it) ? ' · ' + esc(volShort(cur.it)) : ''}. It starts by itself when the rest is over.</p>`;
+  }
+  const ctl = `<div class="g-ctl">
+    ${g.paused ? `<button type="button" class="btn primary" data-act="g-resume">${ico('play')}Resume</button>` : `<button type="button" class="btn" data-act="g-pause">${ico('pause')}Pause</button>`}
+    ${g.phase === 'work' && !g.paused ? `<button type="button" class="btn primary" data-act="g-done">${ico('check')}Done</button>` : ''}
+    ${g.phase === 'rest' ? '' : `<button type="button" class="btn ghost" data-act="g-skip">${ico('skip')}Skip exercise</button>`}
+    <button type="button" class="btn ghost" data-act="g-stop">${ico('stop')}Stop</button></div>`;
+  return `<div class="guide ${g.paused ? 'paused' : ''}" role="status">${g.paused ? '<div class="g-paused">Paused</div>' : ''}${body}${ctl}</div>`;
+}
 function startRest(label, secs = S.prefs.rest) { S.aSession.rest = { endAt: Date.now() + secs * 1000, total: secs, label }; ensureTicker(); }
 function ensureTicker() { if (!ticker) ticker = setInterval(tick, 100); }
 function tempoState(now) {
@@ -1390,20 +1540,53 @@ function tempoState(now) {
 const repText = (t, s) => t.hold ? '' : s.rep ? `Rep ${s.rep}${t.reps ? ' of ' + t.reps : ''}` : (t.reps ? `${t.reps} reps` : '');
 const countText = (t, n) => t.hold && n >= 60 ? mmss(n) : n;
 function tick() {
-  const st = S.aSession, now = Date.now();
-  if (S.route !== 'a-session' || !st || (!st.rest && !S.tempo)) { clearInterval(ticker); ticker = null; return; }
+  const st = S.aSession, now = Date.now(), g = S.guide;
+  if (S.route !== 'a-session' || !st || (!st.rest && !S.tempo && !g)) { clearInterval(ticker); ticker = null; return; }
+  if (g && g.paused) return;
+  const setText = (id, v) => { const el = document.getElementById(id); if (el && el.textContent !== String(v)) el.textContent = v; };
+  if (g && g.phase === 'count') {
+    if (now >= g.beginAt) {
+      if (!g.spoke) { g.spoke = true; speak(announce('Next')); }
+      const left = Math.max(1, Math.ceil((g.endAt - now) / 1000));
+      setText('g-lab', 'Get ready'); setText('g-num', left);
+      if (g.last !== left) { g.last = left; beep(660, 0.1); }
+    }
+    if (now >= g.endAt) { guideWork(); render(); return; }
+    return;
+  }
+  if (g && g.phase === 'work' && !S.tempo && g.plan) {
+    if (g.plan.kind === 'est') {
+      const ms = Math.max(0, g.endAt - now), left = Math.ceil(ms / 1000);
+      setText('g-num', mmss(left));
+      const bar = document.getElementById('g-bar'); if (bar) bar.style.width = ((1 - ms / (g.plan.secs * 1000)) * 100).toFixed(1) + '%';
+      if (g.plan.switchAt && !g.switched && (now - g.startedAt) / 1000 >= g.plan.switchAt) { g.switched = true; beep(780, 0.12); speak('Switch sides'); }
+      if (left > 0 && left <= 3 && g.last !== left) { g.last = left; beep(660, 0.09); }
+      if (!ms) { guideSetDone(); render(); return; }
+    } else setText('g-num', mmss(Math.floor((now - g.startedAt) / 1000)));
+  }
   if (st.rest) {
     const ms = Math.max(0, st.rest.endAt - now), left = Math.ceil(ms / 1000);
     const el = document.getElementById('rest-left'); if (el && el.textContent !== mmss(left)) el.textContent = mmss(left);
     const ring = document.getElementById('rest-ring'); if (ring) ring.setAttribute('stroke-dashoffset', (RING * (1 - ms / 1000 / st.rest.total)).toFixed(2));
     if (left > 0 && left <= 3 && st.rest.beeped !== left) { st.rest.beeped = left; beep(660, 0.09); }
-    if (!ms) { st.rest = null; beep(880, 0.4); buzz([250, 120, 250]); toast('Rest over. Go!'); }
+    const guidedRest = g && g.phase === 'rest';
+    if (guidedRest && !st.rest.spoke && left <= 8) { st.rest.spoke = true; speak(announce('Next')); }
+    if (guidedRest && left <= 3) setText('rest-lab', 'Get ready');
+    if (!ms) {
+      st.rest = null;
+      if (guidedRest) { guideWork(); render(); return; }
+      beep(880, 0.4); buzz([250, 120, 250]); toast('Rest over. Go!');
+    }
   }
   if (S.tempo) {
     const t = S.tempo;
     if (t.j !== st.step || S.prefs.layout === 'list') { S.tempo = null; return; }
     const s = tempoState(now);
-    if (s.finished) { S.tempo = null; beep(990, 0.45); buzz([200, 100, 200]); toast(t.hold ? 'Hold done.' : `That’s ${t.reps} reps.`); return; }
+    if (s.finished) {
+      if (t.guided && S.guide) { guideSetDone(); render(); return; }
+      S.tempo = null; beep(990, 0.45); buzz([200, 100, 200]); toast(t.hold ? 'Hold done.' : `That’s ${t.reps} reps.`); return;
+    }
+    if (t.switchAt && !t.switched && s.rep === t.switchAt + 1) { t.switched = true; speak('Switch sides'); }
     const key = s.ready ? 'r' + s.ready : `${s.rep}-${s.i}-${s.count}`;
     if (key !== t.key) {
       const newPhase = !s.ready && !String(t.key || '').startsWith(`${s.rep}-${s.i}-`);
@@ -1444,7 +1627,7 @@ function restPanel(st, dock) {
   const ms = Math.max(0, r.endAt - Date.now()), left = Math.ceil(ms / 1000);
   return `<div class="rest ${dock ? 'dock' : ''}" role="timer" aria-label="Rest timer">
     <svg class="rest-ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="trk" cx="50" cy="50" r="44"/><circle class="val" id="rest-ring" cx="50" cy="50" r="44" stroke-dasharray="${RING.toFixed(2)}" stroke-dashoffset="${(RING * (1 - ms / 1000 / r.total)).toFixed(2)}"/></svg>
-    <div><div class="rest-lab">Rest</div><div class="rest-left" id="rest-left">${mmss(left)}</div>${r.label ? `<div class="rest-next">${esc(r.label)}</div>` : ''}</div>
+    <div><div class="rest-lab" id="rest-lab">Rest</div><div class="rest-left" id="rest-left">${mmss(left)}</div>${r.label ? `<div class="rest-next">${esc(r.label)}</div>` : ''}</div>
     <div class="rest-btns"><button type="button" data-act="rest-add" data-s="-15">−15 s</button><button type="button" data-act="rest-add" data-s="15">+15 s</button><button type="button" class="skip" data-act="rest-skip">Skip rest</button></div>
     <div class="rest-len"><span>Rest length</span>${REST_CHOICES.map(v => `<button type="button" aria-pressed="${S.prefs.rest === v}" data-act="rest-len" data-v="${v}">${v < 60 ? v + ' s' : mmss(v)}</button>`).join('')}</div>
   </div>`;
@@ -1534,23 +1717,28 @@ function vWorkout(st, p, s, f, total, done) {
   const unit = cur.ss ? 'Round' : 'Set';
   const label = isDone ? (step + 1 < total ? 'Next exercise →' : `Tell ${coach()} how it felt →`) : n > 1 ? `${unit} ${k + 1} of ${n} done` : 'Done';
   const notes = it.notes && it.notes.length ? it.notes : (e && e.steps) || [];
-  return `<section class="page">${head}${dots}${restPanel(st)}
+  const guided = !!S.guide;
+  const anyDone = f.some((_, i) => st.done[i] || st.sets[i]);
+  const start = guided ? '' : `<div class="g-start"><button type="button" class="btn primary huge" data-act="g-start">${ico('play')}${anyDone ? `Start from exercise ${step + 1}` : 'Start session'}</button>
+    <p class="hint">${ico('bell')} Counts you in for 3 seconds, times each set${S.prefs.voice ? ', tells you what’s next' : ''} and rings a bell when the set is done. Rests and the next exercise start by themselves.</p></div>`;
+  return `<section class="page">${head}${dots}${start}${restPanel(st)}
     <article class="wk-card ${isDone ? 'is-done' : ''}" id="wk-card" aria-labelledby="wk-name">
       ${ctx}
       <div class="exc-head"><span class="lane-no big" aria-hidden="true">${isDone ? '✓' : step + 1}</span><div><h2 class="exc-name" id="wk-name">${esc(e ? e.name : 'Exercise removed')}</h2>${e && e.equipment && e.equipment !== 'None' ? `<p class="exc-works">You need: ${esc(e.equipment)}</p>` : ''}</div></div>
+      ${guided ? guidePanel(st, f) : ''}
       ${e ? `<div class="media">${media(e)}</div>` : ''}
       ${volume(it)}
       ${e ? diffMeter(diffOf(S.asAthlete, it.exerciseId)) : ''}
       ${n > 1 ? `<div class="wk-sets"><span class="pips" aria-hidden="true">${Array.from({ length: n }, (_, i) => `<i class="pip ${i < k ? 'on' : ''}"></i>`).join('')}</span><span>${k} of ${n} ${unit.toLowerCase()}s done</span></div>` : ''}
-      ${counting ? tempoPanel() : ''}
-      <div class="wk-main">
+      ${counting && !guided ? tempoPanel() : ''}
+      ${guided ? '' : `<div class="wk-main">
         <button type="button" class="btn primary huge ${isDone ? 'is-ok' : ''}" data-act="${isDone ? 'wk-next' : 'wk-set'}">${esc(label)}</button>
         <div class="wk-sub">
           ${(tp || hold) && !isDone ? (counting ? `<button type="button" class="btn" data-act="tp-stop">${hold ? 'Stop the hold timer' : 'Stop the tempo count'}</button>` : `<button type="button" class="btn" data-act="tp-start">${hold ? `▶ Time the hold (${esc(hold >= 60 ? mmss(hold) : hold + ' s')})` : `▶ Count the tempo (${esc(tp.text)})`}</button>`) : ''}
           ${!st.rest && !isDone ? `<button type="button" class="btn ghost" data-act="rest-start">${ico('timer')}Rest ${S.prefs.rest} s</button>` : ''}
           ${isDone ? '<button type="button" class="btn ghost" data-act="wk-undo">Undo done</button>' : n > 1 ? '<button type="button" class="btn ghost" data-act="wk-done">Mark whole exercise done</button>' : ''}
         </div>
-      </div>
+      </div>`}
       ${notes.length ? `<div class="info"><div><h3>What to focus on</h3><ul class="focus">${notes.map(x => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div></div>` : ''}
       ${e && e.targets ? `<div class="info"><div><h3>Works</h3><p>${esc(e.targets)}</p></div></div>` : ''}
       ${e && e.why ? `<details class="why"><summary>Why it matters</summary><p>${esc(e.why)}</p></details>` : ''}
@@ -1686,6 +1874,7 @@ function vModal() {
       <div class="opt"><h3>Training sessions</h3><div class="seg full" role="group" aria-label="Session layout">${seg('layout', 'steps', ico('card') + 'One at a time')}${seg('layout', 'list', ico('list') + 'Full list')}</div></div>
       <div class="opt"><h3>Rest between sets</h3><div class="chips">${REST_CHOICES.map(v => `<button type="button" class="fchip ${p.rest === v ? 'on' : ''}" aria-pressed="${p.rest === v}" data-act="pref" data-k="rest" data-v="${v}">${v < 60 ? v + ' s' : mmss(v)}</button>`).join('')}</div></div>
       <div class="opt"><h3>Timer sounds and vibration</h3><div class="seg full" role="group" aria-label="Timer sounds and vibration"><button type="button" aria-pressed="${!!p.sound}" data-act="pref" data-k="sound" data-v="on">${ico('soundOn')}On</button><button type="button" aria-pressed="${!p.sound}" data-act="pref" data-k="sound" data-v="off">${ico('soundOff')}Off</button></div></div>
+      <div class="opt"><h3>Spoken cues in guided sessions</h3><div class="seg full" role="group" aria-label="Spoken cues"><button type="button" aria-pressed="${!!p.voice}" data-act="pref" data-k="voice" data-v="on">${ico('voice')}On</button><button type="button" aria-pressed="${!p.voice}" data-act="pref" data-k="voice" data-v="off">Off</button></div></div>
       <div class="opt"><h3>Install on your phone</h3>${installHow()}</div>`,
       '<button type="button" class="btn primary" data-act="close">Done</button>');
   }
@@ -1722,7 +1911,7 @@ function render() {
     if (anchor) window.scrollTo({ top: Math.max(0, anchor.getBoundingClientRect().top + window.scrollY - (top ? top.getBoundingClientRect().height : 0) - 10) });
   }
   if (S.tpScroll) { S.tpScroll = false; document.querySelector('.tempo')?.scrollIntoView({ block: 'center' }); }
-  if (S.aSession && S.aSession.rest || S.tempo) ensureTicker();
+  if ((S.aSession && S.aSession.rest) || S.tempo || S.guide) ensureTicker();
   syncWake();
 }
 
@@ -1815,7 +2004,7 @@ const A = {
       render(); setTimeout(() => document.getElementById('login-pw')?.focus(), 0);
     }
   },
-  logout: async () => { try { await api('POST', '/api/logout', {}, { quiet401: true }); } catch (e) { /* signed out locally anyway */ } clearAllSessions(); S.tempo = null; signedOut(); },
+  logout: async () => { try { await api('POST', '/api/logout', {}, { quiet401: true }); } catch (e) { /* signed out locally anyway */ } clearAllSessions(); S.tempo = null; S.guide = null; hush(); signedOut(); },
   logins: () => { S.modal = { type: 'logins', pwFor: null, pw: '', add: { role: 'athlete', athleteId: athletes().find(a => ![...S.data.users.values()].some(u => u.athleteId === a.id))?.id || athletes()[0]?.id || '', name: '', username: '', pw: '' } }; render(); },
   'pw-open': el => { S.modal.pwFor = el.dataset.id; S.modal.pw = ''; render(); setTimeout(() => document.getElementById('pw-new')?.focus(), 0); },
   'pw-cancel': () => { S.modal.pwFor = null; S.modal.pw = ''; render(); },
@@ -1978,7 +2167,7 @@ const A = {
 
   'a-prog': el => { S.aProgramId = el.dataset.id; S.route = 'a-home'; render(); window.scrollTo(0, 0); },
   'a-progs': () => { S.aProgramId = null; S.route = 'a-home'; render(); window.scrollTo(0, 0); },
-  'a-back': () => { S.route = 'a-home'; S.aSession = null; S.tempo = null; render(); window.scrollTo(0, 0); },
+  'a-back': () => { S.route = 'a-home'; S.aSession = null; S.tempo = null; S.guide = null; hush(); render(); window.scrollTo(0, 0); },
   'a-start': el => {
     const pid = el.dataset.pid, sid = el.dataset.sid, r = savedSession();
     S.aProgramId = pid; S.tempo = null; S.route = 'a-session';
@@ -1997,9 +2186,9 @@ const A = {
   pref: el => {
     const k = el.dataset.k; let v = el.dataset.v;
     if (k === 'rest') v = Number(v);
-    if (k === 'sound') v = v === 'on';
+    if (k === 'sound' || k === 'voice') v = v === 'on';
     S.prefs[k] = v; savePrefs();
-    if (k === 'layout') { S.tempo = null; if (S.aSession && S.aSession.rest) ensureTicker(); }
+    if (k === 'layout') { S.tempo = null; S.guide = null; hush(); if (S.aSession && S.aSession.rest) ensureTicker(); }
     render();
   },
   install: async () => {
@@ -2031,16 +2220,19 @@ const A = {
     S.tempo = null; st.step = r.to; S.wkScroll = true; render();
   },
   'wk-undo': () => { const st = S.aSession; if (!st) return; st.done[st.step] = false; st.sets[st.step] = 0; render(); },
-  'wk-go': el => { const c = curSess(); if (!c) return; c.st.step = Math.min(Math.max(0, Number(el.dataset.i) || 0), c.f.length); S.tempo = null; S.wkScroll = true; render(); },
-  'wk-next': () => { const c = curSess(); if (!c) return; c.st.step = Math.min(c.f.length, c.st.step + 1); S.tempo = null; S.wkScroll = true; render(); },
-  'wk-prev': () => { const c = curSess(); if (!c) return; c.st.step = Math.max(0, c.st.step - 1); S.tempo = null; S.wkScroll = true; render(); },
+  'wk-go': el => { const c = curSess(); if (!c) return; goStep(c, Number(el.dataset.i) || 0); },
+  'wk-next': () => { const c = curSess(); if (!c) return; goStep(c, c.st.step + 1); },
+  'wk-prev': () => { const c = curSess(); if (!c) return; goStep(c, c.st.step - 1); },
   'rest-start': () => { ensureAudio(); if (S.aSession) { startRest(''); if (S.prefs.layout !== 'list') S.wkScroll = true; render(); } },
   'rest-add': el => {
     const r = S.aSession && S.aSession.rest; if (!r) return;
     const d = Number(el.dataset.s) || 0;
     r.endAt = Math.max(Date.now(), r.endAt + d * 1000); r.total = Math.max(5, r.total + d); r.beeped = null; render();
   },
-  'rest-skip': () => { if (S.aSession) S.aSession.rest = null; render(); },
+  'rest-skip': () => {
+    if (S.guide && S.guide.phase === 'rest') { guideCountdown(0); render(); return; }
+    if (S.aSession) S.aSession.rest = null; render();
+  },
   'rest-len': el => {
     const v = Number(el.dataset.v); S.prefs.rest = v; savePrefs();
     const r = S.aSession && S.aSession.rest;
@@ -2058,6 +2250,28 @@ const A = {
     S.tpScroll = true; render(); ensureTicker();
   },
   'tp-stop': () => { S.tempo = null; render(); },
+  'g-start': () => { guideStart(); render(); },
+  'g-pause': () => { const g = S.guide; if (!g || g.paused) return; g.paused = Date.now(); hush(); render(); },
+  'g-resume': () => {
+    const g = S.guide; if (!g || !g.paused) return;
+    ensureAudio();
+    const d = Date.now() - g.paused; g.paused = 0;
+    for (const k of ['beginAt', 'endAt', 'startedAt']) if (g[k]) g[k] += d;
+    if (S.tempo) S.tempo.startAt += d;
+    if (S.aSession && S.aSession.rest) S.aSession.rest.endAt += d;
+    ensureTicker(); render();
+  },
+  'g-done': () => { if (S.guide && S.guide.phase === 'work') { guideSetDone(); render(); } },
+  'g-skip': () => {
+    const c = curSess(), g = S.guide; if (!c || !g) return;
+    if (g.phase === 'rest') { guideCountdown(0); render(); return; }
+    const { st, f } = c;
+    let to = st.step + 1; while (to < f.length && st.done[to]) to++;
+    st.step = to;
+    if (to >= f.length) { S.guide = null; S.tempo = null; S.wkScroll = true; } else guideCountdown(0);
+    render();
+  },
+  'g-stop': () => { S.guide = null; S.tempo = null; if (S.aSession) S.aSession.rest = null; hush(); render(); },
   'a-cal': () => {
     const d = parseYmd(S.lastDate) || new Date();
     S.cal = { y: d.getFullYear(), m: d.getMonth() }; S.calSel = S.lastDate || null; S.aProgramId = null; S.route = 'a-home'; render();
@@ -2090,7 +2304,7 @@ const A = {
     S.saving = true; render();
     const ok = await write(() => S.db.collection('feedback').doc(uid('fb')).set(doc));
     S.saving = false;
-    if (ok) { clearSession(); S.lastRating = st.rating; S.lastDate = date; S.aSession = null; S.tempo = null; S.route = 'a-done'; window.scrollTo(0, 0); }
+    if (ok) { clearSession(); S.lastRating = st.rating; S.lastDate = date; S.aSession = null; S.tempo = null; S.guide = null; S.route = 'a-done'; window.scrollTo(0, 0); }
     render();
   },
 };
