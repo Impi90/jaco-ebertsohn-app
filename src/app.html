@@ -494,6 +494,17 @@ html[data-size="xl"] body { zoom: 1.3; }
 .resume-card { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; background: var(--surface); border: 2px solid var(--brand); border-radius: 14px; padding: 14px 16px; }
 .resume-card strong { display: block; font: 800 18px/1.2 var(--font-display); }
 
+/* Program archive */
+.archive { border-top: 1px solid var(--line); padding-top: 6px; display: grid; gap: 4px; }
+.arch-toggle { border: 0; background: none; padding: 8px 0; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; }
+.arch-toggle:hover { color: var(--ink); }
+.arch-caret { margin-left: auto; }
+.arch-list { display: grid; gap: 0; }
+.arch-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.arch-row strong { display: block; }
+.arch-row .muted { font-size: 13px; }
+@media (max-width: 600px) { .arch-row { grid-template-columns: 1fr; } }
+
 /* Guided session: count-in, timed sets, bell, automatic rests */
 .g-start { display: grid; gap: 6px; }
 .g-start .hint .ico { width: 15px; height: 15px; vertical-align: -2px; }
@@ -672,6 +683,8 @@ const athletes = () => [...S.data.athletes.values()].sort((a, b) => String(a.nam
 const statusRank = p => ({ current: 0, active: 1, earlier: 2 }[p.status] ?? 1);
 const programsFor = id => [...S.data.programs.values()].filter(p => p.athleteId === id)
   .sort((a, b) => statusRank(a) - statusRank(b) || (a.order ?? 99) - (b.order ?? 99) || String(b.startDate || '').localeCompare(String(a.startDate || '')) || when(b.updatedAt) - when(a.updatedAt));
+const activeProgs = id => programsFor(id).filter(p => !p.archived);
+const archivedProgs = id => programsFor(id).filter(p => p.archived).sort((a, b) => when(b.archivedAt) - when(a.archivedAt));
 const feedbackFor = id => [...S.data.feedback.values()].filter(f => f.athleteId === id).sort(byNewest);
 const allFeedback = () => [...S.data.feedback.values()].sort(byNewest);
 const athName = id => S.data.athletes.get(id)?.name || 'Former athlete';
@@ -746,6 +759,8 @@ const ICONS = {
   stop: '<rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none"/>',
   voice: '<path d="M4.5 5h15v10.5h-8.5L6.5 19v-3.5h-2z"/><path d="M8.5 9.5h7M8.5 12h4.5"/>',
   bell: '<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+  archive: '<rect x="3.5" y="4" width="17" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/>',
+  restore: '<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4.5 9"/><path d="M4.5 4.5V9H9"/>',
 };
 const ico = name => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ''}</svg>`;
 const SHARE_ICO = '<svg class="share-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
@@ -936,7 +951,7 @@ function vOverview() {
   const aths = athletes();
   const athRows = aths.length ? aths.map(a => {
     const last = feedbackFor(a.id)[0];
-    return `<button type="button" class="ath-row" data-act="open-athlete" data-id="${esc(a.id)}"><span><strong>${esc(a.name)}</strong><span class="muted" style="font-size:14px">${esc(a.sport || '')} · ${programsFor(a.id).length} programs</span></span>
+    return `<button type="button" class="ath-row" data-act="open-athlete" data-id="${esc(a.id)}"><span><strong>${esc(a.name)}</strong><span class="muted" style="font-size:14px">${esc(a.sport || '')} · ${activeProgs(a.id).length} programs</span></span>
       <span class="ath-last">${last ? `${face(last.rating)}${esc(fmtYmd(fbDate(last), { day: 'numeric', month: 'short' }))}${last.pain ? ' <span class="chip warn">Pain</span>' : ''}` : 'No sessions logged'}</span></button>`;
   }).join('') : '<p class="empty">No athletes yet.</p>';
   return `<section class="page">
@@ -1003,7 +1018,7 @@ function vAthletes() {
     <div class="page-head"><div><h1>Athletes</h1><p class="sub">${list.length} athlete${list.length === 1 ? '' : 's'}. Open one to build a program or read their feedback.</p></div>
       <button type="button" class="btn primary" data-act="ath-new">Add athlete</button></div>
     ${list.length ? `<div class="ath-grid">${list.map(a => {
-      const progs = programsFor(a.id), last = feedbackFor(a.id)[0];
+      const progs = activeProgs(a.id), last = feedbackFor(a.id)[0];
       return `<button type="button" class="ath-card" data-act="open-athlete" data-id="${esc(a.id)}">
         <h2>${esc(a.name)}</h2><span class="muted">${esc(a.sport || '')}</span>
         ${a.goal ? `<p class="goal">${esc(a.goal)}</p>` : ''}
@@ -1050,7 +1065,13 @@ function diffPanel(a, progs) {
 function vAthleteDetail() {
   const a = S.data.athletes.get(S.coachAthleteId);
   if (!a) return `<section class="page"><button type="button" class="back" data-act="tab" data-v="athletes">← All athletes</button><p class="empty">This athlete was removed.</p></section>`;
-  const progs = programsFor(a.id), fb = feedbackFor(a.id);
+  const progs = activeProgs(a.id), arch = archivedProgs(a.id), fb = feedbackFor(a.id);
+  const archOpen = S.archOpen === a.id;
+  const archive = arch.length ? `<div class="archive">
+      <button type="button" class="arch-toggle" aria-expanded="${archOpen}" data-act="arch-toggle" data-id="${esc(a.id)}">${ico('archive')}Archive (${arch.length})<span class="arch-caret" aria-hidden="true">${archOpen ? '▾' : '▸'}</span></button>
+      ${archOpen ? `<div class="arch-list">${arch.map(p => `<div class="arch-row"><div><strong>${esc(p.title)}</strong><span class="muted">${p.sessions.length} day${p.sessions.length === 1 ? '' : 's'} · ${progCount(p)} exercises${p.archivedAt ? ' · Archived ' + esc(fmtDay(p.archivedAt)) : ''}</span></div>
+        <div class="actions"><button type="button" class="btn small" data-act="prg-restore" data-id="${esc(p.id)}">${ico('restore')}Restore</button><button type="button" class="btn small" data-act="prg-copy" data-id="${esc(p.id)}">Duplicate</button><button type="button" class="btn small ghost danger" data-act="prg-del" data-id="${esc(p.id)}">Delete</button></div></div>`).join('')}
+        <p class="hint">${esc(first(a.name))} doesn’t see archived programs. Their sessions stay in the training calendar.</p></div>` : ''}</div>` : '';
   return `<section class="page">
     <button type="button" class="back" data-act="tab" data-v="athletes">← All athletes</button>
     <div class="page-head"><div class="ath-head"><h1>${esc(a.name)}</h1><div class="meta"><span>${esc(a.sport || '')}</span></div>${a.goal ? `<p>${esc(a.goal)}</p>` : ''}</div>
@@ -1059,8 +1080,9 @@ function vAthleteDetail() {
       <div class="col"><section class="panel"><div class="actions" style="justify-content:space-between"><h2 class="h2">Programs</h2><button type="button" class="btn primary small" data-act="prg-new" data-id="${esc(a.id)}">New program</button></div>
         ${progs.length ? progs.map(p => `<div class="prog"><div class="prog-meta">${statusChip(p)}</div><h3>${esc(p.title)}</h3>
           <span class="prog-meta">${p.sessions.length} day${p.sessions.length === 1 ? '' : 's'} · ${progCount(p)} exercises${p.startDate ? ' · Starts ' + esc(fmtDay(p.startDate)) : ''}</span>
-          <div class="actions"><button type="button" class="btn small" data-act="prg-edit" data-id="${esc(p.id)}">Edit</button><button type="button" class="btn small" data-act="prg-copy" data-id="${esc(p.id)}">Duplicate</button><button type="button" class="btn small ghost danger" data-act="prg-del" data-id="${esc(p.id)}">Delete</button></div></div>`).join('')
-          : '<p class="empty">No program yet.</p>'}
+          <div class="actions"><button type="button" class="btn small" data-act="prg-edit" data-id="${esc(p.id)}">Edit</button><button type="button" class="btn small" data-act="prg-copy" data-id="${esc(p.id)}">Duplicate</button><button type="button" class="btn small" data-act="prg-archive" data-id="${esc(p.id)}">${ico('archive')}Archive</button><button type="button" class="btn small ghost danger" data-act="prg-del" data-id="${esc(p.id)}">Delete</button></div></div>`).join('')
+          : `<p class="empty">${arch.length ? 'No active programs. Restore one from the archive or create a new one.' : 'No program yet.'}</p>`}
+        ${archive}
         <p class="hint">To give ${esc(first(a.name))} a direct link, open the athlete view and share the page link from there. It opens straight to their programs.</p>
       </section>
       ${diffPanel(a, progs)}</div>
@@ -1248,7 +1270,7 @@ function vPick() {
 function vAHome() {
   const a = S.data.athletes.get(S.asAthlete);
   if (!a) return stateMsg('Athlete not found', 'This link doesn’t match an athlete. Ask your coach for a new link.');
-  const progs = programsFor(a.id), fb = feedbackFor(a.id);
+  const progs = activeProgs(a.id), fb = feedbackFor(a.id);
   let p = progs.find(x => x.id === S.aProgramId);
   if (!p && progs.length === 1) p = progs[0];
   if (!progs.length) return `<section class="page"><h1 class="hello">Hi ${esc(first(a.name))}</h1><p class="empty">${esc(coach())} hasn’t set up a program for you yet.</p></section>`;
@@ -1363,7 +1385,7 @@ function savedSession() {
   let v = null;
   try { v = JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; }
   if (!v || !v.savedAt || Date.now() - v.savedAt > 18 * 3600000) return null;
-  const p = S.data.programs.get(v.programId), s = p && (p.sessions || []).find(x => x.id === v.sessionId);
+  const p = S.data.programs.get(v.programId), s = p && !p.archived && (p.sessions || []).find(x => x.id === v.sessionId);
   return s ? { v, p, s } : null;
 }
 function clearSession() { const k = sessKey(); if (k) try { localStorage.removeItem(k); } catch (e) { /* ignore */ } }
@@ -1823,7 +1845,7 @@ function vModal() {
       `<button type="button" class="btn ghost" data-act="close">Cancel</button><button type="button" class="btn primary" data-act="settings-save">Save</button>`);
   }
   if (m.type === 'diff') {
-    const a = S.data.athletes.get(m.athleteId), progs = programsFor(m.athleteId);
+    const a = S.data.athletes.get(m.athleteId), progs = activeProgs(m.athleteId);
     const p = progs.find(x => x.id === m.progId) || progs[0];
     const changed = Object.keys(m.map).filter(k => (Number(m.map[k]) || 0) !== diffOf(m.athleteId, k)).length;
     let rows = '';
@@ -1975,7 +1997,7 @@ function addToTarget(e) {
 
 const A = {
   'b-diff': el => { const d = S.draft, k = el.dataset.ex, v = Number(el.dataset.v); d._diff[k] = Number(d._diff[k]) === v ? 0 : v; render(); },
-  'diff-open': el => { const a = S.data.athletes.get(el.dataset.id); S.modal = { type: 'diff', athleteId: a.id, progId: programsFor(a.id)[0]?.id, map: { ...(a.difficulty || {}) } }; render(); },
+  'diff-open': el => { const a = S.data.athletes.get(el.dataset.id); S.modal = { type: 'diff', athleteId: a.id, progId: activeProgs(a.id)[0]?.id, map: { ...(a.difficulty || {}) } }; render(); },
   'd-prog': el => { S.modal.progId = el.dataset.id; render(); const mb = document.getElementById('m-body'); if (mb) mb.scrollTop = 0; },
   'd-set': el => { const m = S.modal, k = el.dataset.ex, v = Number(el.dataset.v); m.map[k] = Number(m.map[k]) === v ? 0 : v; render(); },
   'd-save': async () => {
@@ -2102,6 +2124,15 @@ const A = {
     S.draft = { ...d, _new: true, id: uid('prg'), title: d.title + ' (copy)', status: 'active', createdAt: null };
     S.bDay = 0; S.bBlock = 0; S.bOpen = {}; S.route = 'builder'; render(); window.scrollTo(0, 0);
   },
+  'prg-archive': async el => {
+    const p = S.data.programs.get(el.dataset.id); if (!p) return;
+    await write(() => S.db.collection('programs').doc(p.id).update({ archived: true, archivedAt: new Date().toISOString() }), `“${p.title}” moved to the archive`);
+  },
+  'prg-restore': async el => {
+    const p = S.data.programs.get(el.dataset.id); if (!p) return;
+    await write(() => S.db.collection('programs').doc(p.id).update({ archived: false, archivedAt: null }), `“${p.title}” restored`);
+  },
+  'arch-toggle': el => { S.archOpen = S.archOpen === el.dataset.id ? null : el.dataset.id; render(); },
   'prg-del': el => {
     const p = S.data.programs.get(el.dataset.id);
     confirmThen(`Delete “${p.title}”?`, 'The athlete will no longer see this program. Their past feedback is kept.', 'Delete program',
@@ -2153,6 +2184,8 @@ const A = {
         blocks: s.blocks.filter(b => b.items.length).map(b => ({ id: b.id, name: String(b.name || '').trim(),
           items: b.items.map(it => { const o = { exerciseId: it.exerciseId, reps: String(it.reps || '').trim(), tempo: String(it.tempo || '').trim(), sets: String(it.sets || '').trim(), load: String(it.load || '').trim() }; const nl = lines(it.notesText); if (nl.length) o.notes = nl; return o; }) })) })) };
     if (d.order != null) doc.order = d.order;
+    const orig = !d._new && S.data.programs.get(d.id);
+    if (orig && orig.archived) { doc.archived = true; doc.archivedAt = orig.archivedAt || now; }
     S.saving = true; render();
     let ok = await write(() => S.db.collection('programs').doc(d.id).set(doc), 'Program saved');
     if (ok && d._diff) {
