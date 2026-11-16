@@ -253,7 +253,8 @@ async function api(req, res, url) {
     const d = await getDoc('settings', 'app');
     const s = d ? d.data : {};
     // Public: only the practice details shown on the sign-in page.
-    return sendJson(res, 200, { settings: { practiceName: s.practiceName || '', coachName: s.coachName || '', tagline: s.tagline || '', phone: s.phone || '', email: s.email || '', website: s.website || '' } });
+    const tips = Array.isArray(s.tips) ? s.tips.filter(x => typeof x === 'string').slice(0, 60).map(x => x.slice(0, 220)) : [];
+    return sendJson(res, 200, { settings: { practiceName: s.practiceName || '', coachName: s.coachName || '', tagline: s.tagline || '', phone: s.phone || '', email: s.email || '', website: s.website || '', tips, tipsByCoach: !!s.tipsByCoach } });
   }
 
   if (p === '/api/login' && m === 'POST') {

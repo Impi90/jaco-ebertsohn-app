@@ -494,6 +494,34 @@ html[data-size="xl"] body { zoom: 1.3; }
 .resume-card { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; background: var(--surface); border: 2px solid var(--brand); border-radius: 14px; padding: 14px 16px; }
 .resume-card strong { display: block; font: 800 18px/1.2 var(--font-display); }
 
+.tips-field { display: grid; gap: 8px; }
+.tips-field .check { display: flex; gap: 8px; align-items: center; font-size: 15px; color: var(--ink); }
+.tips-field .check input { width: 18px; height: 18px; margin: 0; }
+
+/* Loading screen */
+.splash { position: fixed; inset: 0; z-index: 200; background: var(--bg); display: grid; place-items: center; padding: 24px 20px; overflow-y: auto; transition: opacity .4s ease, visibility 0s linear .4s; }
+.splash::before { content: ""; position: fixed; right: -4vw; bottom: -3vh; width: min(70vw, 760px); aspect-ratio: 400 / 211; background: var(--brand-2);
+  -webkit-mask: url("img/mark.png") center / contain no-repeat; mask: url("img/mark.png") center / contain no-repeat; opacity: .07; pointer-events: none; }
+.splash.out { opacity: 0; visibility: hidden; }
+.sp-in { position: relative; width: min(100%, 460px); display: grid; justify-items: center; gap: 14px; text-align: center; }
+.sp-logo { width: 210px; height: auto; }
+.sp-logo-plate { background: #fff; border-radius: 12px; padding: 8px 14px; display: inline-block; }
+.sp-fig { width: min(62vw, 250px); aspect-ratio: 1; color: var(--ink); margin-top: -12px; }
+.sp-fig svg { width: 100%; height: 100%; display: block; }
+.sp-figname { margin-top: -18px; font: 700 12px var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--brand-2); }
+.sp-tip { width: 100%; min-height: 118px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--brand-2); border-radius: 12px; padding: 14px 18px; text-align: left; display: grid; gap: 6px; align-content: start; transition: opacity .25s ease, transform .25s ease; }
+.sp-tip.fade { opacity: 0; transform: translateY(4px); }
+.sp-tip-lab { font: 700 11px var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--brand-2); }
+.sp-tip p { font: 600 17px/1.45 var(--font-body); color: var(--ink); }
+.sp-track { width: 92px; height: auto; margin-top: 4px; }
+.sp-lane, .sp-lane-in { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.sp-lane { stroke: var(--brand-2); stroke-width: 2; opacity: .55; }
+.sp-runner { fill: var(--brand); }
+.sp-status { min-height: 2.9em; max-width: 34ch; font-size: 14px; color: var(--muted); }
+.sp-preview { font-size: 13px; color: var(--muted); }
+.sp-preview button { border: 0; background: none; color: var(--brand); text-decoration: underline; font-weight: 600; padding: 4px; }
+@media (max-height: 700px) { .sp-fig { width: min(60vw, 220px); } .sp-in { gap: 10px; } }
+
 /* Program archive */
 .archive { border-top: 1px solid var(--line); padding-top: 6px; display: grid; gap: 4px; }
 .arch-toggle { border: 0; background: none; padding: 8px 0; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; }
@@ -627,9 +655,155 @@ details.why p { margin-top: 6px; }
 </style>
 </head>
 <body>
+<div id="splash" class="splash" role="status" aria-live="polite" aria-busy="true">
+  <div class="sp-in">
+    <span class="sp-logo-plate"><img class="sp-logo" src="img/logo.png" alt="Jaco Ebertsohn: Direct your run" width="210" height="89"></span>
+    <div class="sp-fig" id="sp-fig" aria-hidden="true"></div>
+    <p class="sp-figname" id="sp-figname" aria-hidden="true"></p>
+    <div class="sp-tip" id="sp-tip"><span class="sp-tip-lab" id="sp-tip-lab">Training tip</span><p id="sp-tip-text"></p></div>
+    <svg class="sp-track" viewBox="0 0 132 64" aria-hidden="true">
+      <path class="sp-lane" id="sp-lane" d="M38 8 H94 A24 24 0 0 1 94 56 H38 A24 24 0 0 1 38 8 Z"/>
+      <path class="sp-lane-in" d="M38 16 H94 A16 16 0 0 1 94 48 H38 A16 16 0 0 1 38 16 Z"/>
+      <circle class="sp-runner" r="4.5"><animateMotion id="sp-motion" dur="2.6s" repeatCount="indefinite" rotate="auto"><mpath href="#sp-lane"/></animateMotion></circle>
+    </svg>
+    <p class="sp-status" id="sp-status">Loading…</p>
+    <p class="sp-preview" id="sp-preview" hidden>Preview of the loading screen. <button type="button" id="sp-close">Close preview</button></p>
+  </div>
+</div>
 <div id="app"></div>
 <script>
 /*__FIGURE__*/
+</script>
+<script>
+/* Loading screen: a moving exercise figure, rotating training tips and a running-track loader.
+   It stays up until the app is ready, for at least 3.5 s on the first open of the day (1 s later in the day),
+   and explains the wait if the server is waking up. Add #loading to the address to preview it. */
+window.JE_SPLASH = (() => {
+  const DEFAULT_TIPS = [
+    'Running is a series of single-leg hops. That’s why so much of your program is on one leg.',
+    'Slow down the lowering part of each rep. That’s where muscles and tendons get stronger.',
+    'Your calves take several times your body weight with every stride. Strong calves, fewer niggles.',
+    'Strong hips help keep your knees tracking well when you run.',
+    'Two strength sessions a week is enough to make a real difference to your running.',
+    'Consistency wins: two sessions every week beat one hard session now and then.',
+    'A slow, controlled rep beats a fast, sloppy one. Quality first, then load.',
+    'Brace your core as if someone is about to poke your belly, and keep breathing.',
+    'If the last reps of a set feel easy, tell {coach}. It may be time to progress.',
+    'Jumps and hops train your tendons to store and return energy, like a spring.',
+    'Easy runs should feel easy. You should be able to hold a conversation.',
+    'Keep most of your weekly running easy, so you’re fresh for the hard sessions.',
+    'Build your mileage gradually. Sudden jumps in weekly distance are a common cause of injury.',
+    'Short, quick steps can ease the load on your knees and hips.',
+    'Run tall: eyes ahead, shoulders relaxed, arms swinging forward and back.',
+    'Your body adapts to training while you sleep. Aim for 7–9 hours a night.',
+    'Rest days are part of the program, not a break from it.',
+    'A little muscle soreness is normal; sharp pain isn’t. Mention it in your feedback.',
+    'An easy walk or spin the day after a hard session can help you feel fresher.',
+    'After a hard session, eat a meal with carbohydrates and protein to help you recover.',
+    'Warm up for 5–10 minutes before strength work. Muscles work better when they’re warm.',
+    'When stretching, hold each position for 20–30 seconds and breathe slowly.',
+    'A few minutes of mobility work every day beats an hour once a week.',
+    'Rate every session. It’s how {coach} knows when to push and when to ease off.',
+    'Got a race or a big training week coming up? Tell {coach} so your program can match.',
+  ];
+  const MOVES = [['goblet-squat', 'Goblet squat'], ['reverse-lunge', 'Reverse lunge'], ['romanian-deadlift', 'Romanian deadlift'], ['single-leg-rdl', 'Single-leg deadlift'], ['single-leg-glute-bridge', 'Single-leg glute bridge'], ['dead-bug', 'Dead bug'], ['bird-dog', 'Bird dog'], ['push-up', 'Push-up'], ['db-overhead-press', 'Overhead press'], ['a-skip', 'A-skip'], ['leg-swings', 'Leg swings'], ['side-lying-hip-abduction', 'Side-lying hip lift']];
+  const el = document.getElementById('splash');
+  const $ = id => document.getElementById(id);
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+  const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
+  let saved = null;
+  try { saved = JSON.parse(store.get('je-tips') || 'null'); } catch (e) { saved = null; }
+  const fill = (t, coach) => t.replace(/\{coach\}/g, coach || 'your coach');
+  function tipList() {
+    const custom = !!(saved && Array.isArray(saved.tips) && saved.tips.length);
+    const coach = (saved && saved.coach) || 'Jaco';
+    return { own: !!(saved && saved.own), coach, tips: (custom ? saved.tips : DEFAULT_TIPS).map(t => fill(t, coach)) };
+  }
+  let t0 = Date.now(), minMs = 0, readyAt = 0, preview = false, active = false, timers = [], raf = 0, tipIdx = 0, moveIdx = 0;
+  function showTip(i, list) {
+    const box = $('sp-tip'), txt = $('sp-tip-text');
+    if (!box || !list.tips.length) return;
+    tipIdx = (i + list.tips.length) % list.tips.length;
+    box.classList.add('fade');
+    setTimeout(() => {
+      txt.textContent = list.tips[tipIdx];
+      $('sp-tip-lab').textContent = (list.own ? `Tip from ${list.coach}` : 'Training tip') + (preview ? ` · ${tipIdx + 1} of ${list.tips.length}` : '');
+      box.classList.remove('fade');
+    }, preview || box.dataset.started ? 260 : 0);
+    box.dataset.started = '1';
+    store.set('je-tip-last', String(tipIdx));
+  }
+  function animate() {
+    const box = $('sp-fig');
+    if (!box || typeof FIG === 'undefined' || typeof FIGURES === 'undefined') return;   // shared from the figure script above
+    const [key, name] = MOVES[moveIdx % MOVES.length], fig = FIGURES[key];
+    if (!fig) return;
+    $('sp-figname').textContent = name;
+    if (reduce) { box.innerHTML = FIG.tween(fig, 0, name); return; }
+    const start = performance.now(), period = 2800;
+    let last = 0;
+    const frame = now => {
+      if (!active) return;
+      if (now - last > 33) {
+        last = now;
+        const ph = ((now - start) % period) / period;            // there and back: hold, move, hold, return
+        const u = ph < 0.1 ? 0 : ph < 0.5 ? (1 - Math.cos(Math.PI * (ph - 0.1) / 0.4)) / 2 : ph < 0.6 ? 1 : (1 + Math.cos(Math.PI * (ph - 0.6) / 0.4)) / 2;
+        box.innerHTML = FIG.tween(fig, u, name);
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+  }
+  function show(opts = {}) {
+    if (!el) return;
+    preview = !!opts.preview; active = true;
+    t0 = Date.now(); readyAt = 0;
+    const firstToday = store.get('je-splash-day') !== today();
+    minMs = preview ? Infinity : firstToday ? 3500 : 1000;
+    el.classList.remove('out'); el.hidden = false; el.setAttribute('aria-busy', 'true');
+    $('sp-preview').hidden = !preview;
+    $('sp-status').textContent = 'Loading…';
+    if (reduce) $('sp-motion')?.remove();
+    const list = tipList();
+    const lastTip = Number(store.get('je-tip-last'));
+    showTip(preview ? 0 : Number.isFinite(lastTip) && store.get('je-tip-last') !== null ? lastTip + 1 : Math.floor(Math.random() * list.tips.length), list);
+    moveIdx = Math.floor(Math.random() * MOVES.length);
+    cancelAnimationFrame(raf); animate();
+    timers.forEach(clearTimeout); timers = [];
+    const tick = setInterval(() => showTip(tipIdx + 1, tipList()), 4800);
+    const swap = setInterval(() => { moveIdx++; cancelAnimationFrame(raf); animate(); }, 9600);
+    timers.push(tick, swap);
+    if (!preview) {
+      timers.push(setTimeout(() => { if (active) $('sp-status').textContent = 'Warming up… The app sleeps when nobody has used it for a while and takes up to a minute to wake.'; }, 5000));
+      timers.push(setTimeout(() => { if (active) $('sp-status').textContent = 'Still warming up. If this keeps going, check your internet connection.'; }, 60000));
+    }
+  }
+  function hide() {
+    if (!active) return;
+    active = false; cancelAnimationFrame(raf);
+    timers.forEach(t => { clearTimeout(t); clearInterval(t); }); timers = [];
+    if (minMs >= 3500) store.set('je-splash-day', today());
+    el.setAttribute('aria-busy', 'false'); el.classList.add('out');
+    setTimeout(() => { if (!active) el.hidden = true; }, 450);
+  }
+  // The app calls this once its first real screen is ready.
+  function ready() {
+    if (!active || preview || readyAt) return;
+    readyAt = Date.now();
+    setTimeout(hide, Math.max(0, minMs - (readyAt - t0)));
+  }
+  // The app passes the coach's saved tips and name, so the next opening shows them even before the server answers.
+  function remember(settings) {
+    if (!settings) return;
+    saved = { own: !!settings.tipsByCoach, coach: settings.coachName || 'Jaco', tips: Array.isArray(settings.tips) ? settings.tips.filter(t => typeof t === 'string' && t.trim()) : [] };
+    store.set('je-tips', JSON.stringify(saved));
+  }
+  $('sp-close')?.addEventListener('click', () => { preview = false; hide(); if (location.hash === '#loading') history.replaceState(null, '', location.pathname); });
+  window.addEventListener('hashchange', () => { if (location.hash === '#loading' && !(active && preview)) show({ preview: true }); });
+  show({ preview: location.hash === '#loading' });
+  return { ready, show, hide, remember, defaults: DEFAULT_TIPS, isPreview: () => preview };
+})();
 </script>
 <script>
 (() => {
@@ -683,6 +857,8 @@ const athletes = () => [...S.data.athletes.values()].sort((a, b) => String(a.nam
 const statusRank = p => ({ current: 0, active: 1, earlier: 2 }[p.status] ?? 1);
 const programsFor = id => [...S.data.programs.values()].filter(p => p.athleteId === id)
   .sort((a, b) => statusRank(a) - statusRank(b) || (a.order ?? 99) - (b.order ?? 99) || String(b.startDate || '').localeCompare(String(a.startDate || '')) || when(b.updatedAt) - when(a.updatedAt));
+const suggestedTips = coach => ((window.JE_SPLASH && window.JE_SPLASH.defaults) || []).map(t => t.replace(/\{coach\}/g, String(coach || '').trim() || 'Jaco'));
+const tipLines = text => String(text || '').split('\n').map(t => t.trim()).filter(Boolean).slice(0, 60).map(t => t.slice(0, 220));
 const activeProgs = id => programsFor(id).filter(p => !p.archived);
 const archivedProgs = id => programsFor(id).filter(p => p.archived).sort((a, b) => when(b.archivedAt) - when(a.archivedAt));
 const feedbackFor = id => [...S.data.feedback.values()].filter(f => f.athleteId === id).sort(byNewest);
@@ -1841,7 +2017,11 @@ function vModal() {
         <label class="field span">Coach’s first name <span class="hint">Athletes see “From ${esc(d.coachName || 'Jaco')}” and send feedback to this name</span><input id="s-coach" data-bind="modal.draft.coachName" value="${esc(d.coachName)}"></label>
         <label class="field">Phone<input id="s-phone" data-bind="modal.draft.phone" value="${esc(d.phone)}"></label>
         <label class="field">Email<input id="s-email" data-bind="modal.draft.email" value="${esc(d.email)}"></label>
-        <label class="field span">Website<input id="s-web" data-bind="modal.draft.website" value="${esc(d.website)}"></label></div>`,
+        <label class="field span">Website<input id="s-web" data-bind="modal.draft.website" value="${esc(d.website)}"></label>
+        <div class="field span tips-field"><label for="s-tips">Loading-screen tips <span class="hint">One tip per line. They rotate while the app opens.</span></label>
+          <textarea id="s-tips" class="search" rows="9" data-bind="modal.draft.tipsText">${esc(d.tipsText)}</textarea>
+          <label class="check"><input type="checkbox" data-act="tips-own" ${d.tipsByCoach ? 'checked' : ''}> Show them as “Tip from ${esc(d.coachName || 'Jaco')}” <span class="hint">(otherwise “Training tip”)</span></label>
+          <div class="actions"><button type="button" class="btn small" data-act="tips-preview">${ico('play')}Preview the loading screen</button><button type="button" class="btn small ghost" data-act="tips-suggested">Use the suggested tips</button></div></div></div>`,
       `<button type="button" class="btn ghost" data-act="close">Cancel</button><button type="button" class="btn primary" data-act="settings-save">Save</button>`);
   }
   if (m.type === 'diff') {
@@ -1926,6 +2106,7 @@ function render() {
   } else if (S.modal && !document.querySelector('.modal')?.contains(document.activeElement)) {
     document.querySelector('.modal .x')?.focus({ preventScroll: true });
   }
+  if (window.JE_SPLASH && S.authChecked && (!S.meUser || S.loaded.size >= COLS.length || S.slow || S.failed)) window.JE_SPLASH.ready();
   if (S.route === 'a-session') saveSession();
   if (S.wkScroll) {
     S.wkScroll = false;
@@ -2057,11 +2238,22 @@ const A = {
   'go-coach': () => go(S.coachAthleteId ? 'athletes' : 'overview'),
   'go-athlete': () => { const id = S.coachAthleteId || athletes()[0]?.id; if (id) go('athlete-' + id); else toast('Add an athlete first.', 'error'); },
   tab: el => { if (el.dataset.v === 'athletes') S.coachAthleteId = null; go(el.dataset.v); },
-  settings: () => { const s = S.data.settings; S.modal = { type: 'settings', draft: { practiceName: s.practiceName || '', coachName: s.coachName || '', tagline: s.tagline || '', phone: s.phone || '', email: s.email || '', website: s.website || '' } }; render(); },
+  settings: () => {
+    const s = S.data.settings;
+    S.modal = { type: 'settings', draft: { practiceName: s.practiceName || '', coachName: s.coachName || '', tagline: s.tagline || '', phone: s.phone || '', email: s.email || '', website: s.website || '',
+      tipsText: (Array.isArray(s.tips) && s.tips.length ? s.tips : suggestedTips(s.coachName)).join('\n'), tipsByCoach: !!s.tipsByCoach } };
+    render();
+  },
+  'tips-suggested': () => { if (S.modal && S.modal.draft) { S.modal.draft.tipsText = suggestedTips(S.modal.draft.coachName).join('\n'); render(); } },
+  'tips-own': () => { if (S.modal && S.modal.draft) { S.modal.draft.tipsByCoach = !S.modal.draft.tipsByCoach; render(); } },
+  'tips-preview': () => { const d = S.modal && S.modal.draft; if (d) window.JE_SPLASH?.remember({ coachName: d.coachName, tipsByCoach: d.tipsByCoach, tips: tipLines(d.tipsText) }); window.JE_SPLASH?.show({ preview: true }); },
   'settings-save': async () => {
     const d = S.modal.draft, doc = {};
-    for (const k of Object.keys(d)) doc[k] = String(d[k] || '').trim();
-    if (await write(() => S.db.doc('settings/app').set(doc), 'Practice details saved')) { S.modal = null; render(); }
+    for (const k of ['practiceName', 'coachName', 'tagline', 'phone', 'email', 'website']) doc[k] = String(d[k] || '').trim();
+    const tips = tipLines(d.tipsText);
+    doc.tips = tips.join('\n') === suggestedTips(doc.coachName).join('\n') ? [] : tips;    // unchanged suggestions stay as the built-in set
+    doc.tipsByCoach = !!d.tipsByCoach;
+    if (await write(() => S.db.collection('settings').doc('app').set(doc), 'Practice details saved')) { window.JE_SPLASH?.remember(doc); S.modal = null; render(); }
   },
   close: () => { S.modal = null; render(); },
   scrim: (el, ev) => { if (ev.target === el) { S.modal = null; render(); } },
@@ -2518,7 +2710,7 @@ function subscribe(db) {
       scheduleRender();
     }, err => { S.failed = true; scheduleRender(); console.warn('sync', c, err && err.code); });
   }
-  db.doc('settings/app').onSnapshot(s => { if (s.exists) { S.data.settings = s.data() || {}; scheduleRender(); } });
+  db.doc('settings/app').onSnapshot(s => { if (s.exists) { S.data.settings = s.data() || {}; window.JE_SPLASH?.remember(S.data.settings); scheduleRender(); } });
 }
 let slowTimer;
 function startData() {
@@ -2533,7 +2725,7 @@ async function boot() {
   S.assets = { upload: async file => { const b = await shrinkPhoto(file); return api('POST', '/api/blobs', b, { raw: true, type: b.type || file.type }); } };
   subscribe(S.db);
   parseHash(); render();
-  api('GET', '/api/settings', undefined, { quiet401: true }).then(r => { if (r && r.settings && !S.meUser) { S.data.settings = r.settings; render(); } }).catch(() => {});
+  api('GET', '/api/settings', undefined, { quiet401: true }).then(r => { if (r && r.settings) { window.JE_SPLASH?.remember(r.settings); if (!S.meUser) { S.data.settings = r.settings; render(); } } }).catch(() => {});
   try {
     const r = await api('GET', '/api/me', undefined, { quiet401: true });
     S.meUser = r.user;

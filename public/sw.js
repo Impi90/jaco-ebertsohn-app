@@ -1,6 +1,6 @@
 // Service worker: lets the app install to a phone's home screen and keeps exercise photos on the phone.
-// The app page is always fetched fresh when online (so updates arrive straight away); the saved copy is
-// only used when there's no connection. Sign-in and data requests (/api/) are never cached.
+// The app page is fetched fresh when the server answers quickly (so updates arrive straight away); the saved
+// copy is used when there's no connection or the server is still waking up. Sign-in and data requests (/api/) are never cached.
 const SHELL = 'je-shell-v1';
 const IMAGES = 'je-img-v1';
 
@@ -25,10 +25,19 @@ self.addEventListener('fetch', event => {
   if (p.startsWith('/api/') || p.startsWith('/_blob/') || p === '/healthz' || p === '/sw.js') return;
 
   if (req.mode === 'navigate') {
-    event.respondWith(fetch(req).then(res => {
+    // Ask the server first. If it hasn't answered in 2.5 s (it may be waking up) or can't be reached,
+    // open the saved copy so the loading screen shows straight away; the fresh copy is saved for next time.
+    const net = fetch(req).then(res => {
       if (res.ok && p === '/') { const copy = res.clone(); caches.open(SHELL).then(c => c.put('/', copy)); }
       return res;
-    }).catch(async () => (await caches.match('/')) || Response.error()));
+    });
+    event.waitUntil(net.catch(() => {}));
+    event.respondWith((async () => {
+      const saved = await caches.match('/');
+      if (!saved) return net.catch(() => Response.error());
+      const wait = new Promise(resolve => setTimeout(() => resolve(null), 2500));
+      return (await Promise.race([net.catch(() => null), wait])) || saved;
+    })());
     return;
   }
 

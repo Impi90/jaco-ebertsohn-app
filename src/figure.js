@@ -140,11 +140,11 @@ const FIG = (() => {
     const top = opts.bare || opts.only != null ? 10 : 30;
     let maxW = 0, maxH = 0;
     for (const F of frames) { maxW = Math.max(maxW, F.maxX - F.minX); maxH = Math.max(maxH, F.floor - F.minY); }
-    const sc = Math.min(1, ((wide ? VW : W) - 26) / maxW, (FLOOR - top) / maxH);
+    const sc = opts.sc ?? Math.min(1, ((wide ? VW : W) - 26) / maxW, (FLOOR - top) / maxH);
     const parts = [];
     frames.forEach((F, i) => {
       const ox = wide ? 0 : i * W, pw = wide ? VW : W;
-      const cx = (F.minX + F.maxX) / 2;
+      const cx = opts.cx ?? (F.minX + F.maxX) / 2;
       parts.push(`<line class="fg-floor" x1="${ox + 12}" y1="${FLOOR}" x2="${ox + pw - 12}" y2="${FLOOR}"/>`);
       if (labels[i] && !opts.bare) parts.push(`<text class="fg-label" x="${ox + 14}" y="19">${labels[i].toUpperCase()}</text>`);
       if (i > 0) parts.push(`<line class="fg-div" x1="${ox}" y1="12" x2="${ox}" y2="${FLOOR - 8}"/>`);
@@ -154,7 +154,33 @@ const FIG = (() => {
     return `<svg class="fig" viewBox="0 0 ${VW} ${H}" role="img" aria-label="${t}" preserveAspectRatio="xMidYMid meet">${parts.join('')}</svg>`;
   }
 
-  return { svg, W, H };
+  // In-between pose for animation: blends every joint angle from the start to the finish position (u = 0…1),
+  // keeping the figure in one place and at one size so it moves rather than jumps.
+  const DEF = { n: q => q.t, f1: q => (q.front ? 0 : 0), f2: q => (q.front ? 180 : 0) };
+  const valOf = (q, k) => (q[k] != null ? q[k] : DEF[k] ? DEF[k](q) : undefined);
+  function mixPose(a, b, u) {
+    const q = { ...a };
+    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
+      const va = valOf(a, k), vb = valOf(b, k);
+      if (typeof va === 'number' && typeof vb === 'number') q[k] = va + (vb - va) * u;
+    }
+    if (a.s || b.s) { q.s = {}; for (const k of new Set([...Object.keys(a.s || {}), ...Object.keys(b.s || {})])) { const va = (a.s || {})[k] ?? 1, vb = (b.s || {})[k] ?? 1; q.s[k] = va + (vb - va) * u; } }
+    return q;
+  }
+  const boxCache = new WeakMap();
+  function tween(fig, u, title) {
+    if (!fig || !fig.frames || fig.frames.length < 2) return svg(fig, { only: 0, title });
+    let bx = boxCache.get(fig);
+    if (!bx) {
+      const Fs = fig.frames.map(layout);
+      const maxW = Math.max(...Fs.map(F => F.maxX - F.minX)), maxH = Math.max(...Fs.map(F => F.floor - F.minY));
+      bx = { cx: Fs.reduce((n, F) => n + (F.minX + F.maxX) / 2, 0) / Fs.length, sc: Math.min(1, (W - 26) / (maxW + 20), (FLOOR - 10) / maxH) };
+      boxCache.set(fig, bx);
+    }
+    return svg({ frames: [mixPose(fig.frames[0], fig.frames[1], u)] }, { only: 0, cx: bx.cx, sc: bx.sc, title });
+  }
+
+  return { svg, tween, W, H };
 })();
 
 /* Built-in illustrations, keyed by name. Props: db (dumbbell in a hand), box/bench (support to floor),
