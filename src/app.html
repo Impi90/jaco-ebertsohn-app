@@ -740,7 +740,8 @@ window.JE_SPLASH = (() => {
     const [key, name] = MOVES[moveIdx % MOVES.length], fig = FIGURES[key];
     if (!fig) return;
     $('sp-figname').textContent = name;
-    if (reduce) { box.innerHTML = FIG.tween(fig, 0, name); return; }
+    box.innerHTML = FIG.tween(fig, 0, name);            // drawn straight away; the movement follows
+    if (reduce) return;
     const start = performance.now(), period = 2800;
     let last = 0;
     const frame = now => {
